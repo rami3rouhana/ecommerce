@@ -229,3 +229,7 @@ h1 {
     margin-bottom: 100px;
     margin-top: 40px;
 }
+.stat-content {
+    padding-left: 30px;
+    display: flex;
+}
