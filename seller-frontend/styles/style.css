@@ -233,3 +233,7 @@ h1 {
     padding-left: 30px;
     display: flex;
 }
+.pie-chart {
+    width: 90%;
+    height: 90%;
+}
