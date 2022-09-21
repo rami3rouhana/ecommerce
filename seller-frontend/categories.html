@@ -5,10 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/seller-frontend/styles/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
     <title>Document</title>
   </head>
   <body>
@@ -35,71 +31,38 @@
         <div class="header-top">
           <div class="buttons">
             <button id="categories" class="clicked">Categories</button>
-            <button id="products-nav">Products</button>
+            <button id="products-nav" >Products</button>
           </div>
         </div>
 
-        <div class="content-products">
+        <div class="content">
           <div class="left">
             <div class="table">
-              <div class="side">
+              <div class="side-left">
                 <h2 class="th color-purple">Name</h2>
-                <ul id="product">
+                <ul id="name">
+
                 </ul>
               </div>
-              <div class="side">
-                <h2 class="th color-purple">Delete</h2>
+              <div class="side-right">
+                <h2 class="th color-purple">Actions</h2>
                 <ul id="actions">
+
                 </ul>
               </div>
             </div>
           </div>
 
           <div class="right">
-            <div class="input-box">
-              <input id="add-product-name" type="text" class="input" placeholder="Product Name" />
-              <input id="add-product-price" type="number" class="input" placeholder="Product Price" />
-              <select id="add-product-categories" class="input">
-                <option value="">Product Category</option>
-              </select>
-              <div class="btns">
-                <button class="btn">
-                  <div class="image-upload">
-                    <label for="file-input"> Upload Image </label>
-                    <input id="file-input" type="file" />
-                  </div>
-                </button>
-                <button id="add-product" class="btn">Submit</button>
-              </div>
-            </div>
-            <div class="input-box">
-              <input
-                type="text"
-                class="input"
-                placeholder="Selected Product Name"
-              />
-              <input
-                type="text"
-                class="input"
-                placeholder="Selected Product Price"
-              />
-              <select class="input">
-                <option value="">Selected Product Category</option>
-              </select>
-              <div class="btns">
-                <button class="btn">
-                  <div class="image-upload">
-                    <label for="file-input"> Upload Image </label>
-                    <input id="file-input" type="file" />
-                  </div>
-                </button>
-                <button class="btn">Save</button>
-              </div>
+            <div class="box-wrap">
+              <input id="add-category-name" type="text" placeholder="Category Name" />
+              <button id="add-category">+</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
