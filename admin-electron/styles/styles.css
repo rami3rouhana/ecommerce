@@ -176,3 +176,25 @@ html{
     margin-bottom: 15px;
     cursor: pointer;
 }
+
+.add-seller{
+    display: flex;
+    align-items: center;
+}
+
+.input-seller{
+    width: 150px;
+    border-radius: 10px;
+}
+
+.main-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-header-title{
+    color: black;
+    font-weight: bolder;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
