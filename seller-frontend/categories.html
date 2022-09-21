@@ -39,21 +39,17 @@
           </div>
         </div>
 
-        <div class="content">
+        <div class="content-products">
           <div class="left">
             <div class="table">
               <div class="side">
                 <h2 class="th color-purple">Name</h2>
-                <ul>
-                  <li class="td color-purple">Hi</li>
-                  <li class="td color-purple">Hi</li>
-                  <li class="td color-purple">Hi</li>
+                <ul id="product">
                 </ul>
               </div>
               <div class="side">
                 <h2 class="th color-purple">Delete</h2>
-                <ul>
-                  <li class="td">Hi</li>
+                <ul id="actions">
                 </ul>
               </div>
             </div>
@@ -61,9 +57,9 @@
 
           <div class="right">
             <div class="input-box">
-              <input type="text" class="input" placeholder="Product Name" />
-              <input type="text" class="input" placeholder="Product Price" />
-              <select class="input">
+              <input id="add-product-name" type="text" class="input" placeholder="Product Name" />
+              <input id="add-product-price" type="number" class="input" placeholder="Product Price" />
+              <select id="add-product-categories" class="input">
                 <option value="">Product Category</option>
               </select>
               <div class="btns">
@@ -73,7 +69,7 @@
                     <input id="file-input" type="file" />
                   </div>
                 </button>
-                <button class="btn">Submit</button>
+                <button id="add-product" class="btn">Submit</button>
               </div>
             </div>
             <div class="input-box">
@@ -104,5 +100,6 @@
         </div>
       </div>
     </div>
+    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
