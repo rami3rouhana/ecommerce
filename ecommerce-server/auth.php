@@ -20,7 +20,8 @@ if(isset($json['id'])){
     $payload = [
         'id' => $json["id"],
         'name' => $json["name"],
-        'role' => $json["role"],
+        'email' => $json["email"],
+        'user_type' => $json["user_type"],
         'exp' => time()+1800,
     ];
 
@@ -40,8 +41,9 @@ if(isset($json['id'])){
 
             $payload = [
                 'id' => $decoded->id,
-                'name' => $decoded->name,
-                'role' => $decoded->role,
+                'name' => $json["name"],
+                'email' => $json["email"],
+                'user_type' => $json["user_type"],
                 'exp' => time()+1800,
             ];
         
