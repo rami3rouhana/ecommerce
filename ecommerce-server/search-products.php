@@ -32,6 +32,13 @@ if (isset($json['user']['id']) && isset($_POST['search_field'])){
         while($a = $result->fetch_assoc()){
             $response[] = $a;
         } 
+        $response["success"] = true;
+        $response["jwt"] = $json["JWT"];
+        echo json_encode($response);
+    } else {
+        $response["success"] = false;
+        $response["error"] = "Wrong Credentials";
+        echo json_encode($response);
     }
 }
 ?>
