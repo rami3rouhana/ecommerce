@@ -13,14 +13,15 @@ $jwtFunction = require('auth.php');
 $_POST = json_decode(file_get_contents('php://input'), true);
 if(isset($_POST['email']) && isset($_POST['password']))
 {
-
+extract($_POST);
 $email = $_POST['email'];
-$password = hash('sha256', $_POST['password']);;
+//$password = hash('sha256', $_POST['password']);;
 
 $query=$mysqli->prepare("select id, f_name, l_name, user_type, email from users where email=? and password=?");
 $query->bind_param("ss",$email,$password );
 $query->execute();
 $result = $query->get_result();
+//echo $result->fetch_assoc();
 $response =[];
 
 if(($result->num_rows)==1){
