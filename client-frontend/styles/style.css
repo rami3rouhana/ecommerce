@@ -145,7 +145,9 @@ h1 {
   border: none;
   box-shadow: 0 5px 5px -5px #2c2c3a;
 }
-.content, .ads-content, .login-content {
+.content,
+.ads-content,
+.login-content {
   background-color: #efeef3;
   width: 100%;
   padding: 10px;
@@ -208,8 +210,9 @@ h1 {
   display: flex;
   flex-direction: column;
 }
-.input, .dropdown {
-  background-color: #EAEAF4;
+.input,
+.dropdown {
+  background-color: #eaeaf4;
   border-radius: 10px;
   height: 40px;
   outline: none;
@@ -235,43 +238,43 @@ h1 {
 
 /* Statistics Section */
 .date {
-    display: flex;
-    flex-direction: row;
-    align-self: center;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
 }
 .dropdown {
-    background-color: #fff;
-    color: #5652ac;
-    border-radius: 0px;
-    margin-bottom: 100px;
-    margin-top: 40px;
+  background-color: #fff;
+  color: #5652ac;
+  border-radius: 0px;
+  margin-bottom: 100px;
+  margin-top: 40px;
 }
 .stat-content {
-    padding-left: 30px;
-    display: flex;
+  padding-left: 30px;
+  display: flex;
 }
 .pie-chart {
-    width: 90%;
-    height: 90%;
+  width: 90%;
+  height: 90%;
 }
 /* Ads Section */
 .bg-purple {
-    background-color: #efeef3;
+  background-color: #efeef3;
 }
 .button {
-    align-self: center;
+  align-self: center;
 }
 .ads-content {
-    padding-top: 60px;
+  padding-top: 60px;
 }
-.ads-content .input-box{
-    padding: 30px 90px;
+.ads-content .input-box {
+  padding: 30px 90px;
 }
 /* Discounts and Vouchers Section */
 .exp {
-    display: flex;
-    flex-direction: column;
-    color: #2c2c3a;
+  display: flex;
+  flex-direction: column;
+  color: #2c2c3a;
 }
 
 /* Login */
@@ -289,7 +292,7 @@ h1 {
   justify-content: space-between;
 }
 .login-content input {
-  background-color: #EAEAF4;
+  background-color: #eaeaf4;
   width: 100%;
   margin-bottom: 40px;
   box-shadow: 0 0px 5px 0px #5752ac7e;
@@ -319,7 +322,7 @@ h1 {
 .lottery .btn {
   background-color: #fff;
   color: #5652ac;
-} 
+}
 .num {
   width: 30px;
   height: 40px;
@@ -339,18 +342,52 @@ h1 {
   margin-top: 3px;
   padding-left: 10px;
   max-width: 300px;
-  background-color: #EAEAF4;
+  background-color: #eaeaf4;
   border-radius: 50px;
 }
 .search input {
-  background-color: #EAEAF4;
+  background-color: #eaeaf4;
   border: none;
   margin-left: 12px;
   outline: none;
-  
 }
 .search i {
   color: #5652ac;
 }
 
 /* Products Section */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 5px;
+  width: 100%;
+  background-color: #eaeaf4;
+  justify-content: space-around;
+}
+.column {
+  margin-top: 50px;
+  width: 30.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eaeaf4;
+  margin-left: 1px;
+  border-radius: 20px;
+}
+.info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  background-color: #fff;
+  padding: 0 2px;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+}
+.image-product {
+  width: 150px;
+  height: 150px;
+}
+.image-product img {
+  width: 100%;
+  height: fit-content;
+}
