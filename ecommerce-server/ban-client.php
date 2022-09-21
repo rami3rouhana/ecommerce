@@ -22,13 +22,21 @@ if ($json['user']['user_type'] == "Admin") {
     if (isset($_POST['banuser_id'])){
        
         extract($_POST);
-        
-        $query = $mysqli->prepare("INSERT INTO `banned_users`(userid) VALUE (?)");
+        $query = $mysqli->prepare("INSERT INTO `banned_users` (`userid`) VALUES (?)");
         $query->bind_param("i", $banuser_id);
         $query->execute();
         $result = $query->get_result();
         $response = [];
-
+        
+        if (($query->error) == "") {
+            $response["success"] = true;
+            $response["jwt"] = $json["JWT"];
+            echo json_encode($response);
+        } else {
+            $response["success"] = false;
+            $response["error"] = "Couldn't insert ID, perhaps primary key ID is duplicated";
+            echo json_encode($response);
+        }
 
     }
 }
