@@ -37,18 +37,20 @@
 
         <div class="container-div">
           <div class="input-box">
-            <input type="text" class="input" placeholder="Voucher Value" />
+            <input id="voucher-value" type="text" class="input" placeholder="Voucher Value" />
             <div class="exp">
               <label for="exp"><small>Expiration Date</small></label>
-              <input type="date" class="input" />
+              <input id="date" type="date" class="input" />
             </div>
 
             <div class="button">
               <div class="box-wrap">
                 <input
+                  id="voucher-code"
                   class="bg-purple"
                   type="text"
                   placeholder="Generated Vouchers"
+                  disabled
                 />
                 <button id="voucher-button">+</button>
               </div>

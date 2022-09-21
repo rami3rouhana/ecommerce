@@ -106,9 +106,33 @@ document.getElementById("discount-button").addEventListener("click", () => {
 
     // Display Discount code
     document.getElementById("discount-code").value = "hello";
+    document.getElementById("discount-value").value = "";
 })
+
 if (document.getElementById("voucher-button"))
 document.getElementById("voucher-button").addEventListener("click", () => {
+    // Set data
     setVoucher(document.getElementById("voucher-value").value);
-    debugger
+    setDate(document.getElementById("date").value);
+
+    // Api call
+
+    // Display Discount code
+    document.getElementById("voucher-code").value = "hello";
+    document.getElementById("voucher-value").value ="";
+    document.getElementById("date").value ="";
+})
+
+if (document.getElementById("submit-ad"))
+document.getElementById("submit-ad").addEventListener("click", () => {
+    // Set data
+    setAdName(document.getElementById("ad-name").value);
+    setAdUrl(document.getElementById("ad-url").value);
+    setAdDescription(document.getElementById("ad-description").value);
+    // Api call
+
+    // Display ads empty
+    document.getElementById("ad-name").value = "";
+    document.getElementById("ad-url").value = "";
+    document.getElementById("ad-description").value = "";
 })
