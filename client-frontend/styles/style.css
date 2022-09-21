@@ -113,6 +113,8 @@ h1 {
   height: 70px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .container {
   display: flex;
@@ -308,3 +310,47 @@ h1 {
 .reset-pass .login-content {
   padding: 30px 400px;
 }
+/* Client Page */
+.lottery {
+  display: flex;
+  height: 30px;
+  align-items: center;
+}
+.lottery .btn {
+  background-color: #fff;
+  color: #5652ac;
+} 
+.num {
+  width: 30px;
+  height: 40px;
+  margin: 0 10px;
+}
+
+.search-feed {
+  width: 50%;
+  padding: 0 3%;
+}
+.search {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  margin-top: 3px;
+  padding-left: 10px;
+  max-width: 300px;
+  background-color: #EAEAF4;
+  border-radius: 50px;
+}
+.search input {
+  background-color: #EAEAF4;
+  border: none;
+  margin-left: 12px;
+  outline: none;
+  
+}
+.search i {
+  color: #5652ac;
+}
+
+/* Products Section */
