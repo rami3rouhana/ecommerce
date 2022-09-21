@@ -18,26 +18,26 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if (isset($json['user']['id'])){
+if ($json['user']['user_type'] == "Seller") {
+    if (isset($json['user']['id'])) {
+        $query = $mysqli->prepare("SELECT name FROM categories WHERE sellers_id = ?");
+        $userid = $json['user']['id'];
+        $query->bind_param("s", $userid);
+        $query->execute();
+        $result = $query->get_result();
+        $response = [];
 
-    $query = $mysqli->prepare("SELECT name FROM categories WHERE users.id = ?");
-    $userid = $json['user']['id'];
-    $query->bind_param("i" , $userid);
-    $query->execute();
-    $result = $query->get_result();
-    $response = [];
-    
-    if (($query->error) == "") {
-        while($a = $result->fetch_assoc()){
-            $response[] = $a;
-        } 
-        $response["success"] = true;
-        $response["jwt"] = $json["JWT"];
-        echo json_encode($response);
-    } else {
-        $response["success"] = false;
-        $response["error"] = "Wrong Credentials";
-        echo json_encode($response);
+        if (($query->error) == "") {
+            while ($a = $result->fetch_assoc()) {
+                $response[] = $a;
+            }
+            $response["success"] = true;
+            $response["jwt"] = $json["JWT"];
+            echo json_encode($response);
+        } else {
+            $response["success"] = false;
+            $response["error"] = "Wrong Credentials";
+            echo json_encode($response);
+        }
     }
 }
-?>
