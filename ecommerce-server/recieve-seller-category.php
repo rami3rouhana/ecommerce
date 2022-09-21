@@ -20,7 +20,7 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 if (isset($json['user']['id'])){
 
-    $query = $mysqli->prepare("SELECT categories.name as category_name, categories.id as category_id FROM users JOIN categories on users.id = categories.sellers_id WHERE users.id = ?");
+    $query = $mysqli->prepare("SELECT name FROM categories WHERE users.id = ?");
     $userid = $json['user']['id'];
     $query->bind_param("i" , $userid);
     $query->execute();
