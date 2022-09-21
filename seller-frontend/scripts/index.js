@@ -1,5 +1,15 @@
 import { useState } from "./useState.js";
 
+let [category, setCategory] = useState("");
+let [product, setProduct] = useState([]);
+let [discount, setDiscount] = useState([]);
+let [voucher, setVoucher] = useState([]);
+let [date, setDate] = useState([]);
+let [adName, setAdName]= useState([]);
+let [adUrl, setAdUrl]= useState([]);
+let [addescription, setAdDescription]= useState([]);
+
+
 window.onload = () => {
     if (document.getElementById("add-product-categories")) {
         const categories = ['category', 'potato', 'batata'];
@@ -11,7 +21,6 @@ window.onload = () => {
     }
 }
 
-let [category, setCategory] = useState("");
 if (document.getElementById("add-category")) {
     document.getElementById("add-category").addEventListener("click", () => {
         // Get user Value
@@ -27,8 +36,6 @@ if (document.getElementById("add-category")) {
         document.getElementById("add-category-name").value = '';
     })
 }
-
-let [product, setProduct] = useState([]);
 
 if (document.getElementById("add-product")) {
     document.getElementById("add-product").addEventListener("click", () => {
@@ -86,4 +93,13 @@ if (document.getElementById("discounts-nav"))
 document.getElementById("logout").addEventListener("click", () => {
     localStorage.removeItem("token");
     window.location.href = "../client-frontend/index.html";
+})
+
+if (document.getElementById("discount-button"))
+document.getElementById("discount-button").addEventListener("click", () => {
+    debugger
+})
+if (document.getElementById("voucher-button"))
+document.getElementById("voucher-button").addEventListener("click", () => {
+    debugger
 })
