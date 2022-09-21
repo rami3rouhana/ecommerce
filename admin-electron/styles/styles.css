@@ -166,15 +166,19 @@ html{
 
 .main-button{
     border-radius: 15px;
-    color: white;
-    background-color: #FF5B8D;
+    color: grey;
+    background-color: white;
     width: 200px;
     height: 75px;
     border-color: transparent;
     font-size: 2rem;
-    font-weight: bolder;
     margin-bottom: 15px;
     cursor: pointer;
+}
+
+.main-button:hover{
+    background-color: #FF5B8D;
+    color:white;
 }
 
 .add-seller{
@@ -232,7 +236,33 @@ html{
     padding: 12px 15px;
 }
 
+.box-wrap{
+    display: flex;
+    margin-left: 50px;
+    flex-direction: row;
+}
+
+.box-wrap button{
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    color: black;
+    width: 70px;
+    font-size: 30px;
+    box-shadow: 0 0px 5px 0px #5752ac7e;
+    cursor: pointer;
+}
+
+.box-wrap button:hover{
+    background-color: #FF5B8D;
+}
+
 /* Utilities */
 .clickable{
     cursor: pointer;
+}
+
+.active-button{
+    background-color: #FF5B8D;
+    color: white;
 }
