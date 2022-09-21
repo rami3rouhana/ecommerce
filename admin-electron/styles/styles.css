@@ -86,3 +86,21 @@ html{
 .login-button:hover{
     background-color: #4E3350;
 }
+
+/* Clients Page */
+.top-nav{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background-color: #5B415D;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-nav{
+    width: 20%;
+    height: 100vh;
+    background-color: #5B415D;
+    display: flex;
+    flex-direction: column;
+}
