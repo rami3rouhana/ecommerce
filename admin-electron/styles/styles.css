@@ -183,6 +183,7 @@ html{
     font-size: 2rem;
     margin-bottom: 15px;
     cursor: pointer;
+    font-style: inherit;
 }
 
 .main-button:hover{
@@ -268,8 +269,6 @@ html{
 }
 
 /* Add Seller Popup */
-
-/* Login popup */
 .seller-popup{
     top: 0;
     left: 0;
@@ -362,6 +361,17 @@ html{
     box-shadow: 0 0 3px #FF5B8D;
     outline-offset: 0px;
     outline: none;
+}
+
+/* Charts */
+.main-display-charts{
+    display: flex;
+    padding: 15px 15px;
+    width: 100%;
+    height: 600px;
+    border-radius: 15px;
+    box-shadow: #5B415D;
+    background: white;
 }
 
 
