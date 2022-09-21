@@ -128,7 +128,7 @@ h1 {
   flex-direction: column;
 }
 .dash {
-  width: 1px;
+  width: 2px;
   min-height: 100%;
   background-color: #5652ac;
 }
