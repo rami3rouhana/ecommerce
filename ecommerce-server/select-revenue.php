@@ -19,7 +19,7 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if (isset($json['user']['id'])){
-    if(isset($_POST['seller_id']) && isset($_POST['date_from'])){
+    if(isset($_POST['date_from']) && isset($_POST['date_to'])){
         extract($_POST);
         //$query = $mysqli->prepare("SELECT SUM(products.price) FROM sold_product JOIN products ON sold_product.products_id = products.id JOIN categories ON products.id = categories.id JOIN users ON categories.sellers_id = users.id 
         //WHERE users.id = ? AND sold_product.date BETWEEN ? AND ?");
