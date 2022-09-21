@@ -118,8 +118,6 @@ h1 {
 }
 .container {
   display: flex;
-  padding: 20px;
-  background-color: #eaeaf4;
 }
 .left {
   width: 50%;
@@ -404,4 +402,33 @@ th, td {
 table {
   background-color: #fff;
   margin-right: 20px;
+}
+.cart-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cart-input input {
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 0 30px 30px;
+}
+.cart-input .btn {
+  width: 30%;
+  align-self: center;
+}
+.prices {
+  display: flex;
+  justify-content: center;
+}
+.total-amount {
+  display: flex;
+  background-color: #fff;
+  margin: 0 30px 50px 30px;
+  justify-content: space-around;
+}
+.cart-container {
+  padding: 20px;
+  background-color: #eaeaf4;
+  display: flex;
 }
