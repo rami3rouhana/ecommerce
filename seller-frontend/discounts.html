@@ -17,8 +17,8 @@
       <div class="nav-buttons">
         <button>Products</button>
         <button>Statistics</button>
-        <button class="clicked">Ads</button>
-        <button>Discounts</button>
+        <button>Ads</button>
+        <button class="clicked">Discounts</button>
       </div>
 
       <div class="logout">
@@ -30,23 +30,27 @@
       <div class="body">
         <div class="header-top">
           <div class="buttons">
-            <button class="clicked">Ads</button>
+            <button class="clicked">Discounts</button>
+            <button>Vouchers</button>
           </div>
         </div>
 
         <div class="ads-content">
           <div class="input-box">
-            <input type="text" class="input" placeholder="Ad Name" />
-            <input type="text" class="input" placeholder="Ad URL" />
-            <input type="text" class="input" placeholder="Ad Description" />
-            <div class="btns">
-              <button class="btn">
-                <div class="image-upload">
-                  <label for="file-input"> Upload Image </label>
-                  <input id="file-input" type="file" />
-                </div>
-              </button>
-              <button class="btn">Submit</button>
+            <input type="text" class="input" placeholder="Discount Value" />
+            <select class="input">
+              <option value="">Category Name</option>
+            </select>
+            <input type="text" class="input" placeholder="Expiration Date" />
+            <div class="button">
+              <div class="box-wrap">
+                <input
+                  class="bg-purple"
+                  type="text"
+                  placeholder="Generated Voucher"
+                />
+                <button>+</button>
+              </div>
             </div>
           </div>
         </div>
