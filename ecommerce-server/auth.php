@@ -41,9 +41,9 @@ if(isset($json['id'])){
 
             $payload = [
                 'id' => $decoded->id,
-                'name' => $json["name"],
-                'email' => $json["email"],
-                'user_type' => $json["user_type"],
+                'name' => $decoded->name,
+                'email' => $decoded->email,
+                'user_type' => $decoded->user_type,
                 'exp' => time()+1800,
             ];
         
