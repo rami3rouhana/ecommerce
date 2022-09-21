@@ -2,8 +2,8 @@ import { useState } from "./useState.js";
 
 let [category, setCategory] = useState("");
 let [product, setProduct] = useState([]);
-let [discount, setDiscount] = useState([]);
-let [voucher, setVoucher] = useState([]);
+let [discount, setDiscount] = useState(0);
+let [voucher, setVoucher] = useState(0);
 let [date, setDate] = useState([]);
 let [adName, setAdName]= useState([]);
 let [adUrl, setAdUrl]= useState([]);
@@ -24,7 +24,7 @@ window.onload = () => {
 if (document.getElementById("add-category")) {
     document.getElementById("add-category").addEventListener("click", () => {
         // Get user Value
-        setCategory(document.getElementById("add-category-name").value);
+        setCategory(document.getElementById("add-product-categories").value);
 
         // add category api
 
@@ -97,9 +97,18 @@ document.getElementById("logout").addEventListener("click", () => {
 
 if (document.getElementById("discount-button"))
 document.getElementById("discount-button").addEventListener("click", () => {
-    debugger
+    // Set data
+    setDiscount(document.getElementById("discount-value").value);
+    setCategory(document.getElementById("add-product-categories").value);
+    setDate(document.getElementById("date").value);
+
+    // Api call
+
+    // Display Discount code
+    document.getElementById("discount-code").value = "hello";
 })
 if (document.getElementById("voucher-button"))
 document.getElementById("voucher-button").addEventListener("click", () => {
+    setVoucher(document.getElementById("voucher-value").value);
     debugger
 })

@@ -37,20 +37,22 @@
 
         <div class="container-div">
           <div class="input-box">
-            <input type="text" class="input" placeholder="Discount Value" />
+            <input id="discount-value" type="number" class="input" placeholder="Discount Value" />
             <select id="add-product-categories" class="input">
               <option value="">Category Name</option>
             </select>
             <div class="exp">
               <label for="exp"><small>Expiration Date</small></label>
-              <input type="date" class="input" />
+              <input id="date" type="date" class="input" />
             </div>
             <div class="button">
               <div class="box-wrap">
                 <input
+                  id="discount-code"
                   class="bg-purple"
                   type="text"
                   placeholder="Generate Discount"
+                  disabled
                 />
                 <button id="discount-button" >+</button>
               </div>
