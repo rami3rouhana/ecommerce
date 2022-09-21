@@ -301,3 +301,10 @@ h1 {
   height: 70px;
   margin-bottom: 40px;
 }
+/* Reset Password */
+.reset-pass {
+  width: 100%;
+}
+.reset-pass .login-content {
+  padding: 20px 400px;
+}
