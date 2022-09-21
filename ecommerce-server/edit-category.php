@@ -20,7 +20,7 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 if ($json['user']['user_type'] == "Seller") {
     if (isset($_POST['id']) && isset($_POST['name'])) {
-        
+
         extract($_POST);
 
         $query = $mysqli->prepare("update categories SET name=? where id=? ");
@@ -28,7 +28,6 @@ if ($json['user']['user_type'] == "Seller") {
         $query->execute();
         $result = $query->get_result();
         $response = [];
-        echo ("yes");
         if (($query->error) == "") {
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
