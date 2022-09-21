@@ -118,6 +118,8 @@ h1 {
 }
 .container {
   display: flex;
+  padding: 20px;
+  background-color: #eaeaf4;
 }
 .left {
   width: 50%;
@@ -395,4 +397,11 @@ h1 {
 .flex {
   flex-direction: row;
   display: flex;
+}
+th, td {
+  border-bottom:1px solid #5652ac;
+}
+table {
+  background-color: #fff;
+  margin-right: 20px;
 }
