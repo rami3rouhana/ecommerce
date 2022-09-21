@@ -186,7 +186,7 @@ h1 {
   margin-bottom: 75px;
   height: 400px;
   padding: 40px;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -249,4 +249,10 @@ h1 {
 }
 .ads-content .input-box{
     padding: 30px 90px;
+}
+/* Discounts and Vouchers Section */
+.exp {
+    display: flex;
+    flex-direction: column;
+    color: #2c2c3a;
 }
