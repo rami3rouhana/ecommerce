@@ -27,7 +27,7 @@ return function ($json) {
         $mailer->Port = 465;
 
         $mailer->setFrom('rami.3.rouhana@gmail.com', 'Ramy');
-        $mailer->addAddress($json['email'], $json['$name']);
+        $mailer->addAddress($json['email'], $json['name']);
 
         $mailer->isHTML(true);
         $mailer->Subject = 'PHPMailer Test';
