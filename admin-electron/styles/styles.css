@@ -429,6 +429,24 @@ html{
     justify-content: center;
 }
 
+.main-header-spliter{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.main-header-split-title{
+    color: black;
+    font-weight: bolder;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    width: 60%;
+}
+
+.main-header-split-title:last-child{
+    width: 40%;
+}
+
 /* Utilities */
 .clickable{
     cursor: pointer;
