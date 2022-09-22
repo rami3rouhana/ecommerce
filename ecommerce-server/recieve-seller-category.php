@@ -41,3 +41,4 @@ if ($json['user']['user_type'] == "Seller") {
         }
     }
 }
+?>
