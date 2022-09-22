@@ -90,6 +90,7 @@ html{
     border: 2px solid white;
     background-color: #5B415D;
     cursor: pointer;
+    font-family: inherit;
 }
 
 .login-button:hover{
