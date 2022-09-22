@@ -28,7 +28,6 @@ if ($json['user']['user_type'] == "Client") {
         $query->execute();
         $result = $query->get_result();
         $response = [];
-        print_r($query);
 
         if (($query->error) == "") {
             $response["success"] = true;
