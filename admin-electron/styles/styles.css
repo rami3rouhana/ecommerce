@@ -374,6 +374,23 @@ html{
     background: white;
 }
 
+/* Lotter */
+.lottery-container{
+    width: 80%;
+    min-height: 600px;
+    height: auto;
+    padding: 15px 15px;
+}
+
+.lottery-numbers{
+    width: 100%;
+    height: auto;
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* Utilities */
 .clickable{
     cursor: pointer;
