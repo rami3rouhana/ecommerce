@@ -14,7 +14,7 @@ export const GetStats = () => {
 
 
     //Set buttons
-    if(document.getElementById("clientsBtn") && document.getElementById("clientsBtn")){
+    if(document.getElementById("clientsBtn") && document.getElementById("sellersBtn")){
         let clientsBtn = document.getElementById("clientsBtn");
         let sellersBtn = document.getElementById("sellersBtn");
         clientsBtn.addEventListener("click", () => {
@@ -25,6 +25,7 @@ export const GetStats = () => {
             clientsBtn.classList.remove("active-button");
             sellersBtn.classList.add("active-button");
         })
+        if(document.getElementById("submit-date"))
         document.getElementById("submit-date").addEventListener("click", () => {
             if(sellersBtn.classList.contains("active-button")){
                 console.log("sellers active");

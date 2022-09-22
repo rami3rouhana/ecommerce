@@ -13,4 +13,25 @@ export const PageLocations = () => {
     document.getElementById("lottery").addEventListener("click", () => {
         window.location.href = "./lottery.html";
     })
+
+    if(document.getElementById("clientsBtnPage"))
+    document.getElementById("clientsBtnPage").addEventListener("click", () => {
+        window.location.href = "./clients.html";
+    })
+
+    if(document.getElementById("sellersBtnPage"))
+    document.getElementById("sellersBtnPage").addEventListener("click", () => {
+        window.location.href = "./sellers.html";
+    })
+
+    /*if(document.getElementById("clientsBtnPage") && document.getElementById("sellersBtnPage")){
+        console.log("gg");
+        document.getElementById("clientsBtnPage").addEventListener("click", () => {
+            window.location.href = "./clients.html"
+        })
+        
+        document.getElementById("sellersBtnPage").addEventListener("click", () => {
+            window.location.href = "./sellers.html"
+        })
+    }*/
 }
