@@ -17,12 +17,13 @@
         <img class="img" src="./images/logo.png">
       </div>
       <div class="login-form">
-        <input type="text" placeholder="Username" class="input">
-        <input type="text" placeholder="Password" class="input">
-        <input type="submit" class="login-button">
+        <input type="email" placeholder="Email" id="email" class="input">
+        <input type="password" placeholder="Password" id="password" class="input">
+        <div class="error-login-div hidden" id="error-login-div"></div>
+        <input type="submit" class="login-button" id="login-button">
       </div>
     </div>
   <!-- You can also require other files to run in this process -->
-  <script src="./scripts/Axios/LoginValidation.js"></script>
+  <script type="module" src="./scripts/Axios/main.js"></script>
   </body>
 </html>

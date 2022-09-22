@@ -19,5 +19,3 @@ AddSeller();
 EditSeller();
 DeleteSeller();
 
-
-//Login

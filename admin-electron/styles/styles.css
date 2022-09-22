@@ -510,11 +510,20 @@ button {
     display: none;
 }
 
-
 #myChart{
     width: 863px;
     display: block;
     height: 421px;
+}
+
+.error-login-div{
+    background-color: red;
+    border-radius: 15px;
+    height: 50px;
+    padding: 10px 10px;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-bottom: 10px;
 }
 
 
