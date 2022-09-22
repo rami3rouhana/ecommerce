@@ -1,13 +1,8 @@
 import { GetProducts } from "./GetProducts.js";
 import { login } from "./login.js";
-
+import { Register } from "./Register.js";
+import { GetFavorites } from "./GetFavorites.js";
 GetProducts();
-
-
-if (document.getElementById("login-btn")) {
-    document.getElementById("login-btn").addEventListener("click", () => {
-        login();
-    })
-
-
-}
+Register();
+GetFavorites();
+login();

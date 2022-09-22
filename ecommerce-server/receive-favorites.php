@@ -29,9 +29,10 @@ if ($json['user']['user_type'] == "Client") {
 
         if (($query->error) == "") {
             while ($a = $result->fetch_assoc()) {
-                $response[] = $a;
+                $products[] = $a;
             }
             $response["success"] = true;
+            $response['products'] = $products;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);
         } else {
