@@ -26,18 +26,23 @@
       </div>
       <div class="main-header">
         <div class="main-header-spliter">
-            <span class="main-header-split-title">
+            <div class="main-header-split-title">
                 Check out the charts of the top users
-            </span>
-            <span class="main-header-split-title">
-                Check out the charts of the top users
-            </span>
+            </div>
+            <div class="main-header-split-title">
+                Specify the date
+            </div>
         </div>
-          <div class="main-buttons">
-              <div class="button-seperator">
-                  <button id="sellersBtn" class="main-button active-button">Sellers</button>
-                  <button id="clientsBtn" class="main-button">Clients</button>
-              </div>
+            <div class="main-buttons">
+                <div class="button-seperator">
+                    <button id="sellersBtn" class="main-button active-button">Sellers</button>
+                    <button id="clientsBtn" class="main-button">Clients</button>
+                </div>
+                <div class="button-seperator">
+                    <input class="input-style" type="date" name="" placeholder="Date From">
+                    <input class="input-style" type="date" name="" placeholder="Date To">
+                    <button id="clientsBtn" class="date-button">Submit</button>
+                </div>
           </div>
           <div class="main-display-charts">
             <canvas id="myChart" style="width:100%;"></canvas>
