@@ -24,4 +24,5 @@ if (($query->error) == "") {
     $response["error"] = "Wrong Credentials";
     echo json_encode($response);
 }
+
 ?>
