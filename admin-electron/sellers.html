@@ -65,13 +65,13 @@
     <div class="seller-popup hidden" id="seller-popup">
         <div class="seller-popup-form">
             <div class="close-btn-container">
-                <div class="close-btn" id="close-btn">X</div>
+                <div class="close-btn" id="close-btn-add">X</div>
             </div>
             <h3>Add a seller</h3>
-            <input class="input-style" type="email" name="" placeholder="Email" id="email">
-            <input class="input-style" type="text" name="" placeholder="Name">
-            <input class="input-style" type="password" name="" placeholder="Password">
-            <button class="main-button">Add</button>
+            <input class="input-style" type="email" name="" placeholder="Email" id="add-email">
+            <input class="input-style" type="text" name="" placeholder="Name" id="add-name">
+            <input class="input-style" type="password" name="" placeholder="Password" id="add-password">
+            <button class="main-button" id="add-btn">Add</button>
             <div class="error-login" id="error-login"></div>
         </div>
     </div>
@@ -82,15 +82,14 @@
                 <div class="close-btn" id="close-btn">X</div>
             </div>
             <h3>Edit seller</h3>
-            <input class="input-style" type="email" name="" placeholder="Email">
-            <input class="input-style" type="text" name="" placeholder="Name">
-            <input class="input-style" type="password" name="" placeholder="Password">
+            <input class="input-style" type="email" name="" placeholder="Email" id="email">
+            <input class="input-style" type="text" name="" placeholder="Name" >
+            <input class="input-style" type="password" name="" placeholder="Password" >
             <button class="main-button">Edit</button>
             <div class="error-login" id="error-login"></div>
         </div>
     </div>
-
-    <script src="./renderer.js"></script>
+    <div class="cover hidden" id="cover"></div>
     <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>
