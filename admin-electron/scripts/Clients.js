@@ -4,7 +4,7 @@ let [id, setId] =useState(0);
 
 export const Clients = () =>{
 
-    if(document.getElementsByClassName("clickable").length >0){
+    if(document.getElementsByClassName("clickable").length >0 && document.getElementById("seller-popup-form")){
         const banned = Array.prototype.slice.call( document.getElementsByClassName("clickable") );
         banned.forEach( ban => {
             ban.addEventListener("click", (e)=> {
