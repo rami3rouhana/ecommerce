@@ -1,6 +1,5 @@
-
 <?php
-// Connection
+//INSERT INTO `vouchers` (`code`, `amount`, `used`, `client_id`) VALUES ('AED123', '20', '0', '1');
 include("connection.php");
 //required file
 require __DIR__ . '/../vendor/autoload.php';
@@ -18,16 +17,14 @@ $headers = getallheaders();
 $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorization"])[1]]));
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
-
 if ($json['user']['user_type'] == "Seller") {
-    if (isset($_POST['id'])) {
-
+    if (isset($_POST['code']) && isset($_POST['amount']) && isset($_POST['used']) && isset($_POST['client_id'])) {
         extract($_POST);
-        $query = $mysqli->prepare("DELETE FROM products WHERE id = ?");
-        $query->bind_param("i", $id);
+        $query = $mysqli->prepare("INSERT INTO `vouchers` (`code`, `amount`, `used`, `client_id`) VALUES (?, ?, ?, ?)");
+        $query->bind_param("ssii", $code , $amount , $used, $client_id);
         $query->execute();
         $result = $query->get_result();
-        $response = [];
+
         if (($query->error) == "") {
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
@@ -39,3 +36,7 @@ if ($json['user']['user_type'] == "Seller") {
         }
     }
 }
+else{
+    echo 'jwt error';
+}
+?>
