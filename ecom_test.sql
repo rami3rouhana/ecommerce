@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2022 at 11:14 AM
+-- Generation Time: Sep 22, 2022 at 09:05 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -33,6 +33,16 @@ CREATE TABLE `ads` (
   `seller_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `ads`
+--
+
+INSERT INTO `ads` (`id`, `picture_url`, `seller_id`) VALUES
+(1, NULL, 5),
+(2, 'dhfksjfhsk', 2),
+(3, 'dhfksjfhsk', 2),
+(4, 'pssstt', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -51,7 +61,14 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `name`, `sellers_id`) VALUES
 (1, 'Laptops', 2),
-(2, 'Laptops', 1);
+(3, 'phones', 5),
+(4, 'phones', 2),
+(5, 'car', 6),
+(6, 'car', 7),
+(7, 'car', 7),
+(8, 'pets', 2),
+(10, 'jj', 2),
+(11, 'food', 2);
 
 -- --------------------------------------------------------
 
@@ -65,6 +82,16 @@ CREATE TABLE `discounts` (
   `products_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `discounts`
+--
+
+INSERT INTO `discounts` (`code`, `discount_percent`, `products_id`) VALUES
+(1236, '25', 2),
+(1254, '25', 1),
+(12564, '25', 1),
+(123698, 'dkh', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +102,14 @@ CREATE TABLE `favorites` (
   `users_id` int(11) NOT NULL,
   `products_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `favorites`
+--
+
+INSERT INTO `favorites` (`users_id`, `products_id`) VALUES
+(4, 1),
+(4, 2);
 
 -- --------------------------------------------------------
 
@@ -106,7 +141,18 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `picture_url`, `price`, `categories_id`) VALUES
-(1, 'HP Essential', NULL, '250', 1);
+(1, 'HP Essential', '', '250', 1),
+(2, 'lenovo', NULL, '1000', 1),
+(4, 'a70', NULL, '100', 3),
+(5, 'A31', NULL, '130', 3),
+(6, 'acer', NULL, '1100', 1),
+(7, 'p30 lite', NULL, '200', 3),
+(8, 'P30 pro', NULL, '900', 3),
+(9, 'cat', NULL, '100', 8),
+(16, 'madyan', NULL, '200', 3),
+(17, 'madyan', 'dfhdbj', '150', 3),
+(18, 'madyan', 'dfhdbj', '150', 3),
+(19, 'madyan', 'dfhdbj', '150', 3);
 
 -- --------------------------------------------------------
 
@@ -121,6 +167,13 @@ CREATE TABLE `sold_product` (
   `users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `sold_product`
+--
+
+INSERT INTO `sold_product` (`date`, `discout_used`, `products_id`, `users_id`) VALUES
+('2022-09-21', NULL, 2, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -133,7 +186,7 @@ CREATE TABLE `users` (
   `l_name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `user_type` varchar(255) NOT NULL
+  `user_type` varchar(255) NOT NULL DEFAULT 'Client'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -141,9 +194,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `f_name`, `l_name`, `email`, `password`, `user_type`) VALUES
-(1, 'Lenovo', 'Group Limited', 'lenovo@gmail.com', 'password', 'Seller'),
+(1, NULL, 'Group Limited', NULL, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Seller'),
 (2, 'HP', 'HAWARD', 'hp@gmail.com', 'password', 'Seller'),
-(3, 'Admin', NULL, 'admin@gmail.com', 'password', 'Admin');
+(3, 'Admin', NULL, 'admin@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Admin'),
+(4, 'maytham', 'ghaly', 'maythamghaly@gmail.com', '123123', 'Client'),
+(5, 'samsung', 'samsung', 'samsung@gmail.com', 'samsung123', 'Seller'),
+(6, 'huawei', 'huawei', 'huawei@huawei.com', 'huawei123', 'Seller'),
+(7, 'Test', 'test', 'test', 'test', 'Admin'),
+(15, 'rami', 'abo 3aj2a', 'rami@gmail.com', 'a320480f534776bddb5cdb54b1e93d210a3c7d199e80a23c1b2178497b184c76', 'Client'),
+(16, 'rami', 'abo 3aj2a', '', 'a320480f534776bddb5cdb54b1e93d210a3c7d199e80a23c1b2178497b184c76', 'Client');
 
 -- --------------------------------------------------------
 
@@ -173,9 +232,16 @@ INSERT INTO `user_types` (`type`) VALUES
 CREATE TABLE `vouchers` (
   `code` varchar(255) NOT NULL,
   `amount` int(11) NOT NULL,
-  `used` tinyint(1) NOT NULL,
+  `used` tinyint(1) NOT NULL DEFAULT 0,
   `client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vouchers`
+--
+
+INSERT INTO `vouchers` (`code`, `amount`, `used`, `client_id`) VALUES
+('1253', 100, 0, 4);
 
 -- --------------------------------------------------------
 
@@ -193,7 +259,8 @@ CREATE TABLE `whishlist` (
 --
 
 INSERT INTO `whishlist` (`users_id`, `products_id`) VALUES
-(1, 1);
+(1, 1),
+(4, 2);
 
 --
 -- Indexes for dumped tables
@@ -265,7 +332,8 @@ ALTER TABLE `user_types`
 -- Indexes for table `vouchers`
 --
 ALTER TABLE `vouchers`
-  ADD PRIMARY KEY (`code`);
+  ADD PRIMARY KEY (`code`),
+  ADD KEY `fk_clientID` (`client_id`);
 
 --
 -- Indexes for table `whishlist`
@@ -279,22 +347,28 @@ ALTER TABLE `whishlist`
 --
 
 --
+-- AUTO_INCREMENT for table `ads`
+--
+ALTER TABLE `ads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
@@ -343,6 +417,12 @@ ALTER TABLE `sold_product`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_user_types1` FOREIGN KEY (`user_type`) REFERENCES `user_types` (`type`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `vouchers`
+--
+ALTER TABLE `vouchers`
+  ADD CONSTRAINT `fk_clientID` FOREIGN KEY (`client_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `whishlist`
