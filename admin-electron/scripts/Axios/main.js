@@ -5,7 +5,6 @@ import { LoginValidation }  from "./LoginValidation.js";
 
 
 
-
 //Login
 
 if(document.getElementById("login-button"))
@@ -18,3 +17,9 @@ if(document.getElementById("login-button"))
     
 
 //LoginValidation("admin@gmail.com", "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8");
+
+
+//Receive Clients
+if(document.getElementById("main-table-clients")){
+    
+}

@@ -9,8 +9,6 @@ import { AddSeller } from "./AddSeller.js";
 import { EditSeller } from "./EditSeller.js";
 import { DeleteSeller } from "./DeleteSeller.js";
 
-import { LoginValidation } from 
-
 PageLocations();
 GetStats();
 GenerateLottery();

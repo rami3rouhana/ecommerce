@@ -35,6 +35,7 @@ if(isset($json['id'])){
 
 }else{
     try{
+
         $decoded = JWT::decode($json['jwt'], new Key($key, 'HS256'));
 
         if(($decoded->exp)>time()){
