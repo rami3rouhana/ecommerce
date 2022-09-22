@@ -52,7 +52,6 @@ if(isset($json['id'])){
             $reponse = [];
             $reponse['success'] = true;
             $reponse['JWT'] = $jwt;
-            $reponse['success'] = true;
             $reponse['user'] = $decoded;
             return json_encode($reponse);
             
