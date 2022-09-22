@@ -14,8 +14,6 @@ export const GetStats = () => {
 
 
     //Set buttons
-    clientsBtn = document.getElementById("clientsBtn");
-    sellersBtn = document.getElementById("sellersBtn");
 
     /*clientsBtn.addEventListener("click", () => {
     })
