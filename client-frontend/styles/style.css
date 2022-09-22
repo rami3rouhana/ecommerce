@@ -118,8 +118,6 @@ h1 {
 }
 .container {
   display: flex;
-  padding: 20px;
-  background-color: #eaeaf4;
 }
 .left {
   width: 50%;
@@ -365,16 +363,17 @@ h1 {
   padding: 0 5px;
   width: 100%;
   background-color: #eaeaf4;
-  justify-content: space-around;
+  justify-content: flex-start;
+  position: fixed;
 }
 .column {
   margin-top: 50px;
-  width: 30.33%;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #eaeaf4;
-  margin-left: 1px;
+  margin-left: 30px;
   border-radius: 20px;
 }
 .info {
@@ -398,10 +397,40 @@ h1 {
   flex-direction: row;
   display: flex;
 }
-th, td {
-  border-bottom:1px solid #5652ac;
+th,
+td {
+  border-bottom: 1px solid #5652ac;
 }
 table {
   background-color: #fff;
   margin-right: 20px;
+}
+.cart-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cart-input input {
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 0 30px 30px;
+}
+.cart-input .btn {
+  width: 30%;
+  align-self: center;
+}
+.prices {
+  display: flex;
+  justify-content: center;
+}
+.total-amount {
+  display: flex;
+  background-color: #fff;
+  margin: 0 30px 50px 30px;
+  justify-content: space-around;
+}
+.cart-container {
+  padding: 20px;
+  background-color: #eaeaf4;
+  display: flex;
 }
