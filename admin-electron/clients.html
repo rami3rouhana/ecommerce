@@ -35,7 +35,7 @@
                 <div class="add-seller">
                     <div class="right">
                         <div class="box-wrap">
-                            <button>+</button>
+                            <button id="add-client" >+</button>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                         <th>Email</th>
                         <th>Actions</th>
                     </tr>
-                    <tr>
+                    <tr id="1">
                         <td>Lenovo</td>
                         <td>1</td>
                         <td>lenovo@gmail.com</td>
@@ -61,13 +61,14 @@
         </div>
     </div>
     <!--SELLER POPUP-->
-    <div class="seller-popup hidden">
+
+    <div id="seller-popup-form" class="seller-popup hidden">
         <div class="seller-popup-form">
             <div class="close-btn-container">
                 <div class="close-btn" id="close-btn">X</div>
             </div>
             <h3>Are you sure you want to ban this user?</h3>
-            <button class="main-button">Ban</button>
+            <button id="ban-button" class="main-button">Ban</button>
             <div class="error-login" id="error-login"></div>
         </div>
     </div>
