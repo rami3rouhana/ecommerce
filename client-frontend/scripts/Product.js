@@ -1,14 +1,14 @@
-export const Products = (info) => {
+export const Product = (product) => {
     return (`
-        <div class="column">
+        <div class="column" id="${product.id}">
         <div class="image-product">
-          <img src="/client-frontend/images/logo.png" alt="" />
+          <img src="${product.picture_url}" alt="" />
         </div>
 
         <div class="info">
           <div class="info-details">
-            <span class="color-purple">Keyboard</span>
-            <span class="color-purple">200$</span>
+            <span class="color-purple">${product.name}</span>
+            <span class="color-purple">${product.price}$</span>
           </div>
           <div class="icons">
             <span class="color-purple"><i class="fa fa-star"></i></span>

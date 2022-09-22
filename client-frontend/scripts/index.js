@@ -1,3 +1,3 @@
-import { GetProducts } from "./GetProducts";
+import { GetProducts } from "./GetProducts.js";
 
 GetProducts();
