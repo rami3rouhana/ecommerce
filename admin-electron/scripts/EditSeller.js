@@ -11,6 +11,7 @@ export const EditSeller = () => {
         edits.forEach(edit => {
             edit.addEventListener("click", (e) => {
                 document.getElementById("edit-seller-popup").classList.remove('hidden');
+                document.getElementById("cover").classList.remove('hidden')
                 setId(e.currentTarget.parentElement.parentElement.id);
                 document.getElementById("edit-btn").addEventListener("click", () => {
                     console.log(id());
