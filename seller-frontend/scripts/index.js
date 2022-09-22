@@ -5,9 +5,12 @@ let [product, setProduct] = useState([]);
 let [discount, setDiscount] = useState(0);
 let [voucher, setVoucher] = useState(0);
 let [date, setDate] = useState([]);
-let [adName, setAdName]= useState([]);
-let [adUrl, setAdUrl]= useState([]);
-let [addescription, setAdDescription]= useState([]);
+let [adName, setAdName] = useState([]);
+let [adUrl, setAdUrl] = useState([]);
+let [addescription, setAdDescription] = useState([]);
+const years = [2020, 2021, 2022];
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
 
 
 window.onload = () => {
@@ -18,6 +21,28 @@ window.onload = () => {
             options += `<option value="${category}">${category}</option>`
         })
         document.getElementById("add-product-categories").innerHTML = options;
+    }
+    if (document.getElementById("year")) {
+        const categories = ['category', 'potato', 'batata'];
+        let options = "";
+        years.forEach(year => {
+            options += `<option value="${year}">${year}</option>`
+        })
+        document.getElementById("year").innerHTML = options;
+    }
+    if (document.getElementById("month")) {
+        let options = "";
+        months.forEach((month, i) => {
+            options += `<option value="${i}">${month}</option>`
+        })
+        document.getElementById("month").innerHTML = options;
+    }
+    if (document.getElementById("day")) {
+        let options = "";
+        days.forEach(day => {
+            options += `<option value="${day}">${day}</option>`
+        })
+        document.getElementById("day").innerHTML = options;
     }
 }
 
@@ -96,43 +121,43 @@ document.getElementById("logout").addEventListener("click", () => {
 })
 
 if (document.getElementById("discount-button"))
-document.getElementById("discount-button").addEventListener("click", () => {
-    // Set data
-    setDiscount(document.getElementById("discount-value").value);
-    setCategory(document.getElementById("add-product-categories").value);
-    setDate(document.getElementById("date").value);
+    document.getElementById("discount-button").addEventListener("click", () => {
+        // Set data
+        setDiscount(document.getElementById("discount-value").value);
+        setCategory(document.getElementById("add-product-categories").value);
+        setDate(document.getElementById("date").value);
 
-    // Api call
+        // Api call
 
-    // Display Discount code
-    document.getElementById("discount-code").value = "hello";
-    document.getElementById("discount-value").value = "";
-})
+        // Display Discount code
+        document.getElementById("discount-code").value = "hello";
+        document.getElementById("discount-value").value = "";
+    })
 
 if (document.getElementById("voucher-button"))
-document.getElementById("voucher-button").addEventListener("click", () => {
-    // Set data
-    setVoucher(document.getElementById("voucher-value").value);
-    setDate(document.getElementById("date").value);
+    document.getElementById("voucher-button").addEventListener("click", () => {
+        // Set data
+        setVoucher(document.getElementById("voucher-value").value);
+        setDate(document.getElementById("date").value);
 
-    // Api call
+        // Api call
 
-    // Display Discount code
-    document.getElementById("voucher-code").value = "hello";
-    document.getElementById("voucher-value").value ="";
-    document.getElementById("date").value ="";
-})
+        // Display Discount code
+        document.getElementById("voucher-code").value = "hello";
+        document.getElementById("voucher-value").value = "";
+        document.getElementById("date").value = "";
+    })
 
 if (document.getElementById("submit-ad"))
-document.getElementById("submit-ad").addEventListener("click", () => {
-    // Set data
-    setAdName(document.getElementById("ad-name").value);
-    setAdUrl(document.getElementById("ad-url").value);
-    setAdDescription(document.getElementById("ad-description").value);
-    // Api call
+    document.getElementById("submit-ad").addEventListener("click", () => {
+        // Set data
+        setAdName(document.getElementById("ad-name").value);
+        setAdUrl(document.getElementById("ad-url").value);
+        setAdDescription(document.getElementById("ad-description").value);
+        // Api call
 
-    // Display ads empty
-    document.getElementById("ad-name").value = "";
-    document.getElementById("ad-url").value = "";
-    document.getElementById("ad-description").value = "";
-})
+        // Display ads empty
+        document.getElementById("ad-name").value = "";
+        document.getElementById("ad-url").value = "";
+        document.getElementById("ad-description").value = "";
+    })
