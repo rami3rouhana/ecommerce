@@ -1,5 +1,6 @@
 
 export const Register = () => {
+if(document.getElementById("register-btn"))
     document.getElementById("register-btn").addEventListener('click', async () => {
         const url = "http://localhost/ecommerce/ecommerce-server/register.php";
         const f_name = document.getElementById('username-register').value;
