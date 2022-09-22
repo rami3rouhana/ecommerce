@@ -20,6 +20,5 @@ export const GenerateLottery = () => {
             setNumbers(x);
             console.log(numbers());
         })
-
     }
 }
