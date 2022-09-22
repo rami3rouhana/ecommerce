@@ -10,7 +10,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorizatio
 // Convert data
 $jwtFunction = require('auth.php');
 $_POST = json_decode(file_get_contents('php://input'), true);
-if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['f_name']) && isset($_POST['l_name']))
+if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['f_name']))
 {
     extract($_POST);
     $password=hash('sha256',$_POST['password']);
