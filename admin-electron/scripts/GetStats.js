@@ -14,18 +14,24 @@ export const GetStats = () => {
 
 
     //Set buttons
-    clientsBtn = document.getElementById("clientsBtn");
-    sellersBtn = document.getElementById("sellersBtn");
-
-    /*clientsBtn.addEventListener("click", () => {
-    })
-    document.getElementById("submit-date").addEventListener("click", () => {
-        if(.classList.contains("active-button")){
-            console.log("gg");
-        }
-        if(document.getElementById("clientsBtn").classList.contains("active-button")){
-            console.log("gg");
-        }
-    })*/
-
+    if(document.getElementById("clientsBtn") && document.getElementById("clientsBtn")){
+        let clientsBtn = document.getElementById("clientsBtn");
+        let sellersBtn = document.getElementById("sellersBtn");
+        clientsBtn.addEventListener("click", () => {
+            clientsBtn.classList.add("active-button");
+            sellersBtn.classList.remove("active-button");
+        })
+        sellersBtn.addEventListener("click", () => {
+            clientsBtn.classList.remove("active-button");
+            sellersBtn.classList.add("active-button");
+        })
+        document.getElementById("submit-date").addEventListener("click", () => {
+            if(sellersBtn.classList.contains("active-button")){
+                console.log("sellers active");
+            }
+            if(clientsBtn.classList.contains("active-button")){
+                console.log("clientsBtn active");
+            }
+        })
+    }
 }
