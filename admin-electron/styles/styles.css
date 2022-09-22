@@ -472,7 +472,13 @@ html{
 }
 
 /* Utilities */
-.clickable{
+.clickable-edit{
+    cursor: pointer;
+}
+.clickable-ban{
+    cursor: pointer;
+}
+.clickable-delete{
     cursor: pointer;
 }
 

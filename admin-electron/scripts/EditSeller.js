@@ -16,6 +16,7 @@ export const EditSeller = () => {
                 document.getElementById("edit-btn").addEventListener("click", () => {
                     console.log(id());
                     document.getElementById("edit-seller-popup").classList.add('hidden');
+                    document.getElementById("cover").classList.add('hidden');
                 })
             })
         });

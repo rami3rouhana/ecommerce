@@ -19,12 +19,13 @@ export const DeleteSeller = () => {
         console.log("delete");
         edits.forEach(edit => {
             edit.addEventListener("click", (e) => {
-                document.getElementById("delete-seller-form").classList.remove('hidden');
+                document.getElementById("delete-seller-popup").classList.remove('hidden');
                 document.getElementById("cover").classList.remove('hidden')
                 setId(e.currentTarget.parentElement.parentElement.id);
-                document.getElementById("edit-btn").addEventListener("click", () => {
+                document.getElementById("delete-button").addEventListener("click", () => {
                     console.log(id());
-                    document.getElementById("edit-seller-popup").classList.add('hidden');
+                    document.getElementById("delete-seller-popup").classList.add('hidden');
+                    document.getElementById("cover").classList.add('hidden');
                 })
             })
         });
@@ -32,7 +33,7 @@ export const DeleteSeller = () => {
 
     if(document.getElementById("delete-close-btn"))
     document.getElementById("delete-close-btn").addEventListener("click", () => {
-        document.getElementById("delete-seller-form").classList.add('hidden')
+        document.getElementById("delete-seller-popup").classList.add('hidden')
         document.getElementById("cover").classList.add('hidden')
     })
 
