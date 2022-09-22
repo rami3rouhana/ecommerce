@@ -8,6 +8,7 @@
     <title>Document</title>
   </head>
   <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <div class="container">
       <div class="left">
         <div class="center header-top">
@@ -16,10 +17,10 @@
         </div>
         <div class="login-content">
             <img src="/client-frontend/images/logo.png" alt="" class="logo">
-            <input type="text" placeholder="Username" class="input" />
-            <input type="password" placeholder="Password" class="input" />
+            <input type="text" placeholder="Username" class="input" id="login-username" />
+            <input type="password" placeholder="Password" class="input" id="login-password" />
             <a href="" class="color-purple">Forgotten Password ?</a>
-            <button class="btn">Login</button>
+            <button class="btn" id="login-btn">Login</button>
         </div>
         
       </div>
