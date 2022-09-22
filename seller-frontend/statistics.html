@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/seller-frontend/styles/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="header">
+        <img src="" alt="" class="profile-img" />
+        <h2 class="color-white">Seller Name</h2>
+      </div>
+
+      <div class="nav-buttons">
+        <button id="products">Products</button>
+        <button id="statistics" class="clicked" >Statistics</button>
+        <button id="ads" >Ads</button>
+        <button id="discounts" >Discounts</button>
+      </div>
+
+      <div class="logout">
+        <button id="logout">Logout</button>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="body">
+        <div class="header-top">
+          <div class="buttons">
+            <button class="clicked">Statistics</button>
+          </div>
+        </div>
+
+        <div class="stat-content">
+          <div class="left">
+            <div class="date">
+              <select id="month" class="dropdown">
+                <option value="">Month</option>
+              </select>
+              <select id="year" class="dropdown">
+                <option value="">Year</option>
+              </select>
+              <select id="day" class="dropdown">
+                <option value="">Day</option>
+              </select>
+            </div>
+
+            <div class="table">
+              <div class="side">
+                <h3 class="th color-purple">Category Name</h3>
+                <ul>
+                  <li class="td color-purple">Hi</li>
+                  <li class="td color-purple">Hi</li>
+                  <li class="td color-purple">Hi</li>
+                </ul>
+              </div>
+              <div class="side">
+                <h3 class="th color-purple">Product Name</h3>
+                <ul>
+                  <li class="td">Hi</li>
+                </ul>
+              </div>
+              <div class="side">
+                <h3 class="th color-purple">Product Price</h3>
+                <ul>
+                  <li class="td">Hi</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <img src="https://images.nagwa.com/figures/explainers/245194820905/4.svg" alt="" class="pie-chart">
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./scripts/index.js"></script>
+  </body>
+</html>
