@@ -6,8 +6,8 @@ export const EditSeller = () => {
     let [password, setPassword] = useState("");
     let [id, setId] = useState(0);
 
-    if (document.getElementsByClassName("clickable").length > 0 && document.getElementById("edit-seller-popup")) {
-        const edits = Array.prototype.slice.call(document.getElementsByClassName("clickable"));
+    if (document.getElementsByClassName("clickable-edit").length > 0 && document.getElementById("edit-seller-popup")) {
+        const edits = Array.prototype.slice.call(document.getElementsByClassName("clickable-edit"));
         edits.forEach(edit => {
             edit.addEventListener("click", (e) => {
                 document.getElementById("edit-seller-popup").classList.remove('hidden');

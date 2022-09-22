@@ -7,6 +7,7 @@ import { GenerateLottery } from './GenerateLottery.js';
 import { Clients } from './Clients.js';
 import { AddSeller } from "./AddSeller.js";
 import { EditSeller } from "./EditSeller.js";
+import { DeleteSeller } from "./DeleteSeller.js";
 
 
 PageLocations();
@@ -15,3 +16,5 @@ GenerateLottery();
 Clients();
 AddSeller();
 EditSeller();
+DeleteSeller();
+
