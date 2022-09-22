@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="./styles/styles.css">
+  </head>
+  <body>
+    <div class="container">
+        <div class="top-nav">
+            <div class="logo-div">
+                <img src="./images/logo.png" width="50px" height="50px">
+            </div>
+            <div class="admin">
+                <img src="./images/profile.png" width="50px" height="50px">
+                <span class="left-nav-title admin-title">Admin Name</span>
+            </div>
+        </div>
+        <div class="left-nav">
+            <div class="left-nav-menu-item"><span class="left-nav-title">Users</span></div>
+            <div class="left-nav-menu-item"><span class="left-nav-title">Statistics</span></div>
+            <div class="left-nav-menu-item"><span class="left-nav-title">Vouchers</span></div>
+        </div>
+        <div class="lottery-container">
+
+        </div>
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+  </body>
+</html>

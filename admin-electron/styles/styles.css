@@ -276,6 +276,7 @@ html{
     position: absolute;
     width: 100%;
     height: 100%;
+    z-index: 5;
 }
 
 .seller-popup-form{
@@ -285,7 +286,6 @@ html{
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
-    border: 5px solid #4E3350;
 }
 
 .close-btn-container{
@@ -368,13 +368,11 @@ html{
     display: flex;
     padding: 15px 15px;
     width: 100%;
-    height: 600px;
+    height: auto;
     border-radius: 15px;
     box-shadow: #5B415D;
     background: white;
 }
-
-
 
 /* Utilities */
 .clickable{
@@ -397,4 +395,14 @@ button {
 
 .hidden{
     display: none;
+}
+
+.cover{
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    display: block;
 }
