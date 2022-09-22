@@ -35,7 +35,7 @@
                 <div class="add-seller">
                     <div class="right">
                         <div class="box-wrap">
-                            <button id="add-seller">+</button>
+                            <button id="add-seller-btn">+</button>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         <td>1</td>
                         <td>lenovo@gmail.com</td>
                         <td>
-                            <img class="clickable" src="./images/edit-button.svg" width="50px" height="50px"></img>
+                            <img class="clickable" src="./images/edit-button.svg" width="50px" height="50px" id="edit-seller-btn"></img>
                             <img class="clickable" src="./images/delete-button.svg" width="50px" height="50px"></img>
                         </td>
                     </tr>
@@ -62,7 +62,7 @@
         </div>
     </div>
     <!--SELLER POPUP-->
-    <div class="seller-popup hidden" id="seller-popup">
+    <div class="seller-popup hidden" id="add-popup">
         <div class="seller-popup-form">
             <div class="close-btn-container">
                 <div class="close-btn" id="close-btn-add">X</div>
@@ -76,16 +76,16 @@
         </div>
     </div>
 
-    <div class="seller-popup hidden">
+    <div class="seller-popup hidden" id="edit-seller-popup">
         <div class="seller-popup-form">
             <div class="close-btn-container">
-                <div class="close-btn" id="close-btn">X</div>
+                <div class="close-btn" id="close-btn-edit">X</div>
             </div>
             <h3>Edit seller</h3>
-            <input class="input-style" type="email" name="" placeholder="Email" id="email">
-            <input class="input-style" type="text" name="" placeholder="Name" >
-            <input class="input-style" type="password" name="" placeholder="Password" >
-            <button class="main-button">Edit</button>
+            <input class="input-style" type="email" name="" placeholder="Email" id="edit-email">
+            <input class="input-style" type="text" name="" placeholder="Name" id="edit-name" >
+            <input class="input-style" type="password" name="" placeholder="Password" id="edit-password">
+            <button class="main-button" id="edit-btn">Edit</button>
             <div class="error-login" id="error-login"></div>
         </div>
     </div>

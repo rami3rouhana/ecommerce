@@ -5,10 +5,10 @@ export const AddSeller = () => {
     let [name, setName] = useState("");
     let [password, setPassword] = useState("");
 
-    if (document.getElementById("add-seller")) {
-        document.getElementById("add-seller").addEventListener("click", () => {
+    if (document.getElementById("add-seller-btn")) {
+        document.getElementById("add-seller-btn").addEventListener("click", () => {
             // popup open
-            document.getElementById("seller-popup").classList.remove('hidden')
+            document.getElementById("add-popup").classList.remove('hidden')
             document.getElementById("cover").classList.remove('hidden')
             // Get user Value
             document.getElementById("add-btn").addEventListener("click", () => {
@@ -21,11 +21,11 @@ export const AddSeller = () => {
                 document.getElementById("add-email").value = "";
                 document.getElementById("add-name").value = "";
                 document.getElementById("add-password").value = "";
-                document.getElementById("seller-popup").classList.add('hidden')
+                document.getElementById("add-popup").classList.add('hidden')
                 document.getElementById("cover").classList.add('hidden')
             })
             document.getElementById("close-btn-add").addEventListener("click", () => {
-                document.getElementById("seller-popup").classList.add('hidden')
+                document.getElementById("add-popup").classList.add('hidden')
                 document.getElementById("cover").classList.add('hidden')
             })
 
