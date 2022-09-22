@@ -19,18 +19,17 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Seller") {
-    if (isset($json['user']['id'])) {
-        $query = $mysqli->prepare("SELECT name FROM categories WHERE sellers_id = ?");
-        $userid = $json['user']['id'];
-        $query->bind_param("s", $userid);
+    if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['picture_url']) && isset($_POST['price'])) {
+       
+        extract($_POST);
+        
+        $query = $mysqli->prepare("update products SET name=?, picture_url=?, price=? where id=? ");
+        $query->bind_param("sssi",$name, $picture_url , $price , $id );
         $query->execute();
         $result = $query->get_result();
         $response = [];
 
         if (($query->error) == "") {
-            while ($a = $result->fetch_assoc()) {
-                $response[] = $a;
-            }
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);

@@ -18,9 +18,9 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if ($json['user']['user_type'] == "Seller") {
+if ($json['user']['user_type'] == "Client") {
     if (isset($json['user']['id'])) {
-        $query = $mysqli->prepare("SELECT name FROM categories WHERE sellers_id = ?");
+        $query = $mysqli->prepare("SELECT name , picture_url , price  FROM products JOIN whishlist ON products_id = products.id WHERE users_id = ?");
         $userid = $json['user']['id'];
         $query->bind_param("s", $userid);
         $query->execute();
