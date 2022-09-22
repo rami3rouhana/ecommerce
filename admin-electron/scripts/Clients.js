@@ -1,3 +1,7 @@
+import { useState } from "./useState.js";
+
+let [id, setId] =useState(0);
+
 export const Clients = () =>{
 
     if(document.getElementsByClassName("clickable").length >0){
@@ -5,9 +9,9 @@ export const Clients = () =>{
         banned.forEach( ban => {
             ban.addEventListener("click", (e)=> {
                 document.getElementById("seller-popup-form").classList.remove('hidden');
-                const user_id = e.currentTarget.parentElement.parentElement.id;
+                setId(e.currentTarget.parentElement.parentElement.id);
                 document.getElementById("ban-button").addEventListener("click", ()=> {
-                    console.log(user_id);
+                    console.log(id());
                     document.getElementById("seller-popup-form").classList.add('hidden');
                 })
             })            
