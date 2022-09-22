@@ -75,6 +75,13 @@ html{
     width: 100%;
 }
 
+.input:focus{
+    border: 2px solid #5752ac7e;
+    box-shadow: 0 0 6px #5752ac7e;
+    outline-offset: 0px;
+    outline: none;
+}
+
 .login-button{
     font-size: 2.2rem;
     border-radius: 15px;
@@ -83,6 +90,7 @@ html{
     border: 2px solid white;
     background-color: #5B415D;
     cursor: pointer;
+    font-family: inherit;
 }
 
 .login-button:hover{
@@ -101,7 +109,7 @@ html{
 
 .left-nav{
     width: 20%;
-    height: 100vh;
+    height: auto;
     background-color: #5B415D;
     display: flex;
     flex-direction: column;
@@ -161,7 +169,7 @@ html{
     flex-direction: column;
     padding: 15px 15px;
     width: 80%;
-    max-height: 100vh;
+    height: 100%;
     background-color: lightgrey;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -176,6 +184,7 @@ html{
     font-size: 2rem;
     margin-bottom: 15px;
     cursor: pointer;
+    font-style: inherit;
 }
 
 .main-button:hover{
@@ -196,6 +205,7 @@ html{
 .main-buttons{
     display: flex;
     justify-content: space-between;
+    font-family: inherit;
 }
 
 .main-header-title{
@@ -260,8 +270,6 @@ html{
 }
 
 /* Add Seller Popup */
-
-/* Login popup */
 .seller-popup{
     top: 0;
     left: 0;
@@ -269,6 +277,7 @@ html{
     position: absolute;
     width: 100%;
     height: 100%;
+    z-index: 5;
 }
 
 .seller-popup-form{
@@ -278,12 +287,34 @@ html{
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
-    border: 5px solid #4E3350;
+}
+
+.close-btn-container{
+    display: flex;
+    width: 100%;
+    align-content: flex-start;
+    justify-content: flex-start;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.close-btn{
+    color:#4E3350;
+    font-size: 1.5rem;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-btn:hover{
+    background-color: #FF5B8D;
 }
 
 .seller-popup-form input{
     width: 70%;
-    margin-bottom: 10px;
 }
 
 .seller-popup-form button{
@@ -294,6 +325,8 @@ html{
 
 .seller-popup-form h3{
     margin-bottom: 10px;
+    font-size: 2rem;
+    color:#4E3350;
 }
 
 .seller-popup-form h5{
@@ -305,7 +338,7 @@ html{
     font-size: 1rem;
     text-decoration: none;
     font-weight: 700;
-    color: #fff;
+    color: #4E3350;
     transition: all .2s ease;
     margin-bottom: 20px;
     height: 35px;
@@ -321,6 +354,7 @@ html{
 	font-size: 14px;
 	padding: 10px;
 	width: 90%;
+    margin-bottom: 10px;
 }
 
 .input-style:focus{
@@ -330,7 +364,110 @@ html{
     outline: none;
 }
 
+/* Charts */
+.main-display-charts{
+    display: flex;
+    padding: 15px 15px;
+    width: 100%;
+    max-height: 100%;
+    border-radius: 15px;
+    box-shadow: #5B415D;
+    background: white;
+}
 
+/* Lotter */
+.main-header-lottery{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+    padding: 15px 15px;
+    width: 80%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.lottery-container{
+    width: 100%;
+    min-height: 600px;
+    height: auto;
+    padding: 15px 15px;
+    border-radius: 15px;
+    background-color: lightgrey;
+}
+
+.lottery-numbers{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lottery-number{
+    border-radius: 15px;
+    margin-left: 5px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 400px;
+    background-color: #5B415D;
+    margin-bottom: 15px;
+}
+
+.number{
+    font-size: 5rem;
+    color: white;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+}
+
+.main-header-spliter{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.main-header-split-title{
+    color: black;
+    font-weight: bolder;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    width: 60%;
+}
+
+.main-header-split-title:last-child{
+    width: 40%;
+}
+
+.button-seperator:last-child{
+    width: 40%;
+}
+
+.date-button{
+    border-radius: 15px;
+    color: grey;
+    background-color: white;
+    width: 150px;
+    height: 50px;
+    border-color: transparent;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-style: inherit;
+}
+
+.main-button:hover{
+    background-color: #FF5B8D;
+    color:white;
+}
 
 /* Utilities */
 .clickable{
@@ -344,4 +481,30 @@ html{
 
 .overlay{
     background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73));
+}
+
+button {
+    font-family : inherit;
+    font-size: 1em;
+}
+
+.hidden{
+    display: none;
+}
+
+.cover{
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+#myChart{
+    width: 863px;
+    display: block;
+    height: 421px;
 }

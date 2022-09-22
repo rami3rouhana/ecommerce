@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <link rel="stylesheet" href="./styles/styles.css">
-  </head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles/styles.css">
+        <title>Clients</title>
+    </head>
   <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <div class="container">
       <div class="top-nav">
           <div class="logo-div">
@@ -20,43 +22,58 @@
       <div class="left-nav">
           <div class="left-nav-menu-item"><span class="left-nav-title">Users</span></div>
           <div class="left-nav-menu-item"><span class="left-nav-title">Statistics</span></div>
-          <div class="left-nav-menu-item"><span class="left-nav-title">Vouchers</span></div>
+          <div class="left-nav-menu-item"><span class="left-nav-title">Lottery</span></div>
       </div>
       <div class="main-header">
-          <span class="main-header-title">
-              Check out the charts of the top users
-          </span>
-          <div class="main-buttons">
-              <div class="button-seperator">
-                  <button id="sellersBtn" class="main-button active-button">Sellers</button>
-                  <button id="clientsBtn" class="main-button">Clients</button>
-              </div>
-              <div class="add-seller">
-                  <div class="right">
-                      <div class="box-wrap">
-                          <button>+</button>
-                      </div>
-                  </div>
-              </div>
+        <div class="main-header-spliter">
+            <div class="main-header-split-title">
+                Check out the charts of the top users
+            </div>
+            <div class="main-header-split-title">
+                Specify the date
+            </div>
+        </div>
+            <div class="main-buttons">
+                <div class="button-seperator">
+                    <button id="sellersBtn" class="main-button active-button">Sellers</button>
+                    <button id="clientsBtn" class="main-button">Clients</button>
+                </div>
+                <div class="button-seperator">
+                    <input class="input-style" type="date" name="" placeholder="Date From">
+                    <input class="input-style" type="date" name="" placeholder="Date To">
+                    <button id="clientsBtn" class="date-button">Submit</button>
+                </div>
           </div>
-          <div class="main-display-table">
-              <table class="main-table">
-                  <tr>
-                      <th>Day</th>
-                      <th>Month</th>
-                      <th>Year</th>
-                  </tr>
-                  <tr>
-                      <td>Lenovo</td>
-                      <td>1</td>
-                      <td>lenovo@gmail.com</td>
-                  </tr>
-              </table>
+          <div class="main-display-charts">
+            <canvas id="myChart" style="width:100%;"></canvas>
           </div>
       </div>
   </div>
   <!--SELLER POPUP-->
   <!-- You can also require other files to run in this process -->
   <script src="./renderer.js"></script>
+  <script>
+    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+    var yValues = [55, 49, 44, 24, 15];
+    var barColors = ["red", "green","blue","orange","brown"];
+
+    new Chart("myChart", {
+    type: "bar",
+    data: {
+        labels: xValues,
+        datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+        }]
+    },
+    options: {
+        legend: {display: false},
+        title: {
+        display: true,
+        text: "World Wine Production 2018"
+        }
+    }
+    });
+</script>
   </body>
 </html>
