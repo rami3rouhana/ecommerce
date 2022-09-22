@@ -97,6 +97,29 @@ html{
     background-color: #4E3350;
 }
 
+.lottery-number{
+    border-radius: 15px;
+    margin-left: 5px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 400px;
+    background-color: #5B415D;
+    margin-bottom: 15px;
+}
+
+.number{
+    font-size: 5rem;
+    color: white;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+}
+
 /* Clients Page */
 .top-nav{
     display: flex;
