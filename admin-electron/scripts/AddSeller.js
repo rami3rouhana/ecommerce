@@ -1,6 +1,6 @@
 import { useState } from "./useState";
 
-export const addSeller = () =>{
+export const AddSeller = () =>{
 
     if (document.getElementById("add-seller")) {
         document.getElementById("add-seller").addEventListener("click", () => {

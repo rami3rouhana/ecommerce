@@ -20,9 +20,9 @@
           </div>
       </div>
       <div class="left-nav">
-          <div class="left-nav-menu-item"><span class="left-nav-title">Users</span></div>
-          <div class="left-nav-menu-item"><span class="left-nav-title">Statistics</span></div>
-          <div class="left-nav-menu-item"><span class="left-nav-title">Lottery</span></div>
+            <div class="left-nav-menu-item" id="users"><span class="left-nav-title">Users</span></div>
+            <div class="left-nav-menu-item" id="stats"><span class="left-nav-title">Statistics</span></div>
+            <div class="left-nav-menu-item" id="lottery"><span class="left-nav-title">Lottery</span></div>
       </div>
       <div class="main-header">
         <div class="main-header-spliter">
@@ -39,9 +39,9 @@
                     <button id="clientsBtn" class="main-button">Clients</button>
                 </div>
                 <div class="button-seperator">
-                    <input class="input-style" type="date" name="" placeholder="Date From">
-                    <input class="input-style" type="date" name="" placeholder="Date To">
-                    <button id="clientsBtn" class="date-button">Submit</button>
+                    <input class="input-style" type="date" id="date_from" placeholder="Date From">
+                    <input class="input-style" type="date" id="date_to" placeholder="Date To">
+                    <button id="submit-date" class="date-button">Submit</button>
                 </div>
           </div>
           <div class="main-display-charts">
@@ -75,5 +75,6 @@
     }
     });
 </script>
+<script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
