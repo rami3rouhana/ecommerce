@@ -19,12 +19,11 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Client") {
-    if (isset($_POST['id'])) {
+    if (isset($_POST['products_id'])) {
         
         extract($_POST);
-
-        $query = $mysqli->prepare("DELETE FROM whishlist WHERE users_id=? ");
-        $query->bind_param("i", $id );
+        $query = $mysqli->prepare("DELETE FROM whishlist where  products_id=? and users_id=? ");
+        $query->bind_param("ii", $products_id, $json['user']['id'] );
         $query->execute();
         $result = $query->get_result();
         $response = [];
