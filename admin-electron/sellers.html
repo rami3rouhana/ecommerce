@@ -35,7 +35,7 @@
                 <div class="add-seller">
                     <div class="right">
                         <div class="box-wrap">
-                            <button>+</button>
+                            <button id="add-seller">+</button>
                         </div>
                     </div>
                 </div>
@@ -62,13 +62,13 @@
         </div>
     </div>
     <!--SELLER POPUP-->
-    <div class="seller-popup">
+    <div class="seller-popup hidden" id="seller-popup">
         <div class="seller-popup-form">
             <div class="close-btn-container">
                 <div class="close-btn" id="close-btn">X</div>
             </div>
             <h3>Add a seller</h3>
-            <input class="input-style" type="email" name="" placeholder="Email">
+            <input class="input-style" type="email" name="" placeholder="Email" id="email">
             <input class="input-style" type="text" name="" placeholder="Name">
             <input class="input-style" type="password" name="" placeholder="Password">
             <button class="main-button">Add</button>
@@ -89,6 +89,8 @@
             <div class="error-login" id="error-login"></div>
         </div>
     </div>
-    <div class="cover"></div>
+    <div class="cover hidden" id="cover"></div>
+
+    <script src="./scripts/index.js"></script>
 </body>
 </html>
