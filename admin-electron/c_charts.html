@@ -45,7 +45,7 @@
                     <button id="submit-date" class="date-button">Submit</button>
                 </div>
           </div>
-          <div class="main-display-charts">
+          <div class="main-display-charts" id="main-display=charts">
             <canvas id="myChart" style="width:100%;"></canvas>
           </div>
       </div>
@@ -54,27 +54,7 @@
   <!-- You can also require other files to run in this process -->
   <!--script src="./renderer.js"></script>-->
   <script>
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["red", "green","blue","orange","brown"];
 
-    new Chart("myChart", {
-    type: "bar",
-    data: {
-        labels: xValues,
-        datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-        }]
-    },
-    options: {
-        legend: {display: false},
-        title: {
-        display: true,
-        text: "World Wine Production 2018"
-        }
-    }
-    });
 </script>
 <script type="module" src="./scripts/index.js"></script>
   </body>
