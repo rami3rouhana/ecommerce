@@ -1,5 +1,7 @@
 import { useState } from "./useState.js";
 import {GetClients} from './Axios/GetClients.js'
+import {BanUser} from './BanUser.js';
+
 let [id, setId] = useState(0);
 
 export const Clients = async () =>{
