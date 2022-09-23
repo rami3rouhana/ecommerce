@@ -442,4 +442,5 @@ table {
   padding: 20px;
   background-color: #eaeaf4;
   display: flex;
+  height: 100%;
 }
