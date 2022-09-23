@@ -1,8 +1,10 @@
 import { useState } from "./useState.js";
 import { GetSellers } from "./Axios/GetSellers.js";
+import { DeleteSeller } from "./DeleteSeller.js";
 
 export const EditSeller = async () => {
     await GetSellers();
+    await DeleteSeller();
     
     let [email, setEmail] = useState("");
     let [name, setName] = useState("");
@@ -25,7 +27,10 @@ export const EditSeller = async () => {
                 document.getElementById("cover").classList.remove('hidden')
                 setId(e.currentTarget.parentElement.parentElement.id);
                 document.getElementById("edit-btn").addEventListener("click", () => {
-                    console.log(id());
+                    let nEmail = (document.getElementById("edit-email").value);
+                    let nName = (document.getElementById("edit-name").value);
+                    let nPass =(document.getElementById("edit-password").value);
+                    console.log(id(), nEmail, nName, nPass);
                     document.getElementById("edit-seller-popup2").classList.add('hidden');
                     document.getElementById("cover").classList.add('hidden');
                 })

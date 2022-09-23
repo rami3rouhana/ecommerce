@@ -15,5 +15,5 @@ GenerateLottery();
 Clients();
 AddSeller();
 EditSeller();
-DeleteSeller();
+
 

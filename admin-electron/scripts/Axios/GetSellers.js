@@ -12,10 +12,9 @@ export const GetSellers = async () => {
     //console.log(response.data);
     //console.log(clients);
     sellers.map(seller => {
-        console.log(seller);
         sellersHTML += Seller(seller);
     })
     //console.log(clientsHTML);
-    document.getElementById("main-table-sellers").innerHTML = sellersHTML;
+    document.getElementById("main-table-sellers").innerHTML += sellersHTML;
 }
 

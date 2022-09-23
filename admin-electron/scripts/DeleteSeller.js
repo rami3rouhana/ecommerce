@@ -2,7 +2,7 @@ import { GetSellers } from "./Axios/GetSellers.js";
 import { useState } from "./useState.js";
 
 export const DeleteSeller = async () => {
-    await GetSellers();
+    //await GetSellers();
     let [email, setEmail] = useState("");
     let [name, setName] = useState("");
     let [password, setPassword] = useState("");
