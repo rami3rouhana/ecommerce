@@ -1,13 +1,16 @@
 export const GetStats = () => {
+    let user_type = '';
+    let date_from = '';
+    let date_to = '';
     if(document.getElementById("submit-date"))
     document.getElementById("submit-date").addEventListener("click", () => {
         if(document.getElementById("date_from"))
         {
-            let date_from = (document.getElementById("date_from").value);
+            date_from = (document.getElementById("date_from").value);
         }
         if(document.getElementById("date_to"))
         {
-            let date_to = (document.getElementById("date_to").value);
+            date_to = (document.getElementById("date_to").value);
         }
         console.log(date_to.value, date_from.value)
     })
@@ -28,11 +31,13 @@ export const GetStats = () => {
         if(document.getElementById("submit-date"))
         document.getElementById("submit-date").addEventListener("click", () => {
             if(sellersBtn.classList.contains("active-button")){
-                console.log("sellers active");
+                user_type = 'Seller';
             }
             if(clientsBtn.classList.contains("active-button")){
-                console.log("clientsBtn active");
+                user_type = 'Client';
             }
         })
     }
+    let data = {user_type: user_type, date_from: date_from, date_to: date_to};
+    console.log(data);
 }
