@@ -25,7 +25,7 @@ if ($json['user']['user_type'] == "Admin") {
         $password=hash('sha256',$_POST['password']);
         
         $query = $mysqli->prepare("update users SET users.password=?, users.f_name=?, users.email=? where users.user_type='Seller' and id=? ");
-        $query->bind_param("sssi",$password, $f_name , $email , $id );
+        $query->bind_param("sssi", $password, $f_name , $email , $id);
         $query->execute();
         $result = $query->get_result();
         $response = [];

@@ -1,7 +1,7 @@
-export const EditSpecificUser = async (data, userid) => {
+export const EditSpecificSeller = async (data) => {
 
     const url = "http://localhost/ecommerce/ecommerce-server/edit-seller.php";
-    const response = await axios.post(url,{"banuser_id": userid}, {headers: {'Authorization': `token ${localStorage.getItem("token")}` 
+    const response = await axios.post(url,data, {headers: {'Authorization': `token ${localStorage.getItem("token")}` 
           
 }});console.log(response);
 

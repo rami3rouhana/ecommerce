@@ -1,8 +1,10 @@
 import { useState } from "./useState.js";
 import { GetSellers } from "./Axios/GetSellers.js";
 import { DeleteSeller } from "./DeleteSeller.js";
+import { EditSpecificSeller } from "./Axios/EditSpecificSeller.js"
 
 export const EditSeller = async () => {
+    //Wait for server respone before populating the delete and edit buttons
     await GetSellers();
     await DeleteSeller();
     
@@ -31,6 +33,12 @@ export const EditSeller = async () => {
                     let nName = (document.getElementById("edit-name").value);
                     let nPass =(document.getElementById("edit-password").value);
                     console.log(id(), nEmail, nName, nPass);
+
+                    //$query->bind_param("sssi", $password, $f_name , $email , $id);
+                    EditSpecificSeller({"password": nPass,
+                                        "f_name": nName,
+                                        "email": nEmail,
+                                        "id": id()})
                     document.getElementById("edit-seller-popup2").classList.add('hidden');
                     document.getElementById("cover").classList.add('hidden');
                 })
