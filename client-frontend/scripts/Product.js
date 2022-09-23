@@ -12,6 +12,7 @@ export const Product = (product) => {
           </div>
           <div class="icons">
             <span class="color-purple"><i class="fa fa-star"></i></span>
+            <span class="color-purple"><i class="fa fa-list" aria-hidden="true"></i></span>
             <span class="color-purple"
               ><i class="fa fa-shopping-cart" aria-hidden="true"></i
             ></span>
