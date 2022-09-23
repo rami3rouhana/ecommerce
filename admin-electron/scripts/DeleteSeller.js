@@ -31,7 +31,6 @@ export const DeleteSeller = async () => {
                 document.getElementById("delete-button").addEventListener("click", (e) => {
                     console.log(id());
                     DeleteSpecificSeller(id());
-                    debugger
                     currentTarget().remove();
                     document.getElementById("delete-seller-popup").classList.add('hidden');
                     document.getElementById("cover").classList.add('hidden');

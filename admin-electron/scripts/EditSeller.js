@@ -5,8 +5,11 @@ import { EditSpecificSeller } from "./Axios/EditSpecificSeller.js"
 
 export const EditSeller = async () => {
     //Wait for server respone before populating the delete and edit buttons
-    await GetSellers();
-    await DeleteSeller();
+    if(document.getElementById("main-table-sellers")){
+        await GetSellers();
+        await DeleteSeller();
+    }
+
     
     let [email, setEmail] = useState("");
     let [name, setName] = useState("");
