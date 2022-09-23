@@ -1,3 +1,4 @@
+import { DeleteSpecificSeller } from "./Axios/DeleteSpecificSeller.js";
 import { GetSellers } from "./Axios/GetSellers.js";
 import { useState } from "./useState.js";
 
@@ -7,6 +8,7 @@ export const DeleteSeller = async () => {
     let [name, setName] = useState("");
     let [password, setPassword] = useState("");
     let [id, setId] = useState(0);
+    let [currentTarget, setCurrentTarget] = useState(0);
 
     //if(document.getElementById)
 
@@ -23,9 +25,14 @@ export const DeleteSeller = async () => {
             edit.addEventListener("click", (e) => {
                 document.getElementById("delete-seller-popup").classList.remove('hidden');
                 document.getElementById("cover").classList.remove('hidden')
+                
                 setId(e.currentTarget.parentElement.parentElement.id);
-                document.getElementById("delete-button").addEventListener("click", () => {
+                setCurrentTarget(e.currentTarget.parentElement.parentElement);
+                document.getElementById("delete-button").addEventListener("click", (e) => {
                     console.log(id());
+                    DeleteSpecificSeller(id());
+                    debugger
+                    currentTarget().remove();
                     document.getElementById("delete-seller-popup").classList.add('hidden');
                     document.getElementById("cover").classList.add('hidden');
                 })
