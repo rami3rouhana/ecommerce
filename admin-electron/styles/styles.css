@@ -128,6 +128,15 @@ html{
     background-color: #4E3350;
 }
 
+.left-nav-menu-item-bottom{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 75px;
+    cursor: pointer;
+}
+
 .left-nav-title{
     font-weight: bolder;
     font-size: 2rem;
