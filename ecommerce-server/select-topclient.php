@@ -21,7 +21,7 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 if (isset($json['user']['id'])){
     if(isset($_POST['date_from']) && isset($_POST['date_to'])){
         extract($_POST);
-        $query = $mysqli->prepare("SELECT SUM(products.price) FROM sold_product JOIN products ON sold_product.products_id = products.id JOIN categories ON products.categories_id = categories.id JOIN users ON sold_product.users_id = users.id WHERE sold_product.users_id
+        $query = $mysqli->prepare("SELECT users.f_name, SUM(products.price) AS totalSpent FROM sold_product JOIN products ON sold_product.products_id = products.id JOIN categories ON products.categories_id = categories.id JOIN users ON sold_product.users_id = users.id WHERE sold_product.users_id
         IN (SELECT users.id FROM users WHERE users.user_type = 'Client') 
         AND sold_product.date BETWEEN ? AND ? GROUP BY users.id;");
         $query->bind_param("ss", $date_from, $date_to);

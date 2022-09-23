@@ -8,17 +8,17 @@ export const ReceiveStats = async (data2) => {
         let xValues = []
         let yValues = []
         let barColors = ["red", "blue","blue","orange","brown"];
-            const url = "http://localhost/ecommerce/ecommerce-server/select-revenue.php";
+            const url = "http://localhost/ecommerce/ecommerce-server/select-topclient.php";
             const response = await axios.post(url, data2, {headers: {'Authorization': `token ${localStorage.getItem("token")}` 
                  // 
-        }});
+        }});console.log(response);
         //Empty chart div
         chartsDiv.innerHTML = '<canvas id="myChart" style="width:100%;"></canvas>';
         //Get data from response
         response.data['topgroups'].map(top => {
-            console.log(top.totalrev);
+            console.log(top.totalSpent);
             xValues.push(top.f_name);
-            yValues.push(top.totalrev);
+            yValues.push(top.totalSpent);
         })
 
         //Configure chart from chart.js
