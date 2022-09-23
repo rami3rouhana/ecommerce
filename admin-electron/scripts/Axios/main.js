@@ -1,5 +1,5 @@
 import { LoginValidation }  from "./LoginValidation.js";
-
+import {GetSellers} from "./GetSellers.js";
 
 
 
@@ -20,6 +20,5 @@ if(document.getElementById("login-button"))
 
 
 //Receive Clients
-if(document.getElementById("main-table-clients")){
-    
-}
+
+

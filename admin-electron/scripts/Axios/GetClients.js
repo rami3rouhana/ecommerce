@@ -14,6 +14,9 @@ export const GetClients = async () => {
         clientsHTML += Client(client);
     })
     //console.log(clientsHTML);
-    document.getElementById("main-table-clients").innerHTML = clientsHTML;
+    if(document.getElementById("main-table-clients")){
+      document.getElementById("main-table-clients").innerHTML = clientsHTML;
+    }
+    
 }
 

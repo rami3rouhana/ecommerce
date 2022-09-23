@@ -18,7 +18,7 @@ $jwtInfo = $jwtFunction(json_encode(['jwt'=>explode(" ",$headers["Authorization"
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-print_r($json);
+//print_r($json);
 if ($json['user']['user_type']=="Admin"){
 
     $query=$mysqli->prepare("select id, f_name, email from users where user_type='Seller'");
@@ -27,11 +27,15 @@ if ($json['user']['user_type']=="Admin"){
     $response =[];
     
     if(($result->num_rows)>0){
-        $response["success"] =true;
-        $info=[];
+        //$response["success"] =true;
+       /* $info=[];
         while($a = $result->fetch_assoc()){
             $response[] = $a;
+        } */
+        while($a = $result->fetch_assoc()){
+            $sellers[] = $a;
         } 
+        $response["sellers"] = $sellers;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
     }

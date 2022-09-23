@@ -1,6 +1,8 @@
+import { GetClients } from "./Axios/GetClients.js";
 import { useState } from "./useState.js";
 
-export const AddSeller = () => {
+export const AddSeller = async () => {
+    await GetClients();
     let [email, setEmail] = useState("");
     let [name, setName] = useState("");
     let [password, setPassword] = useState("");
