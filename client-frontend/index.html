@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -16,10 +17,10 @@
         </div>
         <div class="login-content">
             <img src="/client-frontend/images/logo.png" alt="" class="logo">
-            <input type="text" placeholder="Username" class="input" />
-            <input type="password" placeholder="Password" class="input" />
+            <input type="text" placeholder="Username" class="input" id="login-username" />
+            <input type="password" placeholder="Password" class="input" id="login-password" />
             <a href="" class="color-purple">Forgotten Password ?</a>
-            <button class="btn">Login</button>
+            <button class="btn" id="login-btn">Login</button>
         </div>
         
       </div>
@@ -29,12 +30,12 @@
             <h2 class="color-white">Register</h2>
             
         </div>
-        <div class="login-content">
-            <input type="text" placeholder="Username" class="input" />
-            <input type="email" placeholder="Email" class="input" />
-            <input type="password" placeholder="Password" class="input" />
-            <input type="password" placeholder="Confirm Password" class="input" />
-            <button class="btn">Register</button>
+        <div class="login-content" id="register">
+            <input type="text" placeholder="Username" class="input" id="username-register"/>
+            <input type="email" placeholder="Email" class="input" id="email-register"/>
+            <input type="password" placeholder="Password" class="input" id="password-register"/>
+            <input type="password" placeholder="Confirm Password" class="input" id="confirm-register"/>
+            <button class="btn" id="register-btn">Register</button>
         </div>
       </div>
     </div>
