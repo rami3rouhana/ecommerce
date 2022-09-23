@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <title>Products</title>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="header">
+        <img src="" alt="" class="profile-img" />
+        <h2 class="color-white">Client Name</h2>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="clicked" id="products">Products</button>
+      </div>
+
+      <div class="logout">
+        <button>Login / Sign Up</button>
+      </div>
+    </div>
+
+    <div class="main main-category">
+      <div class="body">
+        <div class="header-top">
+          <div class="buttons">
+            <button class="clicked">Products</button>
+          </div>
+          <div class="lottery">
+            <input type="number" class="num" />
+            <input type="number" class="num" />
+            <input type="number" class="num" />
+            <button class="btn">Lucky ?</button>
+          </div>
+
+          <div class="search">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search Twitter" id="searching" />
+          </div>
+        </div>
+
+        <div class="row" id="products-row">
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./scripts/index.js"></script>
+  </body>
+</html>
