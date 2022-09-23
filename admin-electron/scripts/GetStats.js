@@ -1,4 +1,6 @@
-export const GetStats = () => {
+import { ReceiveStats } from "./Axios/ReceiveStats.js";
+
+export const GetStats = async () => {
     let user_type = '';
     let date_from = '';
     let date_to = '';
@@ -12,7 +14,6 @@ export const GetStats = () => {
         {
             date_to = (document.getElementById("date_to").value);
         }
-        console.log(date_to.value, date_from.value)
     })
 
 
@@ -36,8 +37,9 @@ export const GetStats = () => {
             if(clientsBtn.classList.contains("active-button")){
                 user_type = 'Client';
             }
+            let data = {user_type: user_type, date_from: date_from, date_to: date_to};
+            //ReceiveStats(data);
+            console.log(ReceiveStats(data));
         })
     }
-    let data = {user_type: user_type, date_from: date_from, date_to: date_to};
-    console.log(data);
 }
