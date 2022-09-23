@@ -169,6 +169,7 @@ h1 {
 .td {
   border-top: 1px solid #5652ac;
   padding: 6px 6px;
+  height: 45px;
 }
 .side-left {
   width: 50%;
@@ -241,6 +242,16 @@ h1 {
   visibility: hidden;
   width: 0;
   height: 0;
+}
+.clickable-edit{
+  width: 28px;
+  height: 28px;
+
+}
+.clickable-delete{
+  width: 28px;
+  height: 28px;
+
 }
 
 /* Statistics Section */
