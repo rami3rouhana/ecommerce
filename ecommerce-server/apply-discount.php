@@ -23,7 +23,7 @@ if ($json['user']['user_type'] == "Client") {
 
         extract($_POST);
 
-        $query = $mysqli->prepare("SELECT cart.product_id FROM cart WHERE cart.user_id = ? AND cart.product_id IN (SELECT products.id as product_id FROM products JOIN categories ON products.categories_id = categories.id JOIN discounts ON categories.id = discounts.category_id WHERE discounts.code = ?); ");
+        $query = $mysqli->prepare("SELECT cart.product_id, products.name FROM cart JOIN products ON cart.product_id = products.id WHERE cart.user_id = ? AND cart.product_id IN (SELECT products.id as product_id FROM products JOIN categories ON products.categories_id = categories.id JOIN discounts ON categories.id = discounts.category_id WHERE discounts.code = ?); ");
         $query->bind_param("is", $json['user']['id'] , $discount_code);
         $query->execute();
         $result = $query->get_result();

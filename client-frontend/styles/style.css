@@ -533,9 +533,7 @@ table {
 .seller-popup-form h5{
   margin-bottom: 10px;
 }
-.hidden {
-  display: none;
-}
+
 
 .pointer{
   cursor: pointer;
@@ -554,6 +552,9 @@ button{
   border-radius: 15px;
 }
 
+.hidden {
+  display: none;
+}
 
 
 /* Responsitivity */
