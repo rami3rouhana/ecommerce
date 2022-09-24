@@ -23,7 +23,7 @@ if ($json['user']['user_type'] == "Seller") {
 
         extract($_POST);
 
-        $query = $mysqli->prepare("update categories SET name=? where id=? ");
+        $query = $mysqli->prepare("update categories SET name = ? where id = ? ");
         $query->bind_param("si",$name , $id );
         $query->execute();
         $result = $query->get_result();
