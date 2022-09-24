@@ -27,5 +27,10 @@ function print(response){
         localStorage.setItem("token", response.data.jwt);
         if(document.getElementById("error-login-div"))
         document.getElementById("error-login-div").classList.add("hidden");
+        window.location.href = 'http://localhost/ecommerce/admin-electron/clients.html';
     }
+}
+
+if(document.getElementById("login-button") && localStorage.getItem("token")){
+  window.location.href = 'http://localhost/ecommerce/admin-electron/clients.html';
 }
