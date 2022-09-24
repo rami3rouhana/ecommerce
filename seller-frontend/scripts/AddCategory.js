@@ -11,12 +11,13 @@ export const AddCategory = (category, setCategory) => {
 
             // add category api
             const url = "http://localhost/ecommerce/ecommerce-server/add-category.php";
-            const name = category();
+            const catName = category();
             const data = JSON.stringify({
-                name
+                catName
             });
             
-            const cat = await axios.post(url, data);
+            const dataJWt = await axios.post(url, data, {headers: {'Authorization': `token ${localStorage.getItem("token")}`}});
+            localStorage.setItem("token",dataJWt.data.jwt)
             // Insert Value into table
             const categoryRow = document.createElement('tr');
             categoryRow.classList.add('td');
