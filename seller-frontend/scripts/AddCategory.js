@@ -5,7 +5,7 @@ export const AddCategory = (category, setCategory) => {
 
 
     if (document.getElementById("add-category")) {
-        document.getElementById("add-category").addEventListener("click", () => {
+        document.getElementById("add-category").addEventListener("click", async () => {
             // Get user Value
             setCategory(document.getElementById("add-category-name").value);
 
