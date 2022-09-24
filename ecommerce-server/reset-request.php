@@ -3,7 +3,7 @@
 include("connection.php");
 //required file
 require __DIR__ . '/../vendor/autoload.php';
-
+$sendEmail = require('email.php');
 //headers
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
@@ -39,12 +39,14 @@ if(($result->num_rows)==1){
     ]));
     $user_id = $info['id'];
     $url = "http://127.0.0.1:5500/client-frontend/reset-password.html?resetJwt=".json_decode($jwt)->JWT;
-    echo $url;
     $query = $mysqli->prepare("INSERT INTO `reset` (`reset_url`, `user_id`) VALUES (?, ?);");
     $query->bind_param("ss",$url  , $user_id);
     $query->execute(); 
-
-    $response["sucess"] = true;
+    $sendEmail(json_encode([
+        "email"=>$info['email'],
+        "name"=>$info['f_name'],
+        "url"=>$url,
+    ]));
     echo json_encode($response);
 }
 else{
