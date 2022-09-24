@@ -19,21 +19,19 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Client") {
-    if (isset($json['user']['id'])) {
-        $query = $mysqli->prepare("SELECT name, picture_url, price FROM products JOIN whishlist ON products.id = whishlist.product_id WHERE users_id = ?;");
-        $userid = $json['user']['id'];
-        $query->bind_param("s", $userid);
+    if (isset($_POST['password']) && isset($_POST['f_name']) && isset($_POST['email']) && isset($_POST['id'])) {
+       
+        extract($_POST);
+        //$password = hash('sha256',$_POST['password']);
+        
+        $query = $mysqli->prepare("update users SET users.password=?, users.f_name=?, users.email=? where users.user_type='Seller' and id=? ");
+        $query->bind_param("sssi", $password, $f_name , $email , $id);
         $query->execute();
         $result = $query->get_result();
         $response = [];
 
         if (($query->error) == "") {
-            $products=[];
-            while ($a = $result->fetch_assoc()) {
-                $products[] = $a;
-            }
             $response["success"] = true;
-            $response["products"] = $products;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);
         } else {
