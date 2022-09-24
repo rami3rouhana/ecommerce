@@ -4,7 +4,7 @@ import { Cart } from "./Cart";
 export const PopulateCart = async () => {
     let clientsHTML = "";
     let data = {};
-    const url = "http://localhost/ecommerce/ecommerce-server/receive-clients.php";
+    const url = "http://localhost/ecommerce/ecommerce-server/receive-cart.php";
     const response = await axios.get(url, {headers: {'Authorization': `token ${localStorage.getItem("token")}` 
       }});
 

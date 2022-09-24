@@ -536,3 +536,14 @@ table {
 .hidden {
   display: none;
 }
+
+
+
+/* Responsitivity */
+
+@media only screen and (max-width: 600px) {
+  .header-btn {
+    width: 50%;
+    font-size: 0.8rem;
+  }
+}
