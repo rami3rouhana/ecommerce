@@ -1,5 +1,6 @@
 import { PopulateCart } from "./PopulateCart.js";
 import { RemoveFromCart } from "./RemoveFromCart.js";
+import { ApplyDiscount } from "./ApplyDiscount.js";
 
 export const SetItemList = async () => {
     await PopulateCart();
@@ -12,4 +13,8 @@ export const SetItemList = async () => {
             RemoveFromCart({"product_id": e.currentTarget.parentElement.id});
         })
     });
+
+    if(document.getElementById("apply-discount")){
+        ApplyDiscount();
+    }
 }

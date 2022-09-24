@@ -12,20 +12,24 @@ export const PopulateCart = async () => {
             cart.map(cartItem => {
                 cartHTML += Cart(cartItem);
             })
+            
+            if(document.getElementById("cart-table")){
+                document.getElementById("cart-table").innerHTML = cartHTML;
+            }
         }
 
 
         //Get total
         const url2 = "http://localhost/ecommerce/ecommerce-server/receive-cart-total.php";
         const response2 = await axios.post(url2, {}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
-        let total = (response2.data.total.total);
-        if(document.getElementById("total-value")){
-            document.getElementById("total-value").innerHTML = total;
+        if(response2.data.total != undefined){
+            let total = (response2.data.total.total);
+            if(document.getElementById("total-value")){
+                document.getElementById("total-value").innerHTML = total;
+            }
         }
 
-        if(document.getElementById("cart-table")){
-          document.getElementById("cart-table").innerHTML = cartHTML;
-        }
+
 
         
         if(document.getElementById("checkout-cart")){
