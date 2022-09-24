@@ -18,12 +18,12 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if (isset($json['user']['id']) && isset($_POST['search_field'])){
+if(isset($json['user']['id'])) {
+if(isset($_POST['search_field'])){
 
-    $query = $mysqli->prepare("SELECT * FROM products join categories on products.categories_id = categories.id WHERE categories.name REGEXP ?");
-    //$userid = $json['user']['id'];
+    $query = $mysqli->prepare("SELECT * FROM products join categories on products.categories_id = categories.id WHERE categories.name REGEXP ? OR products.name REGEXP ?");
     $search_field = $_POST['search_field'];
-    $query->bind_param("s" , $search_field);
+    $query->bind_param("ss" , $search_field, $_search_field);
     $query->execute();
     $result = $query->get_result();
     $response = [];
@@ -41,4 +41,12 @@ if (isset($json['user']['id']) && isset($_POST['search_field'])){
         echo json_encode($response);
     }
 }
+else{
+    echo 'search error';
+}
+}
+else{
+    echo 'jwt erro';
+}
+
 ?>

@@ -1,14 +1,29 @@
 import { Product } from "./Product.js";
 import { AddTo } from "./AddTo.js";
 
-export const GetProducts = async () => {
+export const GetProducts = async (search) => {
     if (document.getElementById("products-row")) {
         let productsHTML = ""
-        const url = "http://localhost/ecommerce/ecommerce-server/receive-all-products.php";
-        const products = await axios.get(url);
-        products.data.map(product => {
-            productsHTML += Product(product);
-        })
+        if(search != ''){
+            
+            const url = "http://localhost/ecommerce/ecommerce-server/search-products.php";
+            
+            const products = await axios.post(url, {"search_field": search}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
+            console.log(products);
+            //products.data.map(product => {
+            ///    productsHTML += Product(product);
+            //})
+        }
+        else{
+            console.log("empty search");
+            let productsHTML = ""
+            const url = "http://localhost/ecommerce/ecommerce-server/receive-all-products.php";
+            const products = await axios.get(url);
+            products.data.map(product => {
+                productsHTML += Product(product);
+            })
+        }
+
         document.getElementById("products-row").innerHTML = productsHTML;
         const products_section = Array.prototype.slice.call(document.getElementsByClassName("image-product"));
         products_section.forEach(product => {

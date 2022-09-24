@@ -10,9 +10,10 @@ import { SetLottery } from "./SetLottery.js";
 import { SetItemList } from "./SetItemList.js";
 import { PopulateCart } from "./PopulateCart.js";
 import { ChangePassword } from "./ChangePassword.js";
+import { Search } from "./Search.js";
 
 PageLocations();
-GetProducts();
+GetProducts("");
 Register();
 GetFavorites();
 login();
@@ -23,4 +24,5 @@ SetLottery();
 PopulateCart();
 SetItemList();
 ChangePassword();
+Search();
 
