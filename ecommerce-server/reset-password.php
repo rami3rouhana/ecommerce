@@ -24,7 +24,7 @@ try{
         $query->execute();
 
         $user_id = $json['user']['id'];
-        $password = hash('sha256', $_POST['password']);
+        $password = hash('sha256', $password);
         $query = $mysqli->prepare("update users SET password=? where id=? ");
         $query->bind_param("ss", $password, $user_id);
         $query->execute();
