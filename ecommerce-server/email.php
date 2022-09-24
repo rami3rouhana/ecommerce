@@ -30,7 +30,7 @@ return function ($json) {
         $mailer->addAddress($json['email'], $json['name']);
 
         $mailer->isHTML(true);
-        $mailer->Subject = 'PHPMailer Test';
+        $mailer->Subject = 'Reset Password!';
         $mailer->Body = 'This is your reset link:'.$json["url"];
 
         $mailer->send();

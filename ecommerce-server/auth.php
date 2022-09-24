@@ -22,6 +22,7 @@ if(isset($json['id'])){
         'name' => $json["name"],
         'email' => $json["email"],
         'user_type' => $json["user_type"],
+        "banned"=> $json['banned'],
         'exp' => time()+1800,
     ];
 
