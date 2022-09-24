@@ -22,7 +22,7 @@ export const GetProducts = async () => {
         const favorite_section = Array.prototype.slice.call(document.getElementsByClassName("fa-star"));
         favorite_section.forEach(favorite => {
             favorite.addEventListener("click", (e) => {
-                let data = {products_id: e.currentTarget.parentElement.id};
+                let data = {product_id: e.currentTarget.parentElement.id};
                 AddTo('favorite', data);
                 console.log(e.currentTarget.parentElement.id);
             })
