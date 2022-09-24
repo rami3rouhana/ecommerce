@@ -545,6 +545,15 @@ button{
   cursor: pointer;
 }
 
+.discount-container{
+  display:flex; 
+  justify-content: center; 
+  text-align: center; 
+  width: 100%;
+  background-color: white;
+  border-radius: 15px;
+}
+
 
 
 /* Responsitivity */
