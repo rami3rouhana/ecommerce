@@ -9,6 +9,7 @@ import { ResetPassword } from "./ResetPassword.js";
 import { SetLottery } from "./SetLottery.js";
 import { SetItemList } from "./SetItemList.js";
 import { PopulateCart } from "./PopulateCart.js";
+import { ChangePassword } from "./ChangePassword.js";
 
 PageLocations();
 GetProducts();
@@ -20,4 +21,5 @@ ShowReset();
 ResetPassword();
 SetLottery();
 SetItemList();
+ChangePassword();
 
