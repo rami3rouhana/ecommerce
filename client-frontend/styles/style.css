@@ -467,6 +467,10 @@ table {
   display: flex;
   height: 100%;
 }
+
+.cart-delete-button{
+  cursor: pointer;
+}
 .seller-popup{
   top: 0;
   left: 0;
