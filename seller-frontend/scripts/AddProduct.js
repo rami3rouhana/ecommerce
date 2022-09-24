@@ -4,7 +4,7 @@ export const AddProduct = (e) =>{
     let [product, setProduct] = useState([]);
 
     if (document.getElementById("add-product")) {
-        document.getElementById("add-product").addEventListener("click", () => {
+        document.getElementById("add-product").addEventListener("click", async () => {
             // Get user Value
             setProduct(document.getElementById("add-product-name").value);
             const productName = document.getElementById("add-product-name").value;

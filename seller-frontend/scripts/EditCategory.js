@@ -1,6 +1,6 @@
 import { useState } from "./useState.js";
 
-export const EditCategory = (element) => {
+export const EditCategory = () => {
 
 
     if (document.getElementById("close-btn-edit"))
