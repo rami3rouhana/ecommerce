@@ -6,6 +6,7 @@ import { AddDiscount } from "./AddDiscount.js"
 import { AddVoucher } from "./AddVoucher.js"
 import { PageLocations } from "./PageLocations.js"
 import { SubmitAd } from "./SubmitAd.js";
+import {EditCategory} from "./EditCategory.js"
 let [category, setCategory] = useState("");
 
 // On windows load.
@@ -18,6 +19,7 @@ AddDiscount();
 AddVoucher();
 PageLocations();
 SubmitAd();
+EditCategory();
 
 
 

@@ -1,16 +1,16 @@
 import { useState } from "./useState.js";
 
-export const AddCategory = (category,setCategory) =>{
+export const AddCategory = (category, setCategory) => {
 
-    
+    let [editRow, setEditRow] = useState("");
 
     if (document.getElementById("add-category")) {
         document.getElementById("add-category").addEventListener("click", () => {
             // Get user Value
             setCategory(document.getElementById("add-category-name").value);
-    
+
             // add category api
-    
+
             // Insert Value into table
             const categoryName = document.createElement('li');
             categoryName.classList.add('td');
@@ -22,14 +22,19 @@ export const AddCategory = (category,setCategory) =>{
 
             const updateBtn = document.createElement('img');
             updateBtn.classList.add("clickable-edit");
-            updateBtn.src="./images/edit-button.svg";
+            updateBtn.src = "./images/edit-button.svg";
+            
             const deleteBtn = document.createElement('img');
             deleteBtn.classList.add("clickable-delete");
-            deleteBtn.src="./images/delete-button.svg";
+            deleteBtn.src = "./images/delete-button.svg";
             actions.appendChild(updateBtn);
             actions.appendChild(deleteBtn);
             document.getElementById("actions").appendChild(actions)
-            debugger
+            updateBtn.addEventListener("click", (e) => {
+                debugger
+                document.getElementById("edit-popup").classList.remove("hidden");
+
+            })
         })
     }
 }
