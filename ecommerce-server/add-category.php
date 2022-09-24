@@ -20,7 +20,7 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 if (isset($json['user']['id']) && isset($_POST['name'])){
 
-    $name=$_POST['name'];
+    $name=$_POST['catName'];
     $query = $mysqli->prepare("INSERT INTO  categories (name,sellers_id) VALUE (?,?)");
     $userid = $json['user']['id'];
     $query->bind_param("si" ,$name, $userid);

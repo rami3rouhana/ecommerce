@@ -5,19 +5,19 @@ export const AddCategory = (category, setCategory) => {
 
 
     if (document.getElementById("add-category")) {
-        document.getElementById("add-category").addEventListener("click", () => {
+        document.getElementById("add-category").addEventListener("click", async () => {
             // Get user Value
             setCategory(document.getElementById("add-category-name").value);
 
             // add category api
             const url = "http://localhost/ecommerce/ecommerce-server/add-category.php";
-            const name = category();
+            const catName = category();
             const data = JSON.stringify({
-                name
+                catName
             });
             
-            const cat = await axios.post(url, data);
-            debugger
+            await axios.post(url, data, {headers: {'Authorization': `token ${localStorage.getItem("token")}`}});
+
             // Insert Value into table
             const categoryRow = document.createElement('tr');
             categoryRow.classList.add('td');
