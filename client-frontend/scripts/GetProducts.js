@@ -31,6 +31,8 @@ export const GetProducts = async () => {
         const whishlist_section = Array.prototype.slice.call(document.getElementsByClassName("fa-list"));
         whishlist_section.forEach(whishlist => {
             whishlist.addEventListener("click", (e) => {
+                let data = {product_id: e.currentTarget.parentElement.id};
+                AddTo('wishlist', data);
                 console.log(e.currentTarget.parentElement.id);
             })
         });
@@ -38,6 +40,8 @@ export const GetProducts = async () => {
         const cart_section = Array.prototype.slice.call(document.getElementsByClassName("fa-shopping-cart"));
         cart_section.forEach(cart_product => {
             cart_product.addEventListener("click", (e) => {
+                let data = {product_id: e.currentTarget.parentElement.id};
+                AddTo('cart', data);
                 console.log(e.currentTarget.parentElement.id);
             })
         });
