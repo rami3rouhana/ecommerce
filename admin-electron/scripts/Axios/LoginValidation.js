@@ -34,3 +34,10 @@ function print(response){
 if(document.getElementById("login-button") && localStorage.getItem("token")){
   window.location.href = 'http://localhost/ecommerce/admin-electron/clients.html';
 }
+
+//Logout
+if(document.getElementById("logout"))
+document.getElementById("logout").addEventListener("click", () => {
+  localStorage.clear("token");
+  window.location.href = 'http://localhost/ecommerce/admin-electron/';
+})

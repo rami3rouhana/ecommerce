@@ -4,11 +4,10 @@ export const AuthenticateUser = async () => {
     const response = await axios.post(url, {}, {headers: {'Authorization': `token ${localStorage.getItem("token")}` 
           
 }});
-if(response.data['user'][1] == undefined)
+if(response.data['user'] == undefined)
 {
-    window.location.href = 'http://localhost/ecommerce/admin-electron/';
     localStorage.clear("token");
-    console.log("not");
+    window.location.href = 'http://localhost/ecommerce/admin-electron/';
 }
 if(response['authentication'] == 'failed'){
 
