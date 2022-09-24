@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2022 at 09:05 PM
+-- Generation Time: Sep 24, 2022 at 04:11 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,6 +42,34 @@ INSERT INTO `ads` (`id`, `picture_url`, `seller_id`) VALUES
 (2, 'dhfksjfhsk', 2),
 (3, 'dhfksjfhsk', 2),
 (4, 'pssstt', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banned_users`
+--
+
+CREATE TABLE `banned_users` (
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `banned_users`
+--
+
+INSERT INTO `banned_users` (`user_id`) VALUES
+(4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -119,8 +147,17 @@ INSERT INTO `favorites` (`users_id`, `products_id`) VALUES
 
 CREATE TABLE `lotteries` (
   `random_number` int(3) NOT NULL,
-  `won_users` int(11) DEFAULT NULL
+  `id_match_one` int(11) DEFAULT NULL,
+  `id_match_two` int(11) NOT NULL,
+  `id_match_three` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `lotteries`
+--
+
+INSERT INTO `lotteries` (`random_number`, `id_match_one`, `id_match_two`, `id_match_three`) VALUES
+(370, -1, -1, -1);
 
 -- --------------------------------------------------------
 
@@ -157,11 +194,37 @@ INSERT INTO `products` (`id`, `name`, `picture_url`, `price`, `categories_id`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reset`
+--
+
+CREATE TABLE `reset` (
+  `reset_url` varchar(300) NOT NULL DEFAULT '',
+  `user_id` int(11) NOT NULL,
+  `is_reset` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reset`
+--
+
+INSERT INTO `reset` (`reset_url`, `user_id`, `is_reset`) VALUES
+('http://127.0.0.1:5500/client-frontend/reset-password.html?resetJwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NywibmFtZSI6IlRlc3QiLCJlbWFpbCI6InJhbWkuMy5yb3VoYW5hQGdtYWlsLmNvbSIsInVzZXJfdHlwZSI6IkFkbWluIiwiYmFubmVkIjp0cnVlLCJleHAiOjE2NjQwMjIyNjd9.jBjHR98_EGvpLwZWABjZNVSfiNyQVBr22xUJCHGaHBc', 7, 0),
+('http://127.0.0.1:5500/client-frontend/reset-password.html?resetJwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NywibmFtZSI6IlRlc3QiLCJlbWFpbCI6InJhbWkuMy5yb3VoYW5hQGdtYWlsLmNvbSIsInVzZXJfdHlwZSI6IkFkbWluIiwiYmFubmVkIjp0cnVlLCJleHAiOjE2NjQwMjIyOTF9.etc-8DqJMvJtmudphRJOoiuT_Qjux5OGPYmJHb2PRog', 7, 0),
+('http://127.0.0.1:5500/client-frontend/reset-password.html?resetJwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NywibmFtZSI6IlRlc3QiLCJlbWFpbCI6InJhbWkuMy5yb3VoYW5hQGdtYWlsLmNvbSIsInVzZXJfdHlwZSI6IkFkbWluIiwiYmFubmVkIjp0cnVlLCJleHAiOjE2NjQwMjIzNDd9.2jkimAWN8bxJ1bZ0xtj37axzLAnPeo-y2UEgqcIm728', 7, 0),
+('http://127.0.0.1:5500/client-frontend/reset-password.html?resetJwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NywibmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3QiLCJ1c2VyX3R5cGUiOiJBZG1pbiIsImJhbm5lZCI6dHJ1ZSwiZXhwIjoxNjY0MDIyMDY2fQ.wP1UZVHktxIjqFR8Pg74GV-HRlHK1wCSuk6GB0_e5eU', 7, 0),
+('http://127.0.0.1:5500/client-frontend/reset-password.html?resetJwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NywibmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3QiLCJ1c2VyX3R5cGUiOiJBZG1pbiIsImJhbm5lZCI6dHJ1ZSwiZXhwIjoxNjY0MDIyMTA2fQ.tf6KtI_-3dFEVm4obGacM2QXh3n1ek-23sUWWdzPXX0', 7, 0),
+('http://127.0.0.1:5500/client-frontend/reset-password.html?resetJwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NywibmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAdGVzdC5zIiwidXNlcl90eXBlIjoiQWRtaW4iLCJiYW5uZWQiOnRydWUsImV4cCI6MTY2NDAyMjE1Nn0.GXlMkEVcElZwPTxtpOOsbOfXLyKHzpjzsOmrc0syT90', 7, 0),
+('http://127.0.0.1:5500/client-frontend/reset-password.html?resetJwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NywibmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAdGVzdC5zIiwidXNlcl90eXBlIjoiQWRtaW4iLCJiYW5uZWQiOnRydWUsImV4cCI6MTY2NDAyMjEyOH0.9E3YKEUL2vuFisiKNUJfyZSv_I2plug5nFj4G-4qhEM', 7, 0),
+('http://127.0.0.1:5500/client-frontend/reset-password.html?resetJwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NywibmFtZSI6IlRlc3QiLCJlbWFpbCI6InRlc3RAdGVzdC5zIiwidXNlcl90eXBlIjoiQWRtaW4iLCJiYW5uZWQiOnRydWUsImV4cCI6MTY2NDAyMjIwMX0.ik--BkTbc8Ewufm31QaF0PXRRk7x4sEHDAB3aUOUX6U', 7, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sold_product`
 --
 
 CREATE TABLE `sold_product` (
-  `date` date NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
   `discout_used` tinyint(1) DEFAULT NULL,
   `products_id` int(11) NOT NULL,
   `users_id` int(11) NOT NULL
@@ -172,7 +235,9 @@ CREATE TABLE `sold_product` (
 --
 
 INSERT INTO `sold_product` (`date`, `discout_used`, `products_id`, `users_id`) VALUES
-('2022-09-21', NULL, 2, 4);
+('2022-09-21 00:00:00', 0, 2, 4),
+('2022-09-24 15:34:05', 0, 5, 4),
+('2022-09-24 16:26:52', 0, 7, 16);
 
 -- --------------------------------------------------------
 
@@ -194,13 +259,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `f_name`, `l_name`, `email`, `password`, `user_type`) VALUES
-(1, NULL, 'Group Limited', NULL, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Seller'),
+(1, 'asd', 'Group Limited', 'asd', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'Seller'),
 (2, 'HP', 'HAWARD', 'hp@gmail.com', 'password', 'Seller'),
-(3, 'Admin', NULL, 'admin@gmail.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Admin'),
+(3, 'Admin', NULL, 'admin@gmail.com', 'password', 'Admin'),
 (4, 'maytham', 'ghaly', 'maythamghaly@gmail.com', '123123', 'Client'),
 (5, 'samsung', 'samsung', 'samsung@gmail.com', 'samsung123', 'Seller'),
 (6, 'huawei', 'huawei', 'huawei@huawei.com', 'huawei123', 'Seller'),
-(7, 'Test', 'test', 'test', 'test', 'Admin'),
+(7, 'Test', 'test', 'rami.3.rouhana@gmail.com', 'ssss', 'Admin'),
 (15, 'rami', 'abo 3aj2a', 'rami@gmail.com', 'a320480f534776bddb5cdb54b1e93d210a3c7d199e80a23c1b2178497b184c76', 'Client'),
 (16, 'rami', 'abo 3aj2a', '', 'a320480f534776bddb5cdb54b1e93d210a3c7d199e80a23c1b2178497b184c76', 'Client');
 
@@ -274,6 +339,19 @@ ALTER TABLE `ads`
   ADD KEY `fk_ads_users1` (`seller_id`);
 
 --
+-- Indexes for table `banned_users`
+--
+ALTER TABLE `banned_users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD KEY `fk_user_id` (`user_id`),
+  ADD KEY `fk_product_id` (`product_id`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -306,6 +384,12 @@ ALTER TABLE `lotteries`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_category_id` (`categories_id`);
+
+--
+-- Indexes for table `reset`
+--
+ALTER TABLE `reset`
+  ADD PRIMARY KEY (`reset_url`);
 
 --
 -- Indexes for table `sold_product`
@@ -379,6 +463,19 @@ ALTER TABLE `users`
 --
 ALTER TABLE `ads`
   ADD CONSTRAINT `fk_ads_users1` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `banned_users`
+--
+ALTER TABLE `banned_users`
+  ADD CONSTRAINT `fk_userID` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `fk_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `categories`
