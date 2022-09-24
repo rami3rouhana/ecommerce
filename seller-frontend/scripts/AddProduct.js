@@ -25,6 +25,7 @@ export const AddProduct = (e) =>{
             delete_img.classList.add('icon')
             delete_img.src = "./images/delete-button.svg"
 
+
             const edit_img = document.createElement('img');
             edit_img.classList.add('icon')
             edit_img.src = "./images/edit-button.svg"
@@ -39,6 +40,29 @@ export const AddProduct = (e) =>{
             document.getElementById("products-table").appendChild(category);
             document.getElementById("add-product-name").value = "";
             document.getElementById("add-product-price").value = "";
+
+            delete_img.addEventListener("click",(e)=>{
+                e.currentTarget.parentElement.parentElement.remove();
+                document.getElementById("new-name").value = "";
+                    document.getElementById("edit-product-name").classList.add('hidden');
+            })
+
+            edit_img.addEventListener("click",(e)=>{
+                document.getElementById("edit-product-name").classList.remove("hidden")
+                const editName =e.currentTarget.parentElement.previousElementSibling;
+                
+                document.getElementById("save-btn").addEventListener("click", () => {
+                    let [name, setName] = useState("");
+                    setName(document.getElementById("new-name").value);
+
+                    //api call
+
+                    document.getElementById("new-name").value = "";
+                    document.getElementById("edit-product-name").classList.add('hidden');
+                    editName.innerHTML = name();
+
+                });
+            })
         })
     }
 }

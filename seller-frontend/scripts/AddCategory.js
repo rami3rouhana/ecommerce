@@ -17,7 +17,6 @@ export const AddCategory = (category, setCategory) => {
             });
             
             const cat = await axios.post(url, data);
-            debugger
             // Insert Value into table
             const categoryRow = document.createElement('tr');
             categoryRow.classList.add('td');
