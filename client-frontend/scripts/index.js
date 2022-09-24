@@ -8,6 +8,7 @@ import { ShowReset } from "./ShowReset.js";
 import { ResetPassword } from "./ResetPassword.js";
 import { SetLottery } from "./SetLottery.js";
 import { SetItemList } from "./SetItemList.js";
+import { PopulateCart } from "./PopulateCart.js";
 
 PageLocations();
 GetProducts();
@@ -19,3 +20,4 @@ ShowReset();
 ResetPassword();
 SetLottery();
 SetItemList();
+

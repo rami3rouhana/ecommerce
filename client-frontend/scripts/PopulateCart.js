@@ -1,21 +1,20 @@
-import { Cart } from "./Cart";
+import { Cart } from "./Cart.js";
 
 
 export const PopulateCart = async () => {
-    let clientsHTML = "";
-    let data = {};
+    let cartHTML = "";
     const url = "http://localhost/ecommerce/ecommerce-server/receive-cart.php";
-    const response = await axios.get(url, {headers: {'Authorization': `token ${localStorage.getItem("token")}` 
-      }});
+    const response = await axios.post(url,{}, {headers: {'Authorization': `token ${localStorage.getItem("token")}` }});
+    console.log(response.data.cart);
 
-    let clients = response.data['clients'];
+    let cart = response.data.cart;
     //console.log(clients);
-    clients.map(client => {
-        clientsHTML += Client(client);
+    cart.map(cartItem => {
+        cartHTML += Cart(cartItem);
     })
-    //console.log(clientsHTML);
-    if(document.getElementById("main-table-clients")){
-      document.getElementById("main-table-clients").innerHTML = clientsHTML;
+    console.log(cartHTML);
+    if(document.getElementById("cart-table")){
+      document.getElementById("cart-table").innerHTML = cartHTML;
     }
     
 }
