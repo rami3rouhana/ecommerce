@@ -11,9 +11,9 @@ export const Product = (product) => {
             <span class="color-purple">${product.price}$</span>
           </div>
           <div class="icons">
-            <span class="color-purple"><i class="fa fa-star"></i></span>
-            <span class="color-purple"><i class="fa fa-list" aria-hidden="true"></i></span>
-            <span class="color-purple"
+            <span id="${product.id}" class="color-purple"><i class="fa fa-star"></i></span>
+            <span id="${product.id}" class="color-purple"><i class="fa fa-list" aria-hidden="true"></i></span>
+            <span id="${product.id}" class="color-purple"
               ><i class="fa fa-shopping-cart" aria-hidden="true"></i
             ></span>
           </div>
