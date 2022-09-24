@@ -9,14 +9,15 @@ export const GetProducts = async (search) => {
             const url = "http://localhost/ecommerce/ecommerce-server/search-products.php";
             
             const products = await axios.post(url, {"search_field": search}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
-            console.log(products);
-            //products.data.map(product => {
-            ///    productsHTML += Product(product);
-            //})
+            console.log();
+            products.data.results.map(product => {
+                console.log(product);
+                productsHTML += Product(product);
+            })
         }
         else{
             console.log("empty search");
-            let productsHTML = ""
+            productsHTML = "";
             const url = "http://localhost/ecommerce/ecommerce-server/receive-all-products.php";
             const products = await axios.get(url);
             products.data.map(product => {

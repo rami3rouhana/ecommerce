@@ -21,17 +21,20 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 if(isset($json['user']['id'])) {
 if(isset($_POST['search_field'])){
 
-    $query = $mysqli->prepare("SELECT * FROM products join categories on products.categories_id = categories.id WHERE categories.name REGEXP ? OR products.name REGEXP ?");
+    $query = $mysqli->prepare("SELECT products.name as name, products.price, products.id, products.picture_url, products.categories_id, categories.id AS categoriesID, categories.name as categoryName 
+    FROM products join categories on products.categories_id = categories.id 
+    WHERE categories.name REGEXP ? OR products.name REGEXP ?");
     $search_field = $_POST['search_field'];
-    $query->bind_param("ss" , $search_field, $_search_field);
+    $query->bind_param("ss" , $search_field, $search_field);
     $query->execute();
     $result = $query->get_result();
     $response = [];
-    
+    $results = [];
     if (($query->error) == "") {
         while($a = $result->fetch_assoc()){
-            $response[] = $a;
-        } 
+            $results[] = $a;
+        }
+        $response['results'] = $results; 
         $response["success"] = true;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
