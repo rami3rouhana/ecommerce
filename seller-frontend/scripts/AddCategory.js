@@ -2,12 +2,12 @@ import { useState } from "./useState.js";
 
 export const AddCategory = (category, setCategory) => {
 
-    let [editRow, setEditRow] = useState("");
+    let [cat, setCat] = useState("");
 
     if (document.getElementById("add-category")) {
         document.getElementById("add-category").addEventListener("click", () => {
             // Get user Value
-            setCategory(document.getElementById("add-category-name").value);
+            setCat(document.getElementById("add-category-name").value);
 
             // add category api
 
@@ -27,7 +27,7 @@ export const AddCategory = (category, setCategory) => {
             edit_img.classList.add('icon')
             edit_img.src = "./images/edit-button.svg"
 
-            categoryName.innerHTML = category()[0][0];
+            categoryName.innerHTML = cat()[0][0];
 
             categoryActions.appendChild(delete_img);
             categoryActions.appendChild(edit_img);
@@ -41,28 +41,10 @@ export const AddCategory = (category, setCategory) => {
             })
             categoryRow.appendChild(categoryName);
             categoryRow.appendChild(categoryActions);
-
             document.getElementById("categories-table").appendChild(categoryRow);
 
             document.getElementById("add-category-name").value = '';
-            const actions = document.createElement('li');
-            actions.classList.add('td');
-
-            const updateBtn = document.createElement('img');
-            updateBtn.classList.add("clickable-edit");
-            updateBtn.src = "./images/edit-button.svg";
             
-            const deleteBtn = document.createElement('img');
-            deleteBtn.classList.add("clickable-delete");
-            deleteBtn.src = "./images/delete-button.svg";
-            actions.appendChild(updateBtn);
-            actions.appendChild(deleteBtn);
-            document.getElementById("actions").appendChild(actions)
-            updateBtn.addEventListener("click", (e) => {
-                debugger
-                document.getElementById("edit-popup").classList.remove("hidden");
-
-            })
         })
     }
 }
