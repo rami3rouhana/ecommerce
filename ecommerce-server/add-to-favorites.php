@@ -40,4 +40,7 @@ if ($json['user']['user_type'] == "Client") {
         }
     }
 }
+else{
+    echo 'not a client';
+}
 ?>

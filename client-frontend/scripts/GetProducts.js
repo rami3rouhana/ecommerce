@@ -1,4 +1,5 @@
 import { Product } from "./Product.js";
+import { AddTo } from "./AddTo.js";
 
 export const GetProducts = async () => {
     if (document.getElementById("products-row")) {
@@ -21,6 +22,8 @@ export const GetProducts = async () => {
         const favorite_section = Array.prototype.slice.call(document.getElementsByClassName("fa-star"));
         favorite_section.forEach(favorite => {
             favorite.addEventListener("click", (e) => {
+                let data = {products_id: e.currentTarget.parentElement.id};
+                AddTo('favorite', data);
                 console.log(e.currentTarget.parentElement.id);
             })
         });

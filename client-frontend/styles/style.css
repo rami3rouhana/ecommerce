@@ -537,6 +537,10 @@ table {
   display: none;
 }
 
+.pointer{
+  cursor: pointer;
+}
+
 
 
 /* Responsitivity */
