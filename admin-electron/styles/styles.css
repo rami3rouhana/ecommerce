@@ -227,7 +227,7 @@ html{
 .main-display-table{
     width: 100%;
     min-height: 300px;
-    max-height: 100%;
+    max-height: 600px;
     font-size: 2rem;
     background-color: white;
     border-radius: 15px;
@@ -240,6 +240,7 @@ html{
     font-size: 1em;
     min-width: 400px;
     width: 100%;
+    max-height: 400px;
     border-radius: 10px;
 }
 
@@ -536,5 +537,4 @@ button {
 }
 
 
-/* Responsitivity */
-
+/* Scrollbar Style */

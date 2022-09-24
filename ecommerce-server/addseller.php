@@ -27,6 +27,7 @@ if ($json['user']['user_type'] == "Admin") {
         $result = $query->get_result();
 
         if (($query->error) == "") {
+            $response['insertedID'] = $query->insert_id;
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);

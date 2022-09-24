@@ -31,6 +31,7 @@ export const EditSeller = async () => {
                 document.getElementById("edit-seller-popup2").classList.remove('hidden');
                 document.getElementById("cover").classList.remove('hidden')
                 setId(e.currentTarget.parentElement.parentElement.id);
+                let tableRow = e.currentTarget.parentElement.parentElement;
                 document.getElementById("edit-btn").addEventListener("click", () => {
                     let nEmail = (document.getElementById("edit-email").value);
                     let nName = (document.getElementById("edit-name").value);
@@ -38,10 +39,13 @@ export const EditSeller = async () => {
                     console.log(id(), nEmail, nName, nPass);
 
                     //$query->bind_param("sssi", $password, $f_name , $email , $id);
-                    EditSpecificSeller({"password": nPass,
-                                        "f_name": nName,
-                                        "email": nEmail,
-                                        "id": id()})
+                    let data = {"password": nPass,
+                    "f_name": nName,
+                    "email": nEmail,
+                    "id": id()};
+                    EditSpecificSeller(data)
+                    //Update Seller
+                    updateSeller(tableRow, data);
                     document.getElementById("edit-seller-popup2").classList.add('hidden');
                     document.getElementById("cover").classList.add('hidden');
                 })
@@ -54,5 +58,10 @@ export const EditSeller = async () => {
         document.getElementById("edit-seller-popup2").classList.add('hidden')
         document.getElementById("cover").classList.add('hidden')
     })
-
+    function updateSeller(tableRow, data){
+        let children = tableRow.children;
+        console.log(children);
+        children[1].innerHTML = data['f_name'];
+        children[2].innerHTML = data['email'];
+    }
 }
