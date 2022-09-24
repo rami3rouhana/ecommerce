@@ -6,7 +6,6 @@ export const ResetPassword = () => {
             const data = JSON.stringify({
                 email: email(),
             })
-            const user = await axios.post(url, data);
-            localStorage.setItem("token", user.data.jwt)
+            const user = await axios.post(url, data);           
         })
 }}
