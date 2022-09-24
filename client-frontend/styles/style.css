@@ -545,11 +545,38 @@ button{
 
 .discount-container{
   display:flex; 
-  justify-content: center; 
+  justify-content: space-around; 
   text-align: center; 
-  width: 100%;
+  align-self: center;
+  width: 90%;
   background-color: white;
   border-radius: 15px;
+  height: 10%;
+  margin-bottom: 10px;
+}
+
+.discount-container-divs{
+  width: 100%;
+  padding: 5px 5px;
+  height: 90%;
+}
+
+.discount-container-input{
+  background-color: #eaeaf4;
+  border-radius: 10px;
+  height: 90%;
+  outline: none;
+  border: none;
+}
+
+.discount-container-btn {
+  width: 100%;
+  align-self: center;
+  background-color: #5652ac;
+  padding: 10px 10px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
 }
 
 .hidden {

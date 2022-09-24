@@ -1,6 +1,7 @@
 import { PopulateCart } from "./PopulateCart.js";
 import { RemoveFromCart } from "./RemoveFromCart.js";
 import { ApplyDiscount } from "./ApplyDiscount.js";
+import { Vouchers } from "./Vouchers.js";
 
 export const SetItemList = async () => {
     await PopulateCart();
@@ -17,4 +18,6 @@ export const SetItemList = async () => {
     if(document.getElementById("apply-discount")){
         ApplyDiscount();
     }
+
+    Vouchers();
 }
