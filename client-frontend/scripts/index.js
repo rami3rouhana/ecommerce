@@ -7,6 +7,7 @@ import { PageLocations } from "./location-pages.js";
 import { ShowReset } from "./ShowReset.js";
 import { ResetPassword } from "./ResetPassword.js";
 import { SetLottery } from "./SetLottery.js";
+import { ChangePassword } from "./ChangePassword.js";
 
 PageLocations();
 GetProducts();
@@ -17,3 +18,4 @@ GetWhishlist();
 ShowReset();
 ResetPassword();
 SetLottery();
+ChangePassword();
