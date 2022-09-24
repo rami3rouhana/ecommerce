@@ -7,12 +7,26 @@ export const AddProduct = (e) =>{
         document.getElementById("add-product").addEventListener("click", () => {
             // Get user Value
             setProduct(document.getElementById("add-product-name").value);
+            const productName = document.getElementById("add-product-name").value;
             setProduct([product(), document.getElementById("add-product-price").value]);
+            const price = document.getElementById("add-product-price").value;
             setProduct([product(), document.getElementById("add-product-categories").value]);
+            const categories_id = document.getElementById("add-product-categories").value;
 
-    
+            debugger
             // add category api
-    
+            const url = "http://localhost/ecommerce/ecommerce-server/add-prouduct.php";
+            const picture_url = null;
+            
+            const data = JSON.stringify({
+                productName,
+                picture_url,
+                price,
+                categories_id
+            });
+            
+            const dataJWt = await axios.post(url, data, {headers: {'Authorization': `token ${localStorage.getItem("token")}`}});
+            localStorage.setItem("token",dataJWt.data.jwt)
             // Insert Value into table
             const category = document.createElement('tr');
             category.classList.add('td');
