@@ -18,23 +18,18 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if (isset($json['user']['id'])){
-    if(isset($_POST['date_from']) && isset($_POST['date_to'])){
+if ($json['user']['user_type'] == "Admin") {
+    if($_POST['userid'])
+    {
         extract($_POST);
-        $query = $mysqli->prepare("SELECT users.f_name, SUM(products.price) AS totalSpent FROM sold_product JOIN products ON sold_product.products_id = products.id JOIN categories ON products.categories_id = categories.id JOIN users ON sold_product.users_id = users.id WHERE sold_product.users_id
-        IN (SELECT users.id FROM users WHERE users.user_type = 'Client') 
-        AND sold_product.date BETWEEN ? AND ? GROUP BY users.id;");
-        $query->bind_param("ss", $date_from, $date_to);
+    
+        $query = $mysqli->prepare("DELETE FROM users WHERE users.id = ?");
+        $query->bind_param("i", $userid);
         $query->execute();
         $result = $query->get_result();
         $response = [];
-
-        $topgroups = [];
+    
         if (($query->error) == "") {
-            while($a = $result->fetch_assoc()){
-                $topgroups[] = $a;
-            } 
-            $response['topgroups'] = $topgroups;
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);

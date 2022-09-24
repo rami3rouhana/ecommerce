@@ -1,5 +1,5 @@
 <?php
-// Connection
+//INSERT INTO `vouchers` (`code`, `amount`, `used`, `client_id`) VALUES ('AED123', '20', '0', '1');
 include("connection.php");
 //required file
 require __DIR__ . '/../vendor/autoload.php';
@@ -17,24 +17,17 @@ $headers = getallheaders();
 $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorization"])[1]]));
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
-
-if (isset($json['user']['id'])){
-    if(isset($_POST['date_from']) && isset($_POST['date_to'])){
+if ($json['user']['user_type'] == "Admin") {
+    if (isset($_POST['email']) && isset($_POST['name']) && isset($_POST['password'])) {
         extract($_POST);
-        $query = $mysqli->prepare("SELECT users.f_name, SUM(products.price) AS totalSpent FROM sold_product JOIN products ON sold_product.products_id = products.id JOIN categories ON products.categories_id = categories.id JOIN users ON sold_product.users_id = users.id WHERE sold_product.users_id
-        IN (SELECT users.id FROM users WHERE users.user_type = 'Client') 
-        AND sold_product.date BETWEEN ? AND ? GROUP BY users.id;");
-        $query->bind_param("ss", $date_from, $date_to);
+        $query = $mysqli->prepare("INSERT INTO `users` (`email`, `f_name`, `password`, `user_type`) VALUES (?, ?, ?, ?)");
+        $usertype = "Seller";
+        $query->bind_param("ssss", $email , $name , $password, $usertype);
         $query->execute();
         $result = $query->get_result();
-        $response = [];
 
-        $topgroups = [];
         if (($query->error) == "") {
-            while($a = $result->fetch_assoc()){
-                $topgroups[] = $a;
-            } 
-            $response['topgroups'] = $topgroups;
+            $response['insertedID'] = $query->insert_id;
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);
@@ -44,5 +37,8 @@ if (isset($json['user']['id'])){
             echo json_encode($response);
         }
     }
+}
+else{
+    echo 'jwt error';
 }
 ?>

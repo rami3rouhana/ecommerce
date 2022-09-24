@@ -8,7 +8,9 @@
         <title>Clients</title>
     </head>
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <div class="container">
       <div class="top-nav">
           <div class="logo-div">
@@ -16,13 +18,15 @@
           </div>
           <div class="admin">
               <img src="./images/profile.png" width="50px" height="50px">
-              <span class="left-nav-title admin-title">Admin Name</span>
+              <span class="left-nav-title admin-title" id="admin-title">Admin Name</span>
           </div>
       </div>
       <div class="left-nav">
             <div class="left-nav-menu-item" id="users"><span class="left-nav-title">Users</span></div>
             <div class="left-nav-menu-item" id="stats"><span class="left-nav-title">Statistics</span></div>
             <div class="left-nav-menu-item" id="lottery"><span class="left-nav-title">Lottery</span></div>
+            <div class="left-nav-menu-item-bottom"><span class="left-nav-title"></span></div>
+            <div class="left-nav-menu-item-bottom" id="logout"><span class="left-nav-title">Logout</span></div>
       </div>
       <div class="main-header">
         <div class="main-header-spliter">
@@ -44,36 +48,16 @@
                     <button id="submit-date" class="date-button">Submit</button>
                 </div>
           </div>
-          <div class="main-display-charts">
+          <div class="main-display-charts" id="main-display=charts">
             <canvas id="myChart" style="width:100%;"></canvas>
           </div>
       </div>
   </div>
   <!--SELLER POPUP-->
   <!-- You can also require other files to run in this process -->
-  <script src="./renderer.js"></script>
+  <!--script src="./renderer.js"></script>-->
   <script>
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["red", "green","blue","orange","brown"];
 
-    new Chart("myChart", {
-    type: "bar",
-    data: {
-        labels: xValues,
-        datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-        }]
-    },
-    options: {
-        legend: {display: false},
-        title: {
-        display: true,
-        text: "World Wine Production 2018"
-        }
-    }
-    });
 </script>
 <script type="module" src="./scripts/index.js"></script>
   </body>
