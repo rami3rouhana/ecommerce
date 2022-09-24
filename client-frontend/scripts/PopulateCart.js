@@ -1,5 +1,5 @@
 import { Cart } from "./Cart.js";
-
+import { Checkout } from "./Checkout.js";
 
 export const PopulateCart = async () => {
     if(document.getElementById("cart-table")){
@@ -24,6 +24,13 @@ export const PopulateCart = async () => {
         if(document.getElementById("cart-table")){
           document.getElementById("cart-table").innerHTML = cartHTML;
         }
+
+        
+        if(document.getElementById("checkout-cart")){
+            document.getElementById("checkout-cart").addEventListener("click", async () => {
+                await Checkout();
+            })
+          }
     }
 }
 

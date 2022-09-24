@@ -541,6 +541,10 @@ table {
   cursor: pointer;
 }
 
+button{
+  cursor: pointer;
+}
+
 
 
 /* Responsitivity */

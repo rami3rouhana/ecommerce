@@ -20,6 +20,7 @@ GetWhishlist();
 ShowReset();
 ResetPassword();
 SetLottery();
+PopulateCart();
 SetItemList();
 ChangePassword();
 
