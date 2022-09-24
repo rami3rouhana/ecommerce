@@ -161,10 +161,21 @@ h1 {
   width:100%;
 }
 .table {
-  display: flex;
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 0px 5px 0px #5752ac7e;
+  border-collapse: collapse;
+  width: 100%;
+}
+table td {
+  text-align: center;
+}
+.icon {
+  width: 28px;
+  height: 28px;
+}
+.border {
+  border-top: 1px solid #5752ac7e;
 }
 .td {
   border-top: 1px solid #5652ac;
