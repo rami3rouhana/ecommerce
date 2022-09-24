@@ -281,7 +281,7 @@ html{
 
 /* Add Seller Popup */
 .seller-popup{
-    top: 0;
+    top: 10%;
     left: 0;
     padding: 20vh 28vw;
     position: absolute;
