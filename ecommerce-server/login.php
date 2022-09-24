@@ -17,7 +17,7 @@ extract($_POST);
 $email = $_POST['email'];
 //$password = hash('sha256', $_POST['password']);;
 
-$query=$mysqli->prepare("select id, f_name, l_name, user_type, email from users where email=? and password=?");
+$query=$mysqli->prepare("SELECT * FROM users WHERE users.email = ? AND users.password = ? AND users.id NOT IN (SELECT user_id FROM banned_users)");
 $query->bind_param("ss",$email,$password );
 $query->execute();
 $result = $query->get_result();
@@ -27,15 +27,18 @@ $response =[];
 if(($result->num_rows)==1){
     $response["success"] =true;
     $info=[];
+    
     while($a = $result->fetch_assoc()){
-        $info =$a;
+        $info = $a;
     }
+    $info['banned'] = false;
 
     $jwt = $jwtFunction(json_encode([
         "id"=> $info['id'],
         "name"=> $info['f_name'],
         "email"=> $info['email'],
-        "user_type"=> $info['user_type']
+        "user_type"=> $info['user_type'],
+        "banned"=> $info['banned']
     ]));
     $jwt = json_decode($jwt) ;  
     $response["jwt"] = $jwt->JWT;
