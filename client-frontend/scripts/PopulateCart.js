@@ -6,12 +6,14 @@ export const PopulateCart = async () => {
         let cartHTML = "";
         const url = "http://localhost/ecommerce/ecommerce-server/receive-cart.php";
         const response = await axios.post(url,{}, {headers: {'Authorization': `token ${localStorage.getItem("token")}` }});
-        console.log(response.data.cart);
         
         let cart = response.data.cart;
-        cart.map(cartItem => {
-            cartHTML += Cart(cartItem);
-        })
+        if(cart != undefined){
+            cart.map(cartItem => {
+                cartHTML += Cart(cartItem);
+            })
+        }
+
 
         //Get total
         const url2 = "http://localhost/ecommerce/ecommerce-server/receive-cart-total.php";

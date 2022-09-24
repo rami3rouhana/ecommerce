@@ -1,4 +1,5 @@
 import { PopulateCart } from "./PopulateCart.js";
+import { RemoveFromCart } from "./RemoveFromCart.js";
 
 export const SetItemList = async () => {
     await PopulateCart();
@@ -8,6 +9,7 @@ export const SetItemList = async () => {
         delete_button.addEventListener("click", (e) => {
             console.log(e.currentTarget.parentElement.id);
             e.currentTarget.parentElement.remove();
+            RemoveFromCart({"product_id": e.currentTarget.parentElement.id});
         })
     });
 }
