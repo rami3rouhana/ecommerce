@@ -2,7 +2,6 @@
 // Connection
 include("connection.php");
 //required file
-require __DIR__ . '/../vendor/autoload.php';
 
 //headers
 header('Access-Control-Allow-Origin: *');
