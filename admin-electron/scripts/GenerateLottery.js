@@ -1,3 +1,4 @@
+import { AddLottery } from "./Axios/AddLottery.js";
 import { useState } from "./useState.js";
 
 export const GenerateLottery = () => {
@@ -14,11 +15,11 @@ export const GenerateLottery = () => {
             firstN.innerHTML = Math.floor(Math.random() * 10);
             secondN.innerHTML = Math.floor(Math.random() * 10);
             thirdN.innerHTML = Math.floor(Math.random() * 10);
-            let x = {firstN: firstN.innerHTML,
-                     secondN: secondN.innerHTML,
-                     thirdN: thirdN.innerHTML}
+            let x = firstN.innerHTML + secondN.innerHTML + thirdN.innerHTML;
             setNumbers(x);
-            console.log(numbers());
+            let data = parseInt(numbers())
+            console.log(data)
+            AddLottery({lotteryNumbers: data});
         })
     }
 }
