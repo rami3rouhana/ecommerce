@@ -1,4 +1,5 @@
 export const ShowReset = () =>{
+    if(document.getElementById("reset-password"))
     document.getElementById("reset-password").addEventListener("click", (e)=>{
         e.preventDefault();
         if(document.getElementById("email-reset").classList[0] === "hidden-reset"){
