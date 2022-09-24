@@ -10,7 +10,14 @@ export const AddCategory = (category, setCategory) => {
             setCategory(document.getElementById("add-category-name").value);
 
             // add category api
-
+            const url = "http://localhost/ecommerce/ecommerce-server/add-category.php";
+            const name = category();
+            const data = JSON.stringify({
+                name
+            });
+            
+            const cat = await axios.post(url, data);
+            debugger
             // Insert Value into table
             const categoryRow = document.createElement('tr');
             categoryRow.classList.add('td');
@@ -44,6 +51,9 @@ export const AddCategory = (category, setCategory) => {
                 document.getElementById("edit-btn").addEventListener("click", () => {
                     let [name, setName] = useState("");
                     setName(document.getElementById("edit-name").value);
+
+                    //api call
+
                     document.getElementById("edit-name").value = "";
                     document.getElementById("edit-popup").classList.add('hidden');
                     editName.innerHTML = name();
