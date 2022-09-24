@@ -108,12 +108,13 @@ h1 {
 
 .main {
   width: 80%;
-  height: 100%;
+  height: auto;
   margin-left: 20%;
+  height: 100%;
 }
 
 .main-category{
-  height: auto;
+  height: 100%;
 }
 
 .header-top {
@@ -306,6 +307,24 @@ h1 {
   margin-bottom: 40px;
   box-shadow: 0 0px 5px 0px #5752ac7e;
 }
+.hidden-reset{
+  margin-top: 20px;
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  transition: all 1s;
+}
+
+.reset{
+  margin-top: 20px;
+  border-radius: 10px;
+  height: 40px;
+  outline: none;
+  border: none;
+  padding: 0px 15px;
+  transition: all 1s;
+}
+
 .login-content .btn {
   width: 30%;
   margin-top: 70px;
