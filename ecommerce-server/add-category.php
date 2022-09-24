@@ -18,7 +18,7 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if (isset($json['user']['id']) && isset($_POST['name'])){
+if (isset($json['user']['id']) && isset($_POST['catName'])){
 
     $name=$_POST['catName'];
     $query = $mysqli->prepare("INSERT INTO  categories (name,sellers_id) VALUE (?,?)");

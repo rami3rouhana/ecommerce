@@ -16,8 +16,8 @@ export const AddCategory = (category, setCategory) => {
                 catName
             });
             
-            await axios.post(url, data, {headers: {'Authorization': `token ${localStorage.getItem("token")}`}});
-
+            const dataJWt = await axios.post(url, data, {headers: {'Authorization': `token ${localStorage.getItem("token")}`}});
+            localStorage.setItem("token",dataJWt.data.jwt)
             // Insert Value into table
             const categoryRow = document.createElement('tr');
             categoryRow.classList.add('td');
