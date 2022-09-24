@@ -1,68 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/seller-frontend/styles/style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="nav-bar">
-      <div class="header">
-        <img src="" alt="" class="profile-img" />
-        <h2 class="color-white">Seller Name</h2>
-      </div>
 
-      <div class="nav-buttons">
-        <button id="products" class="clicked">Products</button>
-        <button id="statistics">Statistics</button>
-        <button id="ads" >Ads</button>
-        <button id="discounts"  >Discounts</button>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/seller-frontend/styles/style.css" />
+  <title>Document</title>
+</head>
 
-      <div class="logout">
-        <button id="logout">Logout</button>
-      </div>
+<body>
+  <div class="nav-bar">
+    <div class="header">
+      <img src="" alt="" class="profile-img" />
+      <h2 class="color-white">Seller Name</h2>
     </div>
 
-    <div class="main">
-      <div class="body">
-        <div class="header-top">
-          <div class="buttons">
-            <button id="categories" class="clicked">Categories</button>
-            <button id="products-nav" >Products</button>
-          </div>
+    <div class="nav-buttons">
+      <button id="products" class="clicked">Products</button>
+      <button id="statistics">Statistics</button>
+      <button id="ads">Ads</button>
+      <button id="discounts">Discounts</button>
+    </div>
+
+    <div class="logout">
+      <button id="logout">Logout</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="body">
+      <div class="header-top">
+        <div class="buttons">
+          <button id="categories" class="clicked">Categories</button>
+          <button id="products-nav">Products</button>
         </div>
+      </div>
 
-        <div class="content">
-          <div class="left">
-            <div class="table">
-              <div class="side-left">
-                <h2 class="th color-purple">Name</h2>
-                <ul id="name">
+      <div class="content">
+        <div class="left">
+          <div class="table">
+            <div class="side-left">
+              <h2 class="th color-purple">Name</h2>
+              <ul id="name">
 
-                </ul>
-              </div>
-              <div class="side-right">
-                <h2 class="th color-purple">Actions</h2>
-                <ul id="actions">
-
-                </ul>
-              </div>
+              </ul>
             </div>
-          </div>
-
-          <div class="right">
-            <div class="box-wrap">
-              <input id="add-category-name" type="text" placeholder="Category Name" />
-              <button id="add-category">+</button>
+            <div class="side-right">
+              <h2 class="th color-purple">Actions</h2>
+              <ul id="actions">
+              </ul>
             </div>
           </div>
         </div>
+
+        <div class="right">
+          <div class="box-wrap">
+            <input id="add-category-name" type="text" placeholder="Category Name" />
+            <button id="add-category">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="seller-popup hidden" id="edit-popup">
+        <div class="seller-popup-form" id="seller-popup-form">
+          <div class="close-btn-container">
+            <div class="close-btn" id="close-btn-edit">X</div>
+          </div>
+          <h3>Edit category name</h3>
+          <input class="input-style" type="email" name="" placeholder="Name" id="edit-name">
+          <button class="main-button" id="edit-btn">Edit</button>
+          <div class="error-login" id="error-login"></div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <script type="module" src="./scripts/index.js"></script>
-  </body>
+  <script type="module" src="./scripts/index.js"></script>
+</body>
+
 </html>
