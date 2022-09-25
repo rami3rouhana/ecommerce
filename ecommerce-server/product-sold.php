@@ -19,10 +19,11 @@ $jwtInfo = $jwtFunction(json_encode(['jwt'=>explode(" ", $headers["Authorization
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 
-if ($json['user']['user_type'] == "Seller"){
+if ($json['user']['user_type'] == "Seller" && isset($_POST['product_id'])){
 
-    $query=$mysqli->prepare("SELECT DISTINCT products.name as product_name, products.id as product_id, products.views as product_views, products.price as product_price FROM sold_product JOIN products ON sold_product.products_id = products.id JOIN categories ON products.categories_id = categories.id WHERE categories.sellers_id = ?");
-    $query->bind_param("i", $json['user']['id']);
+    extract($_POST);
+    $query=$mysqli->prepare("SELECT COUNT(sold_product.products_id) as timesSold FROM sold_product JOIN products ON sold_product.products_id = products.id WHERE products.id = ?");
+    $query->bind_param("i", $product_id);
     $query->execute(); 
     $result = $query->get_result();
     $response =[];
@@ -30,9 +31,9 @@ if ($json['user']['user_type'] == "Seller"){
     if(($result->num_rows)>0){
         $response["success"] =true;
         while($a = $result->fetch_assoc()){
-            $stats[] = $a;
+            $timesSold= $a;
         } 
-        $response["stats"] = $stats;
+        $response["result"] = $timesSold;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
     }
@@ -41,7 +42,6 @@ if ($json['user']['user_type'] == "Seller"){
         $response["error"] = "No stats to return";
         echo json_encode($response);
     }
-
 }
 
 ?>
