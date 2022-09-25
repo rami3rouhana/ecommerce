@@ -56,7 +56,9 @@ export const ProfilePage =  async () => {
     async function SetProfilePicture() {
         //Change profile card
         const url = "http://localhost/ecommerce/ecommerce-server/receive-userinfo.php";
-        const response = await axios.post(url, {}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
+        const response = await axios.post(url, {}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}}).then(response => {
+            console.log(response);
+        });
         let userid = (response.data['userid']);
         let user_name = (response.data['name']);
         let user_email = (response.data['email']);
