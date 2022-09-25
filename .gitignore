@@ -1,3 +1,4 @@
 vendor
 composer.lock
 ecommerce-server/.env
+admin-electron/node_modules
