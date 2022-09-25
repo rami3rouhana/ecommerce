@@ -19,5 +19,7 @@ export const ProductPopup = async (product_id) => {
 
 
     //Increment views on picture
-    
+    const url2 = "http://localhost/ecommerce/ecommerce-server/increment-productview.php";
+    const response2 = await axios.post(url2, {product_id: product_id}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
+    console.log(response2);
 }
