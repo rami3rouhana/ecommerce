@@ -42,4 +42,12 @@ export const GetStats = async () => {
             console.log(ReceiveStats(data));
         })
     }
+
+    if(document.getElementById("logout-btn")){
+        document.getElementById("logout-btn").addEventListener("click", () => {
+            console.log("gg");
+            localStorage.clear("token");
+            window.location.href = 'http://localhost/ecommerce/admin-electron/';
+        })
+    }
 }
