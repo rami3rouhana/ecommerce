@@ -17,11 +17,12 @@ $headers = getallheaders();
 $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorization"])[1]]));
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
-if ($json['user']['user_type'] == "Seller") {
-    if (isset($_POST['code']) && isset($_POST['amount']) && isset($_POST['used']) && isset($_POST['client_id'])) {
+if ($json['user']['user_type'] == "Client") {
+    if (isset($_POST['code']) && isset($_POST['amount']) && isset($_POST['email'])) {
         extract($_POST);
-        $query = $mysqli->prepare("INSERT INTO `vouchers` (`code`, `amount`, `used`, `client_id`) VALUES (?, ?, ?, ?)");
-        $query->bind_param("ssii", $code , $amount , $used, $client_id);
+        $query = $mysqli->prepare("INSERT INTO `vouchers` (`code`, `amount`, `used`, `client_email`) VALUES (?, ?, ?, ?)");
+        $used = 0;
+        $query->bind_param("siis", $code , $amount, $used, $email);
         $query->execute();
         $result = $query->get_result();
 

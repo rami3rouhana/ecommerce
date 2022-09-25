@@ -20,8 +20,8 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 if(isset($json['user']['id'])) {
 
-    $query = $mysqli->prepare("SELECT * FROM vouchers WHERE vouchers.client_id = ?");
-    $query->bind_param("i" , $json['user']['id']);
+    $query = $mysqli->prepare("SELECT * FROM vouchers WHERE vouchers.client_email = ? AND vouchers.used = 0");
+    $query->bind_param("s" , $json['user']['email']);
     $query->execute();
     $result = $query->get_result();
     $response = [];
