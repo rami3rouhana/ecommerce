@@ -20,7 +20,7 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 
 if ($json['user']['user_type']=="Admin" || $json['user']['user_type']=="Client" ){
-    $query=$mysqli->prepare("select id, f_name, email from users where user_type='Client'");
+    $query=$mysqli->prepare("select id, profile_pic , f_name, email from users where user_type='Client'");
     $query->execute(); 
     $result = $query->get_result();
     $response =[];
