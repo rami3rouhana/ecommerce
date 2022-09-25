@@ -22,13 +22,31 @@ export const SetLottery = async () => {
                     //Call lottery api to set match number
                     //nOfMatches['lotteryNumber'] = (lottery.random_number.toString())
                     //nOfMatches.push("matched_once");
-                    matches[i] = [nums[i].value, i];
+                    let x = nums[i].value
+                    matches[i] = {x: i};
                 }
             }
         })
-        console.log(matches);
-        //Get voucher according to lottery
-
+            console.log(matches);
+            let indexMatches = [];
+            for(let i = 0; i < matches.length; i++){
+                if(matches[i]){
+                    indexMatches.push(matches[i].x);
+                }
+            }
+            //INSERT VOUCHERS DEPENDING ON MATCHES
+            let data = {"code": "lotter-voucher-" + matches.length * 10,
+            "amount": matches.length * 10}
+            const response2 = await axios.post("http://localhost/ecommerce/ecommerce-server/add-user-voucher.php", data, {headers: {'Authorization': `token ${localStorage.getItem("token")}` }});
+            console.log(response2);
+            //Get voucher according to lottery
+            const url2 = "http://localhost/ecommerce/ecommerce-server/updatelottery.php";
+            const response = await axios.post(url2, {"matchingnumbers": indexMatches}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
+            if(indexMatches.length >= 0){
+                //alert("You won the lottery: " + indexMatches.length * 10 + "$");
+                console.log(indexMatches);
+            }
+            
         })
         
 
