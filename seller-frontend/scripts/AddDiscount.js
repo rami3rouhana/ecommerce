@@ -9,10 +9,10 @@ export const AddDiscount =  () => {
         // Api call
         const url = "http://localhost/ecommerce/ecommerce-server/add-discounts.php";
         const discount_percent = document.getElementById("discount-value").value;
-        const categories_id = document.getElementById("add-product-categories").value;
+        const category_id = document.getElementById("add-product-categories").value;
         const data = JSON.stringify({
             discount_percent,
-            categories_id
+            category_id
         })
         const dataJWt = await axios.post(url, data, {headers: {'Authorization': `token ${localStorage.getItem("token")}`}});
         if (typeof dataJWt.data.jwt !== "undefined")
