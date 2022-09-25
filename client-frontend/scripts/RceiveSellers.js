@@ -1,3 +1,5 @@
+import {ReceiveMessages} from './ReceiveMessages.js'
+
 export const ReceiveSellers = async () => {
     const url = 'http://localhost/ecommerce/ecommerce-server/receive-sellers.php';
     const response = await axios.get(url, {
@@ -24,7 +26,7 @@ export const ReceiveSellers = async () => {
         document.getElementById('seller-users').appendChild(users);
         users.addEventListener("click", () => {
             document.getElementById("user-id").setAttribute("user-id",seller.id) ;
-            console.log(document.getElementById("user-id").getAttribute("user-id"))
+            ReceiveMessages()
         })
     })
 
