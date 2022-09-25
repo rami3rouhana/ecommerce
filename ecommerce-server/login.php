@@ -42,6 +42,7 @@ if(($result->num_rows)==1){
     ]));
     $jwt = json_decode($jwt) ;  
     $response["jwt"] = $jwt->JWT;
+    $response["role"] = $info['user_type'];
     echo json_encode($response);
 }
 else{
