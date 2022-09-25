@@ -15,5 +15,9 @@ export const PageLocations = () => {
     document.getElementById("products").addEventListener("click", () => {
         window.location.href = "./products.html";
     })
+    if(document.getElementById("profile"))
+    document.getElementById("profile").addEventListener("click", () => {
+        window.location.href = "./profile.html";
+    })
 
 }

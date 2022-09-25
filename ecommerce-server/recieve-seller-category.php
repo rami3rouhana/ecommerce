@@ -20,17 +20,19 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 if ($json['user']['user_type'] == "Seller") {
     if (isset($json['user']['id'])) {
-        $query = $mysqli->prepare("SELECT name FROM categories WHERE sellers_id = ?");
+        $query = $mysqli->prepare("SELECT id,name FROM categories WHERE sellers_id = ?");
         $userid = $json['user']['id'];
         $query->bind_param("s", $userid);
         $query->execute();
         $result = $query->get_result();
         $response = [];
+        $categories = [];
 
         if (($query->error) == "") {
             while ($a = $result->fetch_assoc()) {
-                $response[] = $a;
+                $categories[] = $a;
             }
+            $response["categories"] = $categories;
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);

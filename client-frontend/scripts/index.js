@@ -7,9 +7,14 @@ import { PageLocations } from "./location-pages.js";
 import { ShowReset } from "./ShowReset.js";
 import { ResetPassword } from "./ResetPassword.js";
 import { SetLottery } from "./SetLottery.js";
+import { SetItemList } from "./SetItemList.js";
+import { PopulateCart } from "./PopulateCart.js";
+import { ChangePassword } from "./ChangePassword.js";
+import { Search } from "./Search.js";
+import { ProfilePage } from "./ProfilePage.js";
 
 PageLocations();
-GetProducts();
+GetProducts("");
 Register();
 GetFavorites();
 login();
@@ -17,3 +22,9 @@ GetWhishlist();
 ShowReset();
 ResetPassword();
 SetLottery();
+PopulateCart();
+SetItemList();
+ChangePassword();
+Search();
+ProfilePage();
+

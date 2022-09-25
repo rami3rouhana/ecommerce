@@ -15,7 +15,7 @@
   <body>
     <div class="nav-bar">
       <div class="header">
-        <img src="" alt="" class="profile-img" />
+        <img id="profile-img-header" src="" alt="" class="profile-img" />
         <h2 class="color-white">Client Name</h2>
       </div>
 
@@ -24,6 +24,7 @@
         <button class="clicked"  id="cart">Cart</button>
         <button id="whishlist">Wishlist</button>
         <button id="favorite">Favorites</button>
+        <button id="profile">Profile</button>
       </div>
 
       <div class="logout">
@@ -53,21 +54,21 @@
         <div class="cart-container">
           <div class="left">
             <h1>Item List</h1>
-            <table>
-              <tr>
+            <table id="cart-table">
+              <tr id="1">
                 <td>Voucher Card</td>
                 <td>100$</td>
-                <td><i class="fa fa-times color-purple" aria-hidden="true"></i></td>
+                <td class="cart-delete-button"><i class="fa fa-times color-purple" aria-hidden="true"></i></td>
               </tr>
-              <tr>
+              <tr id="1">
                 <td>Voucher Card</td>
                 <td>100$</td>
-                <td><i class="fa fa-times color-purple" aria-hidden="true"></i></td>
+                <td class="cart-delete-button"><i class="fa fa-times color-purple" aria-hidden="true"></i></td>
               </tr>
-              <tr>
+              <tr id="1">
                 <td>Voucher Card</td>
                 <td>100$</td>
-                <td><i class="fa fa-times color-purple" aria-hidden="true"></i></td>
+                <td class="cart-delete-button"><i class="fa fa-times color-purple" aria-hidden="true"></i></td>
               </tr>
             </table>
           </div>
@@ -86,16 +87,35 @@
                 <label name="prices">100$</label>
               </div>
               <input type="email" placeholder="Voucher Code" class="input" />
-              <input
-                type="password"
-                placeholder="Discount Code"
-                class="input"
-              />
+              <!--<div class="discount-container">
+                <input type="text" placeholder="Discount Code" id="discount-code" class="discount-container-input discount-container-divs"/>
+                <button id="apply-discount" class="btn discount-container-divs">Apply Discount</button>
+              </div>-->
+              <div class="discount-container">
+              <div class="discount-container-divs">
+                <input type="text" placeholder="Discount Code" id="discount-code" class="discount-container-input discount-container-divs"/>
+              </div>
+              <div class="discount-container-divs">
+                <button id="apply-discount" class="discount-container-btn">Apply Voucher</button>
+              </div>
+            </div>
+              <div class="discount-container">
+                <div class="discount-container-divs">
+                  <select id="select-voucher" class="">
+                    <option value="0">Select voucher:</option>
+                  </select>
+                </div>
+                <div class="discount-container-divs">
+                  <button id="apply-voucher" class="discount-container-btn">Apply Voucher</button>
+                </div>
+              </div>
+              <div id="discount-container" class="discount-container hidden">Applied to: </div>
+              
               <div class="total-amount">
                 <span>Total Amount: </span>
-                <span>100$</span>
+                <span id="total-value">100$</span>
               </div>
-              <button class="btn">Checkout</button>
+              <button id="checkout-cart" class="btn">Checkout</button>
             </div>
           </div>
         </div>

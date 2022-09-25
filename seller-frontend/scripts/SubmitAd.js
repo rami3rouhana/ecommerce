@@ -1,23 +1,18 @@
-import { useState } from "./useState.js";
-
-
-let [adName, setAdName] = useState([]);
-let [adUrl, setAdUrl] = useState([]);
-let [addescription, setAdDescription] = useState([]);
-
-export const SubmitAd = (category,setCategory) =>{
+export const SubmitAd = () =>{
 
     if (document.getElementById("submit-ad"))
-    document.getElementById("submit-ad").addEventListener("click", () => {
+    document.getElementById("submit-ad").addEventListener("click", async() => {
         // Set data
-        setAdName(document.getElementById("ad-name").value);
-        setAdUrl(document.getElementById("ad-url").value);
-        setAdDescription(document.getElementById("ad-description").value);
+        const picture_url = document.getElementById("ad-url").value;
         // Api call
-
+        const url = "http://localhost/ecommerce/ecommerce-server/upload-ads.php";
+        const data = JSON.stringify({
+            picture_url
+        })
+        const dataJWt = await axios.post(url, data, {headers: {'Authorization': `token ${localStorage.getItem("token")}`}});
+        if (typeof dataJWt.data.jwt !== "undefined")
+            localStorage.setItem("token",dataJWt.data.jwt)
         // Display ads empty
-        document.getElementById("ad-name").value = "";
         document.getElementById("ad-url").value = "";
-        document.getElementById("ad-description").value = "";
     })
 }

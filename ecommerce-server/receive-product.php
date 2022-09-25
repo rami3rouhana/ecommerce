@@ -22,16 +22,19 @@ if (isset($_POST['product_id'])) {
 
     extract($_POST);
 
-    $query = $mysqli->prepare("SELECT name , picture_url, price ,views from products where id=?");
+    $query = $mysqli->prepare("SELECT products.id as product_id, picture_url, price, products.name, views, categories.sellers_id as seller_id, users.f_name as seller_name FROM products 
+    JOIN categories ON products.categories_id = categories.id 
+    JOIN users ON categories.sellers_id = users.id WHERE products.id = ?");
     $query->bind_param("i", $product_id);
     $query->execute();
     $result = $query->get_result();
     $response = [];
-
+    $product_info = [];
     if (($query->error) == "") {
         while ($a = $result->fetch_assoc()) {
-            $response[] = $a;
+            $product_info[] = $a;
         }
+        $response['product_info'] = $product_info;
         $response["success"] = true;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
