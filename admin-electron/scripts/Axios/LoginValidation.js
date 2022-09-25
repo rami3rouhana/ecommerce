@@ -24,6 +24,7 @@ function print(response){
         errorDiv.classList.remove("hidden");
     }
     else{
+      console.log(response.data.jwt);
         localStorage.setItem("token", response.data.jwt);
         if(document.getElementById("error-login-div"))
         document.getElementById("error-login-div").classList.add("hidden");
