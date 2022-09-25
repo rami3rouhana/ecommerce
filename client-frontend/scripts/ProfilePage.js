@@ -1,4 +1,4 @@
-export const ProfilePage =  () => {
+export const ProfilePage =  async () => {
     if(document.getElementById("update-popup-btn")){
         document.getElementById("update-popup-btn").addEventListener("click", () => {
             console.log("3aw");
@@ -7,20 +7,24 @@ export const ProfilePage =  () => {
         document.getElementById("close-update-popup-btn").addEventListener("click", () => {
             document.getElementById("profile-popup-form").classList.add("hidden");
         })
+
+        if(document.getElementById("profile-picture-card")){
+            await SetProfilePicture();
+        }
         
 
         const picture = document.getElementById("profile-picture");
-        picture.addEventListener("change", e => {
+        picture.addEventListener("change", async e => {
             const file = picture.files[0];
             const reader = new FileReader();
 
-            reader.addEventListener("load", () => {
+            reader.addEventListener("load", async () => {
                 console.log(reader.result);
                 let imageinbase = reader.result;
                 //split to remove "data:image/png;base64,"
                 const pure64base = imageinbase.split(",");
                 let data = pure64base[1]
-                document.getElementById("update-submit-btn").addEventListener("click", () =>{
+                document.getElementById("update-submit-btn").addEventListener("click", async () =>{
                     let name = document.getElementById("profile-name").value;
                     let email = document.getElementById("profile-email").value;
                     let pass = document.getElementById("profile-pass").value;
@@ -33,11 +37,26 @@ export const ProfilePage =  () => {
                     console.log(name, email, pass, picture);
                     document.getElementById("profile-popup-form").classList.add("hidden");
                     console.log(data);
+
+                    //Call api
+                    const url = "http://localhost/ecommerce/ecommerce-server/addimage.php";
+                    const response = await axios.post(url, {image64base: data}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
+                    console.log(response);
+                    document.getElementById("profile-picture-card").setAttribute('src', "./")
+                    await SetProfilePicture()
+                    
+
                 })
                 
             })
-
             reader.readAsDataURL(file);
         })
+    }
+    async function SetProfilePicture() {
+        const url = "http://localhost/ecommerce/ecommerce-server/receive-userinfo.php";
+        const response = await axios.post(url, {}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
+        let userid = (response.data['userid']);
+        let user_name = (response.data['name']);
+        document.getElementById("profile-picture-card").setAttribute('src', "http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
     }
 }
