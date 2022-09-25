@@ -19,7 +19,7 @@ $jwtInfo = $jwtFunction(json_encode(['jwt'=>explode(" ",$headers["Authorization"
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 
-if ($json['user']['user_type']=="Admin"){
+if ($json['user']['user_type']=="Admin" || $json['user']['user_type']=="Client" ){
 
     $query=$mysqli->prepare("select id, f_name, email from users where user_type='Client'");
     $query->execute(); 
