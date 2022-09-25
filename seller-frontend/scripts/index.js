@@ -7,6 +7,7 @@ import { AddVoucher } from "./AddVoucher.js"
 import { PageLocations } from "./PageLocations.js"
 import { SubmitAd } from "./SubmitAd.js";
 import { EditCategory } from "./EditCategory.js"
+import { GetStats } from "./GetStats.js";
 let [category, setCategory] = useState({});
 
 // On windows load.
@@ -20,6 +21,7 @@ AddVoucher();
 PageLocations();
 SubmitAd();
 EditCategory();
+GetStats();
 
 
 
