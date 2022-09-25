@@ -21,7 +21,7 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 if ($json['user']['user_type'] == "Seller"){
 
-    $query=$mysqli->prepare("SELECT products.name as product_name, products.id as product_id, products.views as product_views FROM sold_product JOIN products ON sold_product.products_id = products.id JOIN categories ON products.categories_id = categories.id WHERE categories.sellers_id = ?");
+    $query=$mysqli->prepare("SELECT products.name as product_name, products.id as product_id, products.views as product_views, products.price as product_price FROM sold_product JOIN products ON sold_product.products_id = products.id JOIN categories ON products.categories_id = categories.id WHERE categories.sellers_id = ?");
     $query->bind_param("i", $json['user']['id']);
     $query->execute(); 
     $result = $query->get_result();
