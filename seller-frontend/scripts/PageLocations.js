@@ -35,4 +35,8 @@ export const PageLocations = () => {
         localStorage.removeItem("token");
         window.location.href = "../client-frontend/index.html";
     })
+    if(document.getElementById("chat"))
+    document.getElementById("chat").addEventListener("click", () => {
+        window.location.href = "./chat.html";
+    })
 }
