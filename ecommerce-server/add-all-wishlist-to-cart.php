@@ -27,7 +27,7 @@ if ($json['user']['user_type'] == "Client") {
         $query->execute();
 
         if($discount!=""){
-            $query = $mysqli->prepare("UPDATE disconts SET is_used = 1 WHERE code= ?");
+            $query = $mysqli->prepare("UPDATE discounts SET is_used = 1 WHERE code= ?");
             $query->bind_param("i", $discount);
             $query->execute();
         }
