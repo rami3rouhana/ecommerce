@@ -18,14 +18,16 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 if ($json['user']['user_type'] == "Seller") {
-    if (isset($_POST['productName']) && isset($_POST['picture_url']) && isset($_POST['price']) && isset($_POST['categories_id'])) {
+    if (isset($_POST['productName']) && isset($_POST['price']) && isset($_POST['categories_id'])) {
         extract($_POST);
+        $name = $_POST['productName'];
         $query = $mysqli->prepare("insert into products (name , picture_url, price , categories_id)  value(?,?,?,?)");
         $query->bind_param("ssss", $name , $picture_url , $price, $categories_id);
         $query->execute();
-        $result = $query->get_result();
+        $query->get_result();
         $response = [];
         if (($query->error) == "") {
+            $response["id"] = $query->insert_id;
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);
