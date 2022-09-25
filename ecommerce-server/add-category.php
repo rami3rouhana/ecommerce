@@ -18,18 +18,18 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if (isset($json['user']['id']) && isset($_POST['name'])){
+if (isset($json['user']['id']) && isset($_POST['catName'])){
 
-    $name=$_POST['name'];
+    $name=$_POST['catName'];
     $query = $mysqli->prepare("INSERT INTO  categories (name,sellers_id) VALUE (?,?)");
     $userid = $json['user']['id'];
     $query->bind_param("si" ,$name, $userid);
     $query->execute();
-    $result = $query->get_result();
     $response = [];
     
     if (($query->error) == "") {
         $response["success"] = true;
+        $response["id"] = $query->insert_id;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
     } else {

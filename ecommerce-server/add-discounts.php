@@ -19,16 +19,17 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Seller") {
-    if (isset($_POST['code']) && isset($_POST['discount_percent']) && isset($_POST['products_id'])) {
+    if (isset($_POST['discount_percent']) && isset($_POST['category_id'])) {
         extract($_POST);
-        
-        $query = $mysqli->prepare("insert into discounts (code , discount_percent , products_id)  value(?,?,?)");
-        $query->bind_param("isi", $code , $discount_percent, $products_id );
+        $code = time();
+        $query = $mysqli->prepare("insert into discounts (code , discount_percent , category_id)  value(?,?,?)");
+        $query->bind_param("isi", $code , $discount_percent, $category_id );
         $query->execute();
         $result = $query->get_result();
         $response = [];
 
         if (($query->error) == "") {
+            $response["code"] = $code;
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);

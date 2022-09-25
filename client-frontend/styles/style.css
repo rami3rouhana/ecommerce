@@ -394,7 +394,8 @@ p {
   flex-wrap: wrap;
   padding: 0 5px;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   background-color: #eaeaf4;
   justify-content: space-around;
 }
@@ -467,6 +468,10 @@ table {
   display: flex;
   height: 100%;
 }
+
+.cart-delete-button{
+  cursor: pointer;
+}
 .seller-popup{
   top: 0;
   left: 0;
@@ -529,6 +534,103 @@ table {
 .seller-popup-form h5{
   margin-bottom: 10px;
 }
+
+
+.pointer{
+  cursor: pointer;
+}
+
+button{
+  cursor: pointer;
+}
+
+.discount-container{
+  display:flex; 
+  justify-content: space-around; 
+  text-align: center; 
+  align-self: center;
+  width: 90%;
+  background-color: white;
+  border-radius: 15px;
+  height: 10%;
+  margin-bottom: 10px;
+}
+
+.discount-container-divs{
+  width: 100%;
+  padding: 5px 5px;
+  height: 90%;
+}
+
+.discount-container-input{
+  background-color: #eaeaf4;
+  border-radius: 10px;
+  height: 90%;
+  outline: none;
+  border: none;
+}
+
+.discount-container-btn {
+  width: 100%;
+  align-self: center;
+  background-color: #5652ac;
+  padding: 10px 10px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+}
+
 .hidden {
   display: none;
+}
+
+
+/* Profile Card */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.image-resize{
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsitivity */
+
+@media only screen and (max-width: 600px) {
+  .header-btn {
+    width: 50%;
+    font-size: 0.8rem;
+  }
 }

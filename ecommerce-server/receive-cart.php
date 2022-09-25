@@ -18,20 +18,21 @@ $jwtInfo = $jwtFunction(json_encode(['jwt'=>explode(" ",$headers["Authorization"
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if ($json['user']['user_type']=="Client"){
+if ($json['user']['user_type']== "Client"){
 
-    $query=$mysqli->prepare("SELECT products.id , products.name, products.picture_url, products.price, products.categories_id  FROM products JOIN cart ON products.id = cart.product_id where cart.user_id= ?");
+    $query=$mysqli->prepare("SELECT products.id , products.name, products.picture_url, products.price, products.categories_id  FROM products JOIN cart ON products.id = cart.product_id where cart.user_id = ?");
     $query->bind_param("i", $json['user']['id']);
     $query->execute(); 
     $result = $query->get_result();
-    $response =[];
-    
+    $response = [];
+    $cart = [];
     if(($result->num_rows)>0){
         $response["success"] =true;
         $info=[];
         while($a = $result->fetch_assoc()){
-            $response[] = $a;
+            $cart[] = $a;
         } 
+        $response['cart'] = $cart;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
     }
