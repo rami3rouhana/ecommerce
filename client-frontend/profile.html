@@ -63,18 +63,19 @@
             <h1>Name</h1>
             <p class="title">email</p>
             <p></p>
-            <p><button>Update Profile</button></p>
+            <p><button id="update-popup-btn">Update Profile</button></p>
         </div>
         <div id="profile-popup-form" class="seller-popup  hidden">
             <div class="seller-popup-form">
               <div class="close-btn-container">
-                <div class="close-btn" id="close-btn">X</div>
+                <div class="close-btn" id="close-update-popup-btn">X</div>
               </div>
               <img src="" alt="">
-              <h2><input type="text" placeholder="Name"></h2>
-              <h2><input type="text" placeholder="Email"></h2>
-              <h2><input type="text" placeholder="Password"></h2>
-              <h2><input type="file"></h2>
+              <h2><input type="text" placeholder="Name" id="profile-name"></h2>
+              <h2><input type="text" placeholder="Email" id="profile-email"></h2>
+              <h2><input type="text" placeholder="Password" id="profile-pass"></h2>
+              <h2><input type="file" id="profile-picture"></h2>
+              <h2><button id="update-submit-btn">Update</button></h2>
             </div>
           </div>
       </div>
