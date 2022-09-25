@@ -40,3 +40,4 @@ if ($json['user']['user_type'] == "Client") {
         }
     }
 }
+?>

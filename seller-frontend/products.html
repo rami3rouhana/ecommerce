@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -70,18 +71,21 @@
                 <button id="add-product" class="btn">Submit</button>
               </div>
             </div>
-            <div class="input-box">
+            <div class="input-box hidden" id="edit-product-name">
+              <h3>Edit Product</h3>
               <input
                 type="text"
                 class="input"
                 placeholder="Selected Product Name"
+                id="new-name"
               />
               <input
-                type="text"
+                type="number"
                 class="input"
                 placeholder="Selected Product Price"
+                id="new-price"
               />
-              <select class="input">
+              <select class="input" id="edit-product-categories">
                 <option value="">Selected Product Category</option>
               </select>
               <div class="btns">
@@ -91,7 +95,7 @@
                     <input id="file-input" type="file" />
                   </div>
                 </button>
-                <button class="btn">Save</button>
+                <button class="btn" id="save-btn">Save</button>
               </div>
             </div>
           </div>

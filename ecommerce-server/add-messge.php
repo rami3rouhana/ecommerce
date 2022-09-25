@@ -17,19 +17,20 @@ $headers = getallheaders();
 $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorization"])[1]]));
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
+print_r($_POST['messsage']);
 
-if (isset($json['user']['id']) && isset($_POST['catName'])){
+if (isset($json['user']['id']) && isset($_POST['receiver_id']) && isset($_POST['messsage'])) {
 
-    $name=$_POST['catName'];
-    $query = $mysqli->prepare("INSERT INTO  categories (name,sellers_id) VALUE (?,?)");
-    $userid = $json['user']['id'];
-    $query->bind_param("si" ,$name, $userid);
-    $query->execute();
-    $response = [];
+    extract($_POST);
     
+    $query = $mysqli->prepare("insert into messages (sender_id, message , receiver_id)  value(?,?,?)");
+    $query->bind_param("isi", $json['user']['id'],$messsage , $receiver_id);
+    $query->execute();
+    $result = $query->get_result();
+    $response = [];
+
     if (($query->error) == "") {
         $response["success"] = true;
-        $response["id"] = $query->insert_id;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
     } else {

@@ -18,24 +18,11 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if (isset($json['user']['id']) && isset($_POST['catName'])){
-
-    $name=$_POST['catName'];
-    $query = $mysqli->prepare("INSERT INTO  categories (name,sellers_id) VALUE (?,?)");
-    $userid = $json['user']['id'];
-    $query->bind_param("si" ,$name, $userid);
-    $query->execute();
-    $response = [];
-    
-    if (($query->error) == "") {
-        $response["success"] = true;
-        $response["id"] = $query->insert_id;
-        $response["jwt"] = $json["JWT"];
-        echo json_encode($response);
-    } else {
-        $response["success"] = false;
-        $response["error"] = "Wrong Credentials";
-        echo json_encode($response);
-    }
+if (!$json['user']['user_type'] == "Admin") {
+    header("Location: http://localhost/ecommerce/admin-electron/");
+}else{
+    $response["success"] = true;
+    $response["jwt"] = $json["JWT"];
+    echo json_encode($response);
 }
 ?>

@@ -18,21 +18,17 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if ($json['user']['user_type'] == "Seller") {
+if ($json['user']['user_type'] == "Client") {
     if (isset($json['user']['id'])) {
-        $query = $mysqli->prepare("SELECT id,name FROM categories WHERE sellers_id = ?");
-        $userid = $json['user']['id'];
-        $query->bind_param("s", $userid);
+        $query = $mysqli->prepare("INSERT INTO cart (cart.user_id, cart.product_id) SELECT whishlist.users_id, whishlist.products_id FROM whishlist where whishlist.users_id= ? ");
+        $query->bind_param("i", $json['user']['id']);
+        $query->execute();
+        $query = $mysqli->prepare("delete from whishlist where whishlist.users_id= ? ");
+        $query->bind_param("i",$json['user']['id']);
         $query->execute();
         $result = $query->get_result();
         $response = [];
-        $categories = [];
-
         if (($query->error) == "") {
-            while ($a = $result->fetch_assoc()) {
-                $categories[] = $a;
-            }
-            $response["categories"] = $categories;
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);
