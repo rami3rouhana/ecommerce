@@ -13,7 +13,6 @@ export const GetProducts = async () => {
         products_section.forEach(product => {
             product.addEventListener("click", (e) => {
                 console.log(e.currentTarget.parentElement.id);
-
                 document.getElementById("product-popup-form").classList.remove('hidden');
             })
         });
