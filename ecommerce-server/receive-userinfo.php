@@ -23,9 +23,10 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 if (isset($json['user']['user_type'])){
 
     $response["jwt"] = $json["JWT"];
+    $response['userid'] = $json['user']['id'];
+    $response['name'] = $json['user']['name'];
+    $response['email'] = $json['user']['email'];
     echo json_encode($response);
-
-
 }
 else {
 
