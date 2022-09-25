@@ -15,8 +15,6 @@ import { ProfilePage } from "./ProfilePage.js";
 import { Validate } from "./Validate.js";
 
 
-
-
 Validate();
 PageLocations();
 GetProducts("");
