@@ -21,19 +21,19 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 if (isset($json['user']['id']) && isset($_POST['sender_id'])) {
     extract($_POST);
-    $query = $mysqli->prepare("SELECT message  FROM messages where receiver_id=? and sender_id=? ORDER by createdAt ");
     $userid = $json['user']['id'];
-    $query->bind_param("ii", $userid, $sender_id);
+    $query = $mysqli->prepare("SELECT message  FROM chats where receiver_id=? and sender_id=? ORDER by createdAt ");
+    $query->bind_param("ss", $userid, $sender_id);
     $query->execute();
     $result = $query->get_result();
     $response = [];
-
+    $messages = [];
     if (($query->error) == "") {
         while ($a = $result->fetch_assoc()) {
-            $products[] = $a;
+            $messages[] = $a;
         }
         $response["success"] = true;
-        $response['products'] = $products;
+        $response['messages'] = $messages;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
     } else {
