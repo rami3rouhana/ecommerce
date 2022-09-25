@@ -12,6 +12,7 @@ import { PopulateCart } from "./PopulateCart.js";
 import { ChangePassword } from "./ChangePassword.js";
 import { Search } from "./Search.js";
 import { ProfilePage } from "./ProfilePage.js";
+import { ReceiveSellers } from "./RceiveSellers.js";
 
 PageLocations();
 GetProducts("");
@@ -27,4 +28,6 @@ SetItemList();
 ChangePassword();
 Search();
 ProfilePage();
+ReceiveSellers();
+
 
