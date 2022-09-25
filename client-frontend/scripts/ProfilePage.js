@@ -57,21 +57,22 @@ export const ProfilePage =  async () => {
         //Change profile card
         const url = "http://localhost/ecommerce/ecommerce-server/receive-userinfo.php";
         const response = await axios.post(url, {}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}}).then(response => {
-            console.log(response);
+            console.log(response.data['userid']);
+            let userid = (response.data['userid']);
+            let user_name = (response.data['name']);
+            let user_email = (response.data['email']);
+            //document.getElementById("profile-picture-card").setAttribute('src', "http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
+            document.getElementById("profile-picture-card").src = ("http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
+    
+            //Change profile header
+            document.getElementById("profile-img-header").setAttribute('src', "http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
+    
+            //Set profile name
+            document.getElementById("profile-card-name").innerHTML = user_name;
+            
+            //Set profile email
+            document.getElementById("profile-card-email").innerHTML = user_email;
         });
-        let userid = (response.data['userid']);
-        let user_name = (response.data['name']);
-        let user_email = (response.data['email']);
-        //document.getElementById("profile-picture-card").setAttribute('src', "http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
-        document.getElementById("profile-picture-card").src = ("http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
 
-        //Change profile header
-        document.getElementById("profile-img-header").setAttribute('src', "http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
-
-        //Set profile name
-        document.getElementById("profile-card-name").innerHTML = user_name;
-        
-        //Set profile email
-        document.getElementById("profile-card-email").innerHTML = user_email;
     }
 }
