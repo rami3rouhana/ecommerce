@@ -25,11 +25,11 @@ if (isset($json['user']['id']) && isset($_POST['catName'])){
     $userid = $json['user']['id'];
     $query->bind_param("si" ,$name, $userid);
     $query->execute();
-    $result = $query->get_result();
     $response = [];
     
     if (($query->error) == "") {
         $response["success"] = true;
+        $response["id"] = $query->insert_id;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
     } else {
