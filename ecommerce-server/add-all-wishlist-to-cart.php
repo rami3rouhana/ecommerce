@@ -19,12 +19,11 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Client") {
-    if (isset($_POST['discout_used']) && isset($json['user']['id'])) {
-        extract($_POST);
-        $query = $mysqli->prepare("INSERT INTO sold_product (sold_product.products_id, sold_product.users_id,sold_product.discout_used) SELECT cart.product_id, cart.user_id, ? FROM cart WHERE cart.user_id = ? ");
-        $query->bind_param("ii",$discout_used , $json['user']['id']);
+    if (isset($json['user']['id'])) {
+        $query = $mysqli->prepare("INSERT INTO cart (cart.user_id, cart.product_id) SELECT whishlist.users_id, whishlist.products_id FROM whishlist where whishlist.users_id= ? ");
+        $query->bind_param("i", $json['user']['id']);
         $query->execute();
-        $query = $mysqli->prepare("delete from cart where user_id = ? ");
+        $query = $mysqli->prepare("delete from whishlist where whishlist.users_id= ? ");
         $query->bind_param("i",$json['user']['id']);
         $query->execute();
         $result = $query->get_result();

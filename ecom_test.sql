@@ -75,6 +75,34 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `banned_users`
+--
+
+CREATE TABLE `banned_users` (
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `banned_users`
+--
+
+INSERT INTO `banned_users` (`user_id`) VALUES
+(4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `categories`
 --
 
@@ -239,7 +267,7 @@ INSERT INTO `reset` (`reset_url`, `user_id`, `is_reset`) VALUES
 --
 
 CREATE TABLE `sold_product` (
-  `date` datetime NOT NULL DEFAULT current_timestamp(),
+  `date` datetimetime NOT NULL DEFAULT current_timestamp() DEFAULT current_timestamp(),
   `discout_used` tinyint(1) DEFAULT NULL,
   `products_id` int(11) NOT NULL,
   `users_id` int(11) NOT NULL
@@ -366,6 +394,19 @@ ALTER TABLE `cart`
   ADD KEY `fk_product_id` (`product_id`);
 
 --
+-- Indexes for table `banned_users`
+--
+ALTER TABLE `banned_users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD KEY `fk_user_id` (`user_id`),
+  ADD KEY `fk_product_id` (`product_id`);
+
+--
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -406,6 +447,12 @@ ALTER TABLE `lotteries`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_category_id` (`categories_id`);
+
+--
+-- Indexes for table `reset`
+--
+ALTER TABLE `reset`
+  ADD PRIMARY KEY (`reset_url`);
 
 --
 -- Indexes for table `reset`
@@ -491,6 +538,19 @@ ALTER TABLE `users`
 --
 ALTER TABLE `ads`
   ADD CONSTRAINT `fk_ads_users1` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `banned_users`
+--
+ALTER TABLE `banned_users`
+  ADD CONSTRAINT `fk_userID` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `fk_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `banned_users`

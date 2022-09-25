@@ -9,24 +9,45 @@ try{
     extract($_POST);
     $jwtInfo = $jwtFunction(json_encode(['jwt' =>  $resetJwt]));
     $json = json_decode($jwtInfo, true);
-    $user_id = $json['user']['id'];
-    $pasw = $json['user']['id'];
-    $query = $mysqli->prepare("update users SET password=? where id=? ");
-    $query->bind_param("ss", $password, $user_id);
+
+    $rest_url = 'http://127.0.0.1:5500/client-frontend/reset-password.html?resetJwt='.$resetJwt;
+
+    $query = $mysqli->prepare("SELECT * FROM `reset` WHERE reset_url=?");
+    $query->bind_param("s", $rest_url);
     $query->execute();
     $result = $query->get_result();
-    $response = [];
-    if (($query->error) == "") {
-        $response["success"] = true;
-        $response["jwt"] = $json["JWT"];
-        echo json_encode($response);
-    } else {
+
+    if(($result->num_rows) ==1 && $result->fetch_assoc()['is_reset'] == 0){
+
+        $query = $mysqli->prepare("UPDATE reset SET is_reset=1 WHERE reset_url=?");
+        $query->bind_param("s", $rest_url);
+        $query->execute();
+
+        $user_id = $json['user']['id'];
+        $password = hash('sha256', $password);
+        $query = $mysqli->prepare("update users SET password=? where id=? ");
+        $query->bind_param("ss", $password, $user_id);
+        $query->execute();
+        $result = $query->get_result();
+        $response = [];
+        if (($query->error) == "") {
+            $response["success"] = true;
+            $response["jwt"] = $json["JWT"];
+            echo json_encode($response);
+        } else {
+            $response["success"] = false;
+            $response["error"] = "Wrong Credentials";
+            echo json_encode($response);
+    }}
+    else{
         $response["success"] = false;
-        $response["error"] = "Wrong Credentials";
+        $response["error"] = "Url already used";
         echo json_encode($response);
     }
 } catch (Exception $e) {
-    echo "Wong Url Link";
+    $response["success"] = false;
+    $response["error"] = "Wong Url Link";
+    echo json_encode($response);
 }
 
 // $user_info = $jwt(json_encode([
