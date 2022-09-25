@@ -1,5 +1,6 @@
 import { Product } from "./Product.js";
 import { AddTo } from "./AddTo.js";
+import { ProductPopup } from "./ProductPopup.js";
 
 export const GetProducts = async (search) => {
     if (document.getElementById("products-row")) {
@@ -32,9 +33,10 @@ export const GetProducts = async (search) => {
         const products_section = Array.prototype.slice.call(document.getElementsByClassName("image-product"));
         products_section.forEach(product => {
             product.addEventListener("click", (e) => {
-                console.log(e.currentTarget.parentElement.id);
-
-                document.getElementById("product-popup-form").classList.remove('hidden');
+                let id = (e.currentTarget.parentElement.id);
+                console.log(id);
+                ProductPopup(id);
+                
             })
         });
 
