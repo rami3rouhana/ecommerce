@@ -17,14 +17,13 @@ $headers = getallheaders();
 $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorization"])[1]]));
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
-print_r($_POST['messsage']);
 
-if (isset($json['user']['id']) && isset($_POST['receiver_id']) && isset($_POST['messsage'])) {
+if (isset($json['user']['id']) && isset($_POST['receiver_id']) && isset($_POST['message'])) {
 
     extract($_POST);
     
     $query = $mysqli->prepare("insert into messages (sender_id, message , receiver_id)  value(?,?,?)");
-    $query->bind_param("isi", $json['user']['id'],$messsage , $receiver_id);
+    $query->bind_param("isi", $json['user']['id'],$message , $receiver_id);
     $query->execute();
     $result = $query->get_result();
     $response = [];
