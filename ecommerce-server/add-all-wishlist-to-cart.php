@@ -19,10 +19,25 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Client") {
+    extract($_POST);
     if (isset($json['user']['id'])) {
+
         $query = $mysqli->prepare("INSERT INTO cart (cart.user_id, cart.product_id) SELECT whishlist.users_id, whishlist.products_id FROM whishlist where whishlist.users_id= ? ");
         $query->bind_param("i", $json['user']['id']);
         $query->execute();
+
+        if($discount!=""){
+            $query = $mysqli->prepare("UPDATE discounts SET is_used = 1 WHERE code= ?");
+            $query->bind_param("i", $discount);
+            $query->execute();
+        }
+
+        if($voucher!=""){
+            $query = $mysqli->prepare("UPDATE vouchers SET is_used = 1 WHERE code= ?");
+            $query->bind_param("i", $voucher);
+            $query->execute();  
+        }
+
         $query = $mysqli->prepare("delete from whishlist where whishlist.users_id= ? ");
         $query->bind_param("i",$json['user']['id']);
         $query->execute();

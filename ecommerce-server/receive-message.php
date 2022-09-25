@@ -18,18 +18,22 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if (isset($json['user']['id']) && isset($_POST['receiver_id']) && isset($_POST['message'])) {
 
+if (isset($json['user']['id']) && isset($_POST['sender_id'])) {
     extract($_POST);
-    
-    $query = $mysqli->prepare("insert into messages (sender_id, message , receiver_id)  value(?,?,?)");
-    $query->bind_param("isi", $json['user']['id'],$message , $receiver_id);
+    $query = $mysqli->prepare("SELECT sender_id , message , receiver_id FROM messages where receiver_id=? and sender_id=? ORDER by createdAt ");
+    $userid = $json['user']['id'];
+    $query->bind_param("ii", $userid, $sender_id);
     $query->execute();
     $result = $query->get_result();
     $response = [];
 
     if (($query->error) == "") {
+        while ($a = $result->fetch_assoc()) {
+            $products[] = $a;
+        }
         $response["success"] = true;
+        $response['products'] = $products;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
     } else {
