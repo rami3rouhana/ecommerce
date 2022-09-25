@@ -15,16 +15,16 @@
   <body>
     <div class="nav-bar">
       <div class="header">
-        <img id="profile-img-header" src="" alt="" class="profile-img" />
+        <img src="" alt="" class="profile-img" id="profile-img-header" />
         <h2 class="color-white">Client Name</h2>
       </div>
 
       <div class="nav-buttons">
         <button id="products">Products</button>
-        <button  id="cart">Cart</button>
-        <button class="clicked"  id="whishlist">Wishlist</button>
+        <button id="cart">Cart</button>
+        <button id="whishlist">Wishlist</button>
         <button id="favorite">Favorites</button>
-        <button id="profile">Profile</button>
+        <button class="clicked" id="profile">Profile</button>
       </div>
 
       <div class="logout">
@@ -58,10 +58,26 @@
             </div>
           </div>
         </div>
-
-        <div class="row" id="whishlist-row">
-          
+        <div class="card">
+            <img src="./images/logo.png" alt="John" id="profile-picture-card" style="width:100%">
+            <h1 id="profile-card-name">Name</h1>
+            <p id="profile-card-email" class="title">email</p>
+            <p></p>
+            <p><button id="update-popup-btn">Update Profile</button></p>
         </div>
+        <div id="profile-popup-form" class="seller-popup  hidden">
+            <div class="seller-popup-form">
+              <div class="close-btn-container">
+                <div class="close-btn" id="close-update-popup-btn">X</div>
+              </div>
+              <img src="" alt="">
+              <h2><input type="text" placeholder="Name" id="profile-name"></h2>
+              <h2><input type="text" placeholder="Email" id="profile-email"></h2>
+              <h2><input type="text" placeholder="Password" id="profile-pass"></h2>
+              <h2><input type="file" id="profile-picture"></h2>
+              <h2><button id="update-submit-btn">Update</button></h2>
+            </div>
+          </div>
       </div>
     </div>
     <script type="module" src="./scripts/index.js"></script>

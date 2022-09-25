@@ -24,7 +24,7 @@ if ($json['user']['user_type'] == "Client") {
         $query = $mysqli->prepare("INSERT INTO sold_product (sold_product.products_id, sold_product.users_id,sold_product.discout_used) SELECT cart.product_id, cart.user_id, ? FROM cart WHERE cart.user_id = ? ");
         $query->bind_param("ii",$discout_used , $json['user']['id']);
         $query->execute();
-        $query = $mysqli->prepare("delete from cart where user_id= ? ");
+        $query = $mysqli->prepare("delete from cart where user_id = ? ");
         $query->bind_param("i",$json['user']['id']);
         $query->execute();
         $result = $query->get_result();
@@ -40,3 +40,4 @@ if ($json['user']['user_type'] == "Client") {
         }
     }
 }
+?>

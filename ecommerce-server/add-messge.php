@@ -17,24 +17,19 @@ $headers = getallheaders();
 $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorization"])[1]]));
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
+print_r($_POST['messsage']);
 
-if (isset($_POST['product_id'])) {
+if (isset($json['user']['id']) && isset($_POST['receiver_id']) && isset($_POST['messsage'])) {
 
     extract($_POST);
-
-    $query = $mysqli->prepare("SELECT products.id as product_id, picture_url, price, products.name, views, categories.sellers_id as seller_id, users.f_name as seller_name FROM products 
-    JOIN categories ON products.categories_id = categories.id 
-    JOIN users ON categories.sellers_id = users.id WHERE products.id = ?");
-    $query->bind_param("i", $product_id);
+    
+    $query = $mysqli->prepare("insert into messages (sender_id, message , receiver_id)  value(?,?,?)");
+    $query->bind_param("isi", $json['user']['id'],$messsage , $receiver_id);
     $query->execute();
     $result = $query->get_result();
     $response = [];
-    $product_info = [];
+
     if (($query->error) == "") {
-        while ($a = $result->fetch_assoc()) {
-            $product_info[] = $a;
-        }
-        $response['product_info'] = $product_info;
         $response["success"] = true;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);

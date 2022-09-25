@@ -19,12 +19,13 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Client") {
-    if (isset($json['user']['id']) && isset($_POST['product_id'])) {
-        
+    if (isset($_POST['password']) && isset($_POST['f_name']) && isset($_POST['email']) && isset($_POST['id'])) {
+       
         extract($_POST);
+        //$password = hash('sha256',$_POST['password']);
         
-        $query = $mysqli->prepare("insert into favorites (users_id , product_id)  value(?,?)");
-        $query->bind_param("ii", $json['user']['id'] , $product_id);
+        $query = $mysqli->prepare("update users SET users.password=?, users.f_name=?, users.email=? where users.user_type='Seller' and id=? ");
+        $query->bind_param("sssi", $password, $f_name , $email , $id);
         $query->execute();
         $result = $query->get_result();
         $response = [];
@@ -39,8 +40,5 @@ if ($json['user']['user_type'] == "Client") {
             echo json_encode($response);
         }
     }
-}
-else{
-    echo 'not a client';
 }
 ?>

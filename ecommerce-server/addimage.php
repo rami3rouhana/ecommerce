@@ -1,3 +1,4 @@
+
 <?php
 // Connection
 include("connection.php");
@@ -18,17 +19,26 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if ($json['user']['user_type'] == "Client") {
-    if (isset($json['user']['id']) && isset($_POST['product_id'])) {
-        
-        extract($_POST);
-        
-        $query = $mysqli->prepare("insert into favorites (users_id , product_id)  value(?,?)");
-        $query->bind_param("ii", $json['user']['id'] , $product_id);
+if (isset($json['user']['id']) && isset($_POST['image64base'])){
+    extract($_POST);
+    $name = $json['user']['id'] . "-" . ($json['user']['name']);
+    $base64_string = $image64base;
+    //echo $base64_string;
+    $decoder = base64_decode($base64_string);
+    $img = imagecreatefromstring($decoder);
+    //echo $decoder;
+    if($img){
+            //echo 'worked';
+            $url = '../client-frontend/images/uploadedimages/' . $name . ".jpg";
+            imagejpeg($img, $url);
+            //query to insert
+            $response['addedimage'] = true;
+            $query = $mysqli->prepare("UPDATE `users` SET `profile_pic` = ? WHERE `users`.`id` = ?");
+            $query->bind_param("si", $url, $json['user']['id']);
+        }
         $query->execute();
-        $result = $query->get_result();
-        $response = [];
-
+        $response['editeduser'] = true;
+    
         if (($query->error) == "") {
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
@@ -38,9 +48,5 @@ if ($json['user']['user_type'] == "Client") {
             $response["error"] = "Wrong Credentials";
             echo json_encode($response);
         }
-    }
-}
-else{
-    echo 'not a client';
 }
 ?>

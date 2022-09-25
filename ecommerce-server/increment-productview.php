@@ -1,5 +1,5 @@
 <?php
-// Connection
+//INSERT INTO `vouchers` (`code`, `amount`, `used`, `client_id`) VALUES ('AED123', '20', '0', '1');
 include("connection.php");
 //required file
 require __DIR__ . '/../vendor/autoload.php';
@@ -17,17 +17,13 @@ $headers = getallheaders();
 $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorization"])[1]]));
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
-
 if ($json['user']['user_type'] == "Client") {
-    if (isset($json['user']['id']) && isset($_POST['product_id'])) {
-        
+    if (isset($_POST['product_id'])) {
         extract($_POST);
-        
-        $query = $mysqli->prepare("insert into favorites (users_id , product_id)  value(?,?)");
-        $query->bind_param("ii", $json['user']['id'] , $product_id);
+        $query = $mysqli->prepare("UPDATE products SET views = views + 1 WHERE products.id = ?");
+        $query->bind_param("i", $product_id);
         $query->execute();
         $result = $query->get_result();
-        $response = [];
 
         if (($query->error) == "") {
             $response["success"] = true;
@@ -41,6 +37,6 @@ if ($json['user']['user_type'] == "Client") {
     }
 }
 else{
-    echo 'not a client';
+    echo 'jwt error';
 }
 ?>

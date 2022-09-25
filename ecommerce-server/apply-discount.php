@@ -19,17 +19,21 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Client") {
-    if (isset($json['user']['id']) && isset($_POST['product_id'])) {
-        
+    if (isset($_POST['discount_code'])) {
+
         extract($_POST);
-        
-        $query = $mysqli->prepare("insert into favorites (users_id , product_id)  value(?,?)");
-        $query->bind_param("ii", $json['user']['id'] , $product_id);
+
+        $query = $mysqli->prepare("SELECT cart.product_id, products.name FROM cart JOIN products ON cart.product_id = products.id WHERE cart.user_id = ? AND cart.product_id IN (SELECT products.id as product_id FROM products JOIN categories ON products.categories_id = categories.id JOIN discounts ON categories.id = discounts.category_id WHERE discounts.code = ?); ");
+        $query->bind_param("is", $json['user']['id'] , $discount_code);
         $query->execute();
         $result = $query->get_result();
         $response = [];
-
+        $itemsAffected = [];
         if (($query->error) == "") {
+            while ($a = $result->fetch_assoc()) {
+                $itemsAffected[] = $a;
+            }
+            $response['itemsAffected'] = $itemsAffected;
             $response["success"] = true;
             $response["jwt"] = $json["JWT"];
             echo json_encode($response);
@@ -39,8 +43,5 @@ if ($json['user']['user_type'] == "Client") {
             echo json_encode($response);
         }
     }
-}
-else{
-    echo 'not a client';
 }
 ?>
