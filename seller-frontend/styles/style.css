@@ -396,3 +396,16 @@ table td {
 	width: 90%;
     margin-bottom: 10px;
 }
+
+.fadeIn {
+  opacity: 0;
+  transform: translate3d(0, -50px, 0); /* ADDED - start y position as -50px */
+
+  cursor: pointer;
+  transition: 0.25s all ease-in-out;
+}
+
+.fadeOut {
+  opacity: 1;
+  transform: translate3d(0, 0, 0); /* ADDED - move y to 0 on hover */
+}

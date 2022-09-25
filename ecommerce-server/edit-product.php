@@ -23,8 +23,8 @@ if ($json['user']['user_type'] == "Seller") {
        
         extract($_POST);
         $name = $_POST['proName'];
-        $query = $mysqli->prepare("update products SET name=?, picture_url=?, price=?, categories_id=? where id=? ");
-        $query->bind_param("sssii",$name, $picture_url , $price , $categories_id, $id );
+        $query = $mysqli->prepare("update products SET name=?, price=?, categories_id=? where id=? ");
+        $query->bind_param("ssii",$name , $price , $categories_id, $id );
         $query->execute();
         $result = $query->get_result();
         $response = [];

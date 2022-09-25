@@ -26,36 +26,29 @@ if ($json['user']['user_type'] == "Seller") {
         $base64_string = $image64base;
         //echo $base64_string;
         $decoder = base64_decode($base64_string);
-        $img = imagecreatefromstring($decoder);
-        imageinterlace($img, true);
+        $url = '../client-frontend/images/uploadedimages/' . $name . ".jpg";
+        file_put_contents($url,$decoder);
 
-        //echo $decoder;
-        if($img){
-                //echo 'worked';
-                $url = '../client-frontend/images/uploadedimages/' . $name . ".jpg";
-                imagejpeg($img, $url);
-                //query to insert
-                $response['addedimage'] = true;
-                $query = $mysqli->prepare("insert into products (name , picture_url, price , categories_id)  value(?,?,?,?)");
-                $query->bind_param("ssss", $name , $url , $price, $categories_id);
-                $query->execute();
-                $query->get_result();
-                $response = [];
-                if (($query->error) == "") {
-                    $response["id"] = $query->insert_id;
-                    $response["success"] = true;
-                    $response["jwt"] = $json["JWT"];
-                    echo json_encode($response);
-                } else {
-                    $response["success"] = false;
-                    $response["error"] = "Wrong Credentials";
-                    echo json_encode($response);
-                }
-            }
-            else{
-                echo 'img error';
-            }
+        $response['addedimage'] = true;
+        $query = $mysqli->prepare("insert into products (name , picture_url, price , categories_id)  value(?,?,?,?)");
+        $query->bind_param("ssss", $name , $url , $price, $categories_id);
+        $query->execute();
+        $query->get_result();
+        $response = [];
+        if (($query->error) == "") {
+            $response["id"] = $query->insert_id;
+            $response["success"] = true;
+            $response["jwt"] = $json["JWT"];
+            echo json_encode($response);
+        } else {
+            $response["success"] = false;
+            $response["error"] = "Wrong Credentials";
+            echo json_encode($response);
+        }
+    }
+    else{
+        echo 'img error';
+    }
         ///
     }
-}
 ?>

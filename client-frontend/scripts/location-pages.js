@@ -32,4 +32,5 @@ export const PageLocations = () => {
         localStorage.removeItem("token");
         window.location.href = "../client-frontend/index.html";
     })
+
 }
