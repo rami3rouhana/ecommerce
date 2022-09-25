@@ -394,7 +394,7 @@ p {
   flex-wrap: wrap;
   padding: 0 5px;
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   height: auto;
   background-color: #eaeaf4;
   justify-content: space-around;
@@ -466,7 +466,7 @@ table {
   padding: 20px;
   background-color: #eaeaf4;
   display: flex;
-  height: 100%;
+  height: auto;
 }
 
 .cart-delete-button{
@@ -604,6 +604,7 @@ button{
   max-width: 300px;
   margin: auto;
   text-align: center;
+  margin-top: 100px;
 }
 
 .title {
@@ -705,6 +706,11 @@ button:hover, a:hover {
 .profile {
   align-items: center;
   display: flex;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+.profile:hover {
+  box-shadow: inset 200px 0 0 0 #54b3d6;
+  color: white;
 }
 .chat-box-input {
   width: 75%;

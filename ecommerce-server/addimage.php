@@ -25,17 +25,13 @@ if (isset($json['user']['id']) && isset($_POST['image64base'])){
     $base64_string = $image64base;
     //echo $base64_string;
     $decoder = base64_decode($base64_string);
-    $img = imagecreatefromstring($decoder);
-    //echo $decoder;
-    if($img){
-            //echo 'worked';
-            $url = '../client-frontend/images/uploadedimages/' . $name . ".jpg";
-            imagejpeg($img, $url);
-            //query to insert
-            $response['addedimage'] = true;
-            $query = $mysqli->prepare("UPDATE `users` SET `profile_pic` = ? WHERE `users`.`id` = ?");
-            $query->bind_param("si", $url, $json['user']['id']);
-        }
+    $url = '../client-frontend/images/uploadedimages/' . $name . ".jpg";
+    file_put_contents($url,$decoder);
+        //echo 'worked';
+        //query to insert
+        $response['addedimage'] = true;
+        $query = $mysqli->prepare("UPDATE `users` SET `profile_pic` = ? WHERE `users`.`id` = ?");
+        $query->bind_param("si", $url, $json['user']['id']);
         $query->execute();
         $response['editeduser'] = true;
     

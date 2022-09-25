@@ -27,4 +27,9 @@ export const PageLocations = () => {
     document.getElementById("to-login").addEventListener("click", () => {
         window.location.href = "http://127.0.0.1:5500/client-frontend/index.html";
     })
+    if(document.getElementById("logout"))
+    document.getElementById("logout").addEventListener("click", () => {
+        localStorage.removeItem("token");
+        window.location.href = "../client-frontend/index.html";
+    })
 }
