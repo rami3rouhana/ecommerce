@@ -489,6 +489,19 @@ table {
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
+  position: fixed;
+  top: 25%;
+  left: 35%;
+  min-width: 40%;
+  max-width: 60%;
+  align-self: center;
+  min-height: 50%;
+  max-height: 70%;
+}
+
+.popup-form-img{
+  width: 50%;
+  height: 50%;
 }
 
 .close-btn-container{

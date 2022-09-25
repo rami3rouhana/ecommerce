@@ -12,14 +12,9 @@ import { PopulateCart } from "./PopulateCart.js";
 import { ChangePassword } from "./ChangePassword.js";
 import { Search } from "./Search.js";
 import { ProfilePage } from "./ProfilePage.js";
-<<<<<<< HEAD
 import { ReceiveSellers } from "./RceiveSellers.js";
-||||||| 49a3662
-=======
 import { Validate } from "./Validate.js";
->>>>>>> 062fa724ac1d5b4fb8bc4f06cb254f632c74c971
-
-
+import { SendVoucher } from "./SendVoucher.js";
 
 
 Validate();
@@ -38,5 +33,5 @@ ChangePassword();
 Search();
 ProfilePage();
 ReceiveSellers();
-
+SendVoucher();
 

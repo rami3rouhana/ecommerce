@@ -14,34 +14,32 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 
 $headers = getallheaders();
 
-$jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorization"])[1]]));
+$jwtInfo = $jwtFunction(json_encode(['jwt'=>explode(" ",$headers["Authorization"])[1]]));
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if(isset($json['user']['id'])) {
 
-    $query = $mysqli->prepare("SELECT * FROM vouchers WHERE vouchers.client_email = ? AND vouchers.used = 0");
-    $query->bind_param("s" , $json['user']['email']);
-    $query->execute();
+if ($json['user']['user_type'] == "Admin" || $json['user']['user_type']=="Client" ){
+    $query=$mysqli->prepare("SELECT * FROM `lotteries` WHERE lotteries.id_match_one = -1 OR lotteries.id_match_two = -1 OR lotteries.id_match_three = -1");
+    $query->execute(); 
     $result = $query->get_result();
-    $response = [];
-    $results = [];
-    if (($query->error) == "") {
+    $response =[];
+    
+    if(($result->num_rows)>0){
+        $response["success"] =true;
         while($a = $result->fetch_assoc()){
-            $results[] = $a;
-        }
-        $response['results'] = $results; 
-        $response["success"] = true;
+            $lotteries[] = $a;
+        } 
+        $response["lotteries"] = $lotteries;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
-    } else {
-        $response["success"] = false;
-        $response["error"] = "Wrong Credentials";
+    }
+    else{
+        $response["success"] =false;
+        $response["error"] ="Wrong Credentials";
         echo json_encode($response);
     }
-}
-else{
-    echo 'jwt erro';
+
 }
 
 ?>

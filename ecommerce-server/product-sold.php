@@ -14,34 +14,34 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 
 $headers = getallheaders();
 
-$jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorization"])[1]]));
+$jwtInfo = $jwtFunction(json_encode(['jwt'=>explode(" ", $headers["Authorization"])[1]]));
 
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
-if(isset($json['user']['id'])) {
 
-    $query = $mysqli->prepare("SELECT * FROM vouchers WHERE vouchers.client_email = ? AND vouchers.used = 0");
-    $query->bind_param("s" , $json['user']['email']);
-    $query->execute();
+if ($json['user']['user_type'] == "Seller" && isset($_POST['product_id'])){
+
+    extract($_POST);
+    $query=$mysqli->prepare("SELECT COUNT(sold_product.products_id) as timesSold FROM sold_product JOIN products ON sold_product.products_id = products.id WHERE products.id = ?");
+    $query->bind_param("i", $product_id);
+    $query->execute(); 
     $result = $query->get_result();
-    $response = [];
-    $results = [];
-    if (($query->error) == "") {
+    $response =[];
+    
+    if(($result->num_rows)>0){
+        $response["success"] =true;
         while($a = $result->fetch_assoc()){
-            $results[] = $a;
-        }
-        $response['results'] = $results; 
-        $response["success"] = true;
+            $timesSold= $a;
+        } 
+        $response["result"] = $timesSold;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
-    } else {
+    }
+    else{
         $response["success"] = false;
-        $response["error"] = "Wrong Credentials";
+        $response["error"] = "No stats to return";
         echo json_encode($response);
     }
-}
-else{
-    echo 'jwt erro';
 }
 
 ?>

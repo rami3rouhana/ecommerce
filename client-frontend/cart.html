@@ -76,18 +76,19 @@
           <div class="dash"></div>
           <div class="right">
             <div class="cart-input">
-              <input type="text" placeholder="Voucher Email" class="input" />
+              <input type="text" id="voucher-email" placeholder="Voucher Email" class="input" />
               <div class="prices color-purple">
-                <input type="radio" id="p1" name="prices"/>
+                <input type="radio" id="p1" value="10" name="prices"/>
                 <label for="p1" name="prices">10$</label>
-                <input type="radio" id="p2"  name="prices"/>
+                <input type="radio" id="p2" value="20"  name="prices"/>
                 <label id="p2" name="prices">20$</label>
-                <input type="radio" id="p3" name="prices"/>
+                <input type="radio" id="p3" value="50"  name="prices"/>
                 <label id="p3" name="prices">50$</label>
-                <input type="radio" name="prices"/>
-                <label name="prices">100$</label>
+                <input type="radio" value="100" name="prices"/>
+                <label name="prices" >100$</label>
               </div>
-              <input type="email" placeholder="Voucher Code" class="input" />
+              <input id="voucher-code" type="text" placeholder="Voucher Code" class="input" />
+              <button id="send-voucher" class="discount-container-btn">Send Voucher</button>
               <!--<div class="discount-container">
                 <input type="text" placeholder="Discount Code" id="discount-code" class="discount-container-input discount-container-divs"/>
                 <button id="apply-discount" class="btn discount-container-divs">Apply Discount</button>
@@ -97,7 +98,7 @@
                 <input type="text" placeholder="Discount Code" id="discount-code" class="discount-container-input discount-container-divs"/>
               </div>
               <div class="discount-container-divs">
-                <button id="apply-discount" class="discount-container-btn">Apply Voucher</button>
+                <button id="apply-discount" class="discount-container-btn">Apply Discount</button>
               </div>
             </div>
               <div class="discount-container">

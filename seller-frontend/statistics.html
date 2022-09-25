@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/seller-frontend/styles/style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <title>Document</title>
   </head>
@@ -49,11 +49,13 @@
               </select>
             </div>
 
-            <table class="table">
+            <table id="stats-table" class="table">
               <tr>
-                <th  class="th color-purple">Category Name</th>
+                <th  class="th color-purple">Product ID</th>
                 <th  class="th color-purple">Product Name</th>
                 <th  class="th color-purple">Product Price</th>
+                <th  class="th color-purple">Views</th>
+                <th  class="th color-purple">Times Sold</th>
               </tr>
               <tr>
                 <td id="cat-name"></td>
