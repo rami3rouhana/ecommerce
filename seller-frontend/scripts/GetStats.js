@@ -8,20 +8,20 @@ export const GetStats = async () => {
         const response = await axios.post(url, data, { headers: { 'Authorization': `token ${localStorage.getItem("token")}` } })
         console.log(response.data.stats);
 
-        response.data.stats.map(stat => {
-            //console.log(stat.product_name);
-            tableHTML +=
-            (`
+        const asyncRes = await Promise.all(response.data.stats.map(async (stat) =>  {
+            console.log(stat.product_name);
+            const url2 = "http://localhost/ecommerce/ecommerce-server/product-sold.php";
+            const response2 = await axios.post(url2, {"product_id": stat.product_id}, { headers: { 'Authorization': `token ${localStorage.getItem("token")}` } })
+            tableHTML += (`
                 <tr>    
                     <td>${stat.product_id}</td>
                     <td>${stat.product_name}</td>
                     <td>${stat.product_price}</td>
                     <td>${stat.product_views}</td>
-                    <td>Times Sold</td>
-                </tr>
-            `)
-            console.log(tableHTML);
-        })
+                    <td>${response2.data.result['timesSold']}</td>
+                </tr> `)
+            
+        }))
         document.getElementById("stats-table").innerHTML = tableHTML; 
     }
 }
