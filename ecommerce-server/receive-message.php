@@ -19,10 +19,11 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 
-if (isset($json['user']['id'])) {
-    $query = $mysqli->prepare("SELECT sender_id , message FROM messages where receiver_id=? ORDER by createdAt ");
+if (isset($json['user']['id']) && isset($_POST['sender_id'])) {
+    extract($_POST);
+    $query = $mysqli->prepare("SELECT sender_id , message , receiver_id FROM messages where receiver_id=? and sender_id=? ORDER by createdAt ");
     $userid = $json['user']['id'];
-    $query->bind_param("i", $userid);
+    $query->bind_param("ii", $userid, $sender_id);
     $query->execute();
     $result = $query->get_result();
     $response = [];
