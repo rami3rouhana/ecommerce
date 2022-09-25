@@ -26,7 +26,7 @@ export const ReceiveSellers = async () => {
         document.getElementById('seller-users').appendChild(users);
         users.addEventListener("click", () => {
             document.getElementById("user-id").setAttribute("user-id",seller.id) ;
-            ReceiveMessages()
+            ReceiveMessages();
         })
     })
 

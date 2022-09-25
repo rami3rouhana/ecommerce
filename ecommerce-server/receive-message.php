@@ -22,8 +22,8 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 if (isset($json['user']['id']) && isset($_POST['sender_id'])) {
     extract($_POST);
     $userid = $json['user']['id'];
-    $query = $mysqli->prepare("SELECT message  FROM chats where receiver_id=? and sender_id=? ORDER by createdAt ");
-    $query->bind_param("ss", $userid, $sender_id);
+    $query = $mysqli->prepare("SELECT message, receiver_id  FROM messages where (receiver_id=? and sender_id=?) or (receiver_id=? and sender_id=?) ORDER by createdAt ");
+    $query->bind_param("ssss", $userid, $sender_id,$sender_id, $userid);
     $query->execute();
     $result = $query->get_result();
     $response = [];
@@ -32,6 +32,7 @@ if (isset($json['user']['id']) && isset($_POST['sender_id'])) {
         while ($a = $result->fetch_assoc()) {
             $messages[] = $a;
         }
+        $response["user_id"] = $userid;
         $response["success"] = true;
         $response['messages'] = $messages;
         $response["jwt"] = $json["JWT"];
@@ -42,4 +43,3 @@ if (isset($json['user']['id']) && isset($_POST['sender_id'])) {
         echo json_encode($response);
     }
 }
-?>

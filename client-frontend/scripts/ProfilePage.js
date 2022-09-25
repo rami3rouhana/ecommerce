@@ -3,7 +3,6 @@ export const ProfilePage =  async () => {
     if(document.getElementById("profile-img-header")){
         const url = "http://localhost/ecommerce/ecommerce-server/receive-userinfo.php";
         const response = await axios.post(url, {}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}})
-        console.log(response.data['userid']);
         let userid = (response.data['userid']);
         let user_name = (response.data['name']);
         let user_email = (response.data['email']);
