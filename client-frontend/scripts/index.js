@@ -15,7 +15,8 @@ import { ProfilePage } from "./ProfilePage.js";
 import { ReceiveSellers } from "./RceiveSellers.js";
 import { Validate } from "./Validate.js";
 import { SendVoucher } from "./SendVoucher.js";
-
+import { ReceiveMessages } from "./ReceiveMessages.js";
+import { Chats } from "./Chats.js";
 
 Validate();
 PageLocations();
@@ -34,4 +35,6 @@ Search();
 ProfilePage();
 ReceiveSellers();
 SendVoucher();
+ReceiveMessages();
+Chats();
 
