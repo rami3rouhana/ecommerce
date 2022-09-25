@@ -16,10 +16,10 @@ export const login = async () => {
             console.log(data);
             const user = await axios.post(url, data);
             console.log(user);
-            if(user.data.jwt != undefined){
+            if (user.data.jwt != undefined) {
                 localStorage.setItem("token", user.data.jwt)
-                window.location.href = 'http://localhost/ecommerce/client-frontend/products.html';
+                user.data.role === "Seller" ? window.location.href = 'http://127.0.0.1:5500/seller-frontend/products.html' : window.location.href = 'http://127.0.0.1:5500/client-frontend/products.html';
             }
-            
         })
-}}
+    }
+}

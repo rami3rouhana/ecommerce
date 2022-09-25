@@ -19,16 +19,20 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Client") {
-    if(!header("Location: http://127.0.0.1:5500/client-frontend/products.html") && !header("Location: http://127.0.0.1:5500/client-frontend/cart.html") && !header("Location: http://127.0.0.1:5500/client-frontend/favorites.html") && !header("Location: http://127.0.0.1:5500/client-frontend/wishlist.html") )
     $response["success"] = true;
     $response["jwt"] = $json["JWT"];
+    $response["role"] = $json["user"]['user_type'];
     echo json_encode($response);
 }else if ($json['user']['user_type'] == "Seller") {
-    if(!header("Location: http://127.0.0.1:5500/seller-frontend/ads.html") && !header("Location: http://127.0.0.1:5500/seller-frontend/categories.html") && !header("Location: http://127.0.0.1:5500/seller-frontend/products.html") && !header("Location: http://127.0.0.1:5500/seller-frontend/statistics.html") && !header("Location: http://127.0.0.1:5500/seller-frontend/discounts.html") )
-        $response["success"] = true;
-        $response["jwt"] = $json["JWT"];
-        $response["role"] = $json["user"]['user_type'];
-        echo json_encode($response);
+    $response["success"] = true;
+    $response["jwt"] = $json["JWT"];
+    $response["role"] = $json["user"]['user_type'];
+    echo json_encode($response);
+}else if ($json['user']['user_type'] == "Admin") {
+    $response["success"] = true;
+    $response["jwt"] = $json["JWT"];
+    $response["role"] = $json["user"]['user_type'];
+    echo json_encode($response);
 }else {
     $response["success"] = false;
     $response["error"] = "Not valid Credentials";

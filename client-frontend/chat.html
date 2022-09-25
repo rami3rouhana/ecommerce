@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <title>Products</title>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="header">
+        <img src="" alt="" class="profile-img" />
+        <h2 class="color-white">Client Name</h2>
+      </div>
+
+      <div class="nav-buttons">
+        <button id="products">Products</button>
+        <button id="cart">Cart</button>
+        <button id="whishlist">Wishlist</button>
+        <button id="favorite">Favorites</button>
+        <button id="profile">Profile</button>
+        <button id="chat" class="clicked">Chat</button>
+      </div>
+
+      <div class="logout">
+        <button>Logout</button>
+      </div>
+    </div>
+
+    <div class="main main-category">
+      <div class="body">
+        <div class="header-top">
+          <div class="buttons">
+            <button class="header-btn clicked">Products</button>
+          </div>
+          <div class="lottery">
+            <input type="number" class="num" />
+            <input type="number" class="num" />
+            <input type="number" class="num" />
+            <button class="btn" id="lottery-btn">Lucky ?</button>
+          </div>
+
+          <div class="search">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search..." id="searching" />
+          </div>
+        </div>
+
+        <!-- Chat -->
+        <div class="chat-box" id="chat">
+          <div class="users">
+            <ul class="color-purple">
+              <li class="profile">
+                <img src="" alt="" class="profile-img" />
+                <span id="seller-name">User 1 </span>
+              </li>
+              <li class="profile">
+                <img src="" alt="" class="profile-img" />
+                <span id="seller-name">User 2 </span>
+              </li>
+              <li class="profile">
+                <img src="" alt="" class="profile-img" />
+                <span id="seller-name">User 3 </span>
+              </li>
+              <li class="profile">
+                <img src="" alt="" class="profile-img" />
+                <span id="seller-name">User 3 </span>
+              </li>
+              <li class="profile">
+                <img src="" alt="" class="profile-img" />
+                <span id="seller-name">User 4 </span>
+              </li>
+              <li class="profile">
+                <img src="" alt="" class="profile-img" />
+                <span id="seller-name">User 5 </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="chats">
+            <div class="chat-box-messages">
+              <ul class="color-purple chats-section">
+                <li class="reciever">Hi</li>
+                <li class="sender">Hi</li>
+                <li class="reciever">Hi</li>
+                <li class="sender">Hi</li>
+                <li class="reciever">Hi</li>
+                <li class="sender">Hi</li>
+                <li class="reciever">Hi</li>
+                <li class="sender">Hi</li>
+                <li class="reciever">Hi</li>
+                <li class="sender">Hi</li>
+              </ul>
+            </div>
+            <div class="chat-box-input">
+                <div class="input-div">
+                    <input
+                    type="text"
+                    class="chat-input"
+                    placeholder="Send message..."
+                  />
+                </div>
+                <div class="btn-div">
+                    <button class="btn">Send</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./scripts/index.js"></script>
+  </body>
+</html>
