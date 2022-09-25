@@ -34,11 +34,19 @@ export const SetLottery = async () => {
                     indexMatches.push(matches[i].x);
                 }
             }
-            console.log(indexMatches);
+            //INSERT VOUCHERS DEPENDING ON MATCHES
+            let data = {"code": "lotter-voucher-" + matches.length * 10,
+            "amount": matches.length * 10}
+            const response2 = await axios.post("http://localhost/ecommerce/ecommerce-server/add-user-voucher.php", data, {headers: {'Authorization': `token ${localStorage.getItem("token")}` }});
+            console.log(response2);
             //Get voucher according to lottery
             const url2 = "http://localhost/ecommerce/ecommerce-server/updatelottery.php";
             const response = await axios.post(url2, {"matchingnumbers": indexMatches}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
-            console.log(response.data.lotteries);
+            if(indexMatches.length >= 0){
+                //alert("You won the lottery: " + indexMatches.length * 10 + "$");
+                console.log(indexMatches);
+            }
+            
         })
         
 

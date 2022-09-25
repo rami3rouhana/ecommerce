@@ -19,11 +19,13 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Client") {
+    $matchesFound = 0;
     if (isset($_POST['matchingnumbers'])) {
         extract($_POST);
         echo 'gg';
         print_r($matchingnumbers);
         for($i = 0; $i < $matchingnumbers; $i++){
+            $response = [];
             //echo $matchingnumbers[$i];
             if($matchingnumbers[$i] == 0){
                 $today = date("y-m-d");
@@ -32,14 +34,13 @@ if ($json['user']['user_type'] == "Client") {
                 $query->bind_param("ss", $userid, $today);
                 $query->execute();
                 $result = $query->get_result();
-                $response = [];
+
         
                 if (($query->error) == "") {
-                    $products=[];
-
+                    $matchesFound += 1;
                     $response["success"] = true;
-                    $response["products"] = $products;
                     $response["jwt"] = $json["JWT"];
+                    $response["matchesFound"] = $matchesFound;
                     echo json_encode($response);
                 } else {
                     $response["success"] = false;
@@ -54,13 +55,11 @@ if ($json['user']['user_type'] == "Client") {
                 $query->bind_param("ss", $userid, $today);
                 $query->execute();
                 $result = $query->get_result();
-                $response = [];
         
                 if (($query->error) == "") {
-
-                    $response["success"] = true;
-                    $response["products"] = $products;
+                    $matchesFound += 1;    
                     $response["jwt"] = $json["JWT"];
+                    $response["matchesFound"] = $matchesFound;
                     echo json_encode($response);
                 } else {
                     $response["success"] = false;
@@ -75,16 +74,11 @@ if ($json['user']['user_type'] == "Client") {
                 $query->bind_param("ss", $userid, $today);
                 $query->execute();
                 $result = $query->get_result();
-                $response = [];
         
                 if (($query->error) == "") {
-                    $products=[];
-                    while ($a = $result->fetch_assoc()) {
-                        $products[] = $a;
-                    }
-                    $response["success"] = true;
-                    $response["products"] = $products;
+                    $matchesFound += 1;
                     $response["jwt"] = $json["JWT"];
+                    $response["matchesFound"] = $matchesFound;
                     echo json_encode($response);
                 } else {
                     $response["success"] = false;
