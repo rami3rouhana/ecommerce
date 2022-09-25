@@ -11,7 +11,6 @@ export const ResetPassword = () => {
                 email: email(),
             })
             const user = await axios.post(url, data);
-            debugger
             if(typeof user.data.success == "undefined"){
                 if(JSON.parse(user.data.split("\n")[user.data.split("\n").length-1].split('[')[0]).success)
                     alert ("Reset Password Sent!");

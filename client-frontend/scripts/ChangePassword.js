@@ -10,7 +10,11 @@ export const ChangePassword = () => {
                     resetJwt
                 });
                 const user = await axios.post(url, data);
-                localStorage.setItem('token', user.data.jwt);
+                debugger
+                if(user.data.jwt){
+                    localStorage.setItem('token', user.data.jwt);
+                    window.location.href = "http://127.0.0.1:5500/client-frontend/products.html";
+                }
             }else if(document.getElementById("password").value===""||document.getElementById("password-confirm").value===""){
                 alert("Fill all the fields");
             }
