@@ -7,10 +7,13 @@
 }
 html,
 body {
-  height: 0%;
+  height: 100%;
   margin: 0;
 }
 .body{
+  height: 100%;
+}
+.chat{
   height: 0%;
 }
 ul {
