@@ -9,6 +9,9 @@ import { SubmitAd } from "./SubmitAd.js";
 import { EditCategory } from "./EditCategory.js"
 import { GetStats } from "./GetStats.js";
 import { Validate } from "./Validate.js";
+import { ReceiveMessages } from "./ReceiveMessages.js";
+import { Chats } from "./Chats.js";
+import { ReceiveSellers } from "./RceiveSellers.js";
 let [category, setCategory] = useState({});
 
 Validate();
@@ -25,7 +28,9 @@ PageLocations();
 SubmitAd();
 EditCategory();
 GetStats();
-
+ReceiveMessages();
+ReceiveSellers();
+Chats();
 
 
 
