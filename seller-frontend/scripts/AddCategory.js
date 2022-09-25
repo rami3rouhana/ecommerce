@@ -49,6 +49,7 @@ export const AddCategory = (category, setCategory) => {
 
             edit_img.addEventListener('click', (e) => {
                 popup.classList.remove('hidden');
+                
                 const editName =e.currentTarget.parentElement.previousElementSibling;
                 document.getElementById("edit-btn").addEventListener("click", () => {
                     let [name, setName] = useState("");

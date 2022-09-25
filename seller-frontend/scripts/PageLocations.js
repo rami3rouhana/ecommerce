@@ -31,8 +31,13 @@ export const PageLocations = () => {
         document.getElementById("discounts-nav").addEventListener("click", () => {
             window.location.href = "../seller-frontend/discounts.html";
         })
-    document.getElementById("logout").addEventListener("click", () => {
-        localStorage.removeItem("token");
-        window.location.href = "../client-frontend/index.html";
-    })
+    if (document.getElementById("logout"))
+        document.getElementById("logout").addEventListener("click", () => {
+            localStorage.removeItem("token");
+            window.location.href = "../client-frontend/index.html";
+        })
+    if (document.getElementById("chat"))
+        document.getElementById("chat").addEventListener("click", () => {
+            window.location.href = "../seller-frontend/chat.html";
+        })
 }

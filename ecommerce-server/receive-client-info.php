@@ -20,19 +20,19 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 
 if (isset($json['user']['id'])) {
-    $query = $mysqli->prepare("SELECT messages.message , users.f_name, users.email FROM messages JOIN users on users.id=receiver_id WHERE receiver_id=?");
+    $query = $mysqli->prepare("SELECT users.id , users.f_name FROM messages JOIN users on users.id=receiver_id WHERE receiver_id=? or sender_id=? GROUP BY users.id");
     $userid = $json['user']['id'];
-    $query->bind_param("i", $userid);
+    $query->bind_param("ii", $userid, $userid);
     $query->execute();
     $result = $query->get_result();
     $response = [];
-
+    $sellers=[];
     if (($query->error) == "") {
         while ($a = $result->fetch_assoc()) {
-            $products[] = $a;
+            $sellers[] = $a;
         }
         $response["success"] = true;
-        $response['products'] = $products;
+        $response['sellers'] = $sellers;
         $response["jwt"] = $json["JWT"];
         echo json_encode($response);
     } else {
