@@ -11,6 +11,7 @@ import { SetItemList } from "./SetItemList.js";
 import { PopulateCart } from "./PopulateCart.js";
 import { ChangePassword } from "./ChangePassword.js";
 import { Search } from "./Search.js";
+import { ProfilePage } from "./ProfilePage.js";
 
 PageLocations();
 GetProducts("");
@@ -25,4 +26,5 @@ PopulateCart();
 SetItemList();
 ChangePassword();
 Search();
+ProfilePage();
 
