@@ -29,11 +29,7 @@ export const ProfilePage =  async () => {
                     let email = document.getElementById("profile-email").value;
                     let pass = document.getElementById("profile-pass").value;
                     let picture = document.getElementById("profile-picture");
-                    //Get picture and conver to base 64
-                    //const fileInput = document.getElementById("fileInput");
-        
-        
-                    //  
+
                     console.log(name, email, pass, picture);
                     document.getElementById("profile-popup-form").classList.add("hidden");
                     console.log(data);
@@ -42,9 +38,14 @@ export const ProfilePage =  async () => {
                     const url = "http://localhost/ecommerce/ecommerce-server/addimage.php";
                     const response = await axios.post(url, {image64base: data}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
                     console.log(response);
-                    document.getElementById("profile-picture-card").setAttribute('src', "./")
-                    await SetProfilePicture()
-                    
+                    setTimeout( async () => {
+                        await SetProfilePicture()
+                    }, 1000); 
+                    document.getElementById("profile-picture-card").setAttribute('src', "http://localhost/ecommerce/client-frontend/images/refresh.png")
+                    setTimeout( async () => {
+                        await SetProfilePicture()
+                    }, 1000); 
+
 
                 })
                 
@@ -53,10 +54,22 @@ export const ProfilePage =  async () => {
         })
     }
     async function SetProfilePicture() {
+        //Change profile card
         const url = "http://localhost/ecommerce/ecommerce-server/receive-userinfo.php";
         const response = await axios.post(url, {}, { headers: {'Authorization': `token ${localStorage.getItem(`token`)}`}});
         let userid = (response.data['userid']);
         let user_name = (response.data['name']);
-        document.getElementById("profile-picture-card").setAttribute('src', "http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
+        let user_email = (response.data['email']);
+        //document.getElementById("profile-picture-card").setAttribute('src', "http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
+        document.getElementById("profile-picture-card").src = ("http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
+
+        //Change profile header
+        document.getElementById("profile-img-header").setAttribute('src', "http://localhost/ecommerce/client-frontend/images/uploadedimages/" + userid + "-" + user_name + ".jpg");
+
+        //Set profile name
+        document.getElementById("profile-card-name").innerHTML = user_name;
+        
+        //Set profile email
+        document.getElementById("profile-card-email").innerHTML = user_email;
     }
 }
