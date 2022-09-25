@@ -12,7 +12,12 @@ import { PopulateCart } from "./PopulateCart.js";
 import { ChangePassword } from "./ChangePassword.js";
 import { Search } from "./Search.js";
 import { ProfilePage } from "./ProfilePage.js";
+import { Validate } from "./Validate.js";
 
+
+
+
+Validate();
 PageLocations();
 GetProducts("");
 Register();
