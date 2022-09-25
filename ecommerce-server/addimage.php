@@ -21,7 +21,7 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 if (isset($json['user']['id']) && isset($_POST['image64base'])){
     extract($_POST);
-    $name = md5($json['user']['id']);
+    $name = $json['user']['id'] . "-" . ($json['user']['name']);
     $base64_string = $image64base;
     //echo $base64_string;
     $decoder = base64_decode($base64_string);
