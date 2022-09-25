@@ -21,7 +21,7 @@ $json = json_decode($jwtInfo, true); // decode the JSON into an associative arra
 
 if (isset($json['user']['id']) && isset($_POST['sender_id'])) {
     extract($_POST);
-    $query = $mysqli->prepare("SELECT sender_id , message , receiver_id FROM messages where receiver_id=? and sender_id=? ORDER by createdAt ");
+    $query = $mysqli->prepare("SELECT message  FROM messages where receiver_id=? and sender_id=? ORDER by createdAt ");
     $userid = $json['user']['id'];
     $query->bind_param("ii", $userid, $sender_id);
     $query->execute();
