@@ -19,12 +19,12 @@ $jwtInfo = $jwtFunction(json_encode(['jwt' => explode(" ", $headers["Authorizati
 $json = json_decode($jwtInfo, true); // decode the JSON into an associative array
 
 if ($json['user']['user_type'] == "Seller") {
-    if (isset($_POST['id']) && isset($_POST['name'])) {
+    if (isset($_POST['id']) && isset($_POST['catName'])) {
 
         extract($_POST);
 
-        $query = $mysqli->prepare("update categories SET name = ? where id = ? ");
-        $query->bind_param("si",$name , $id );
+        $query = $mysqli->prepare("update categories SET name=? where id=? ");
+        $query->bind_param("si",$catName , $id );
         $query->execute();
         $result = $query->get_result();
         $response = [];

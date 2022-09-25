@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <link rel="stylesheet" href="/seller-frontend/styles/style.css" />
     <title>Document</title>
   </head>
@@ -31,7 +32,6 @@
         <div class="header-top">
           <div class="buttons">
             <button id="discounts-nav" class="clicked">Discounts</button>
-            <button id="vouchers">Vouchers</button>
           </div>
         </div>
 
@@ -41,10 +41,6 @@
             <select id="add-product-categories" class="input">
               <option value="">Category Name</option>
             </select>
-            <div class="exp">
-              <label for="exp"><small>Expiration Date</small></label>
-              <input id="date" type="date" class="input" />
-            </div>
             <div class="button">
               <div class="box-wrap">
                 <input
