@@ -397,7 +397,7 @@ table td {
 	font-size: 14px;
 	padding: 10px;
 	width: 90%;
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 button:hover, a:hover {
   opacity: 0.7;
@@ -429,7 +429,6 @@ button:hover, a:hover {
   position: relative;
   margin-right: 20px;
   margin-left: 20px;
-  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -442,14 +441,14 @@ button:hover, a:hover {
 }
 .chat-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   top: 0;
   left: 0;
   padding: 20vh 20vw;
   position: absolute;
   width: 100%;
   z-index: -1;
-  height: 440px;
+  height: 100%;
 }
 .sender {
   width: 45%;
@@ -481,7 +480,7 @@ button:hover, a:hover {
   color: white;
 }
 .chat-box-input {
-  width: 75%;
+  width: 77%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
