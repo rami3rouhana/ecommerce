@@ -781,3 +781,7 @@ button:hover, a:hover {
 .icons {
   align-self: flex-end;
 }
+
+.resize {
+  font-size: 14px;
+}
