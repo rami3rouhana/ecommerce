@@ -13,7 +13,6 @@
       <div class="left">
         <div class="center header-top">
             <h2 class="color-white">Login</h2>
-            
         </div>
         <div class="login-content">
             <img src="/client-frontend/images/logo.png" alt="" class="logo">
@@ -23,13 +22,11 @@
             <input type="email" class="hidden-reset" placeholder="Email" class="input" id="email-reset" />
             <button class="btn" id="login-btn">Login</button>
         </div>
-        
       </div>
       <div class="dash"></div>
       <div class="right">
         <div class="center header-top">
             <h2 class="color-white">Register</h2>
-            
         </div>
         <div class="login-content" id="register">
             <input type="text" placeholder="Username" class="input" id="username-register"/>
@@ -40,6 +37,24 @@
         </div>
       </div>
     </div>
+
+    <div id="popup-reset-password" class="reset-popup hidden">
+      <div class="reset-popup-form">
+        <div class="close-btn-container">
+          <div class="close-btn" id="close-btn">X</div>
+        </div>
+        <div class="desc">
+          <input
+            type="email"
+            placeholder="Email"
+            class="input"
+            id="email-reset"
+          />
+          <button class="btn" id="reset-btn">Reset</button>
+        </div>
+      </div>
+    </div>
+    
     <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

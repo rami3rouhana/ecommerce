@@ -505,6 +505,7 @@ table {
 .popup-form-img{
   width: 50%;
   height: 50%;
+  margin-right: 20px;
 }
 
 .close-btn-container{
@@ -784,4 +785,46 @@ button:hover, a:hover {
 
 .resize {
   font-size: 14px;
+}
+.desc {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.desc .btn {
+  align-self: center;
+  width: 30%;
+  margin-top: 20px;
+}
+.desc .input {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 90%;
+}
+
+.reset-popup{
+  top: 0;
+  left: 0;
+  padding: 20vh 28vw;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.reset-popup-form{
+  box-shadow: 0 0 3px #5652ac;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  position: fixed;
+  top: 25%;
+  left: 35%;
+  min-width: 40%;
+  max-width: 60%;
+  align-self: center;
+  min-height: 30%;
+  max-height: 30%;
 }
