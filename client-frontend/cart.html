@@ -1,114 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-    <title>Products</title>
-  </head>
-  <body>
-    <div class="nav-bar">
-      <div class="header">
-        <img id="profile-img-header" src="" alt="" class="profile-img" />
-        <h2 class="color-white">Client Name</h2>
-      </div>
 
-      <div class="nav-buttons">
-        <button id="products">Products</button>
-        <button class="clicked"  id="cart">Cart</button>
-        <button id="whishlist">Wishlist</button>
-        <button id="favorite">Favorites</button>
-        <button id="profile">Profile</button>
-        <button id="chat">Chat</button>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  <title>Products</title>
+</head>
 
-      <div class="logout">
-        <button id="logout">Logout</button>
-      </div>
+<body>
+  <div class="nav-bar">
+    <div class="header">
+      <img id="profile-img-header" src="" alt="" class="profile-img" />
+      <h2 class="color-white">Client Name</h2>
     </div>
 
-    <div class="main">
-      <div class="body">
-        <div class="header-top">
-          <div class="buttons">
-            <button class="clicked">Cart</button>
-          </div>
-          <div class="lottery">
-            <input type="number" class="num" />
-            <input type="number" class="num" />
-            <input type="number" class="num" />
-            <button class="btn">Lucky ?</button>
-          </div>
+    <div class="nav-buttons">
+      <button id="products">Products</button>
+      <button class="clicked" id="cart">Cart</button>
+      <button id="whishlist">Wishlist</button>
+      <button id="favorite">Favorites</button>
+      <button id="profile">Profile</button>
+      <button id="chat">Chat</button>
+    </div>
+    <div class="logout">
+      <button id="logout">Logout</button>
+    </div>
+  </div>
 
-          <div class="search">
-            <i class="fa fa-search"></i>
-            <input type="text" placeholder="Search..." id="searching" />
-          </div>
+  <div class="main">
+    <div class="body">
+      <div class="header-top">
+        <div class="buttons">
+          <button class="clicked">Cart</button>
+        </div>
+        <div class="lottery">
+          <input type="number" class="num" />
+          <input type="number" class="num" />
+          <input type="number" class="num" />
+          <button class="btn">Lucky ?</button>
         </div>
 
-        <div class="cart-container">
-          <div class="left">
-            <h1>Item List</h1>
-            <table id="cart-table">
+        <div class="search">
+          <i class="fa fa-search"></i>
+          <input type="text" placeholder="Search Twitter" id="searching" />
+        </div>
+      </div>
 
-            </table>
-          </div>
-          <div class="dash"></div>
-          <div class="right">
-            <div class="cart-input">
-              <input type="text" id="voucher-email" placeholder="Voucher Email" class="input" />
-              <div class="prices color-purple">
-                <input type="radio" id="p1" value="10" name="prices"/>
-                <label for="p1" name="prices">10$</label>
-                <input type="radio" id="p2" value="20"  name="prices"/>
-                <label id="p2" name="prices">20$</label>
-                <input type="radio" id="p3" value="50"  name="prices"/>
-                <label id="p3" name="prices">50$</label>
-                <input type="radio" value="100" name="prices"/>
-                <label name="prices" >100$</label>
+      <div class="cart-container">
+        <div class="left">
+          <h1>Item List</h1>
+          <table id="cart-table">
+
+          </table>
+        </div>
+        <div class="dash"></div>
+        <div class="right">
+          <div class="cart-input">
+            <div class="seller-popup hidden" id="voucher-popup">
+              <div class="seller-popup-form">
+                <div class="close-btn-container">
+                  <div class="close-btn" id="close-btn-voucher">X</div>
+                </div>
+                <input type="text" id="voucher-email" placeholder="Voucher Email" class="input" />
+                <div class="prices color-purple">
+                  <input type="radio" id="p1" value="10" name="prices" />
+                  <label for="p1" name="prices">10$</label>
+                  <input type="radio" id="p2" value="20" name="prices" />
+                  <label id="p2" name="prices">20$</label>
+                  <input type="radio" id="p3" value="50" name="prices" />
+                  <label id="p3" name="prices">50$</label>
+                  <input type="radio" value="100" name="prices" />
+                  <label name="prices">100$</label>
+                </div>
+                <input id="voucher-code" type="text" placeholder="Voucher Code" class="input" />
+                <button id="send-voucher" class="discount-container-btn">Send Voucher</button>
               </div>
-              <input id="voucher-code" type="text" placeholder="Voucher Code" class="input" />
-              <button id="send-voucher" class="discount-container-btn">Send Voucher</button>
-              <!--<div class="discount-container">
-                <input type="text" placeholder="Discount Code" id="discount-code" class="discount-container-input discount-container-divs"/>
-                <button id="apply-discount" class="btn discount-container-divs">Apply Discount</button>
-              </div>-->
-              <div class="discount-container">
+            </div>
+            <div class="discount-container">
               <div class="discount-container-divs">
-                <input type="text" placeholder="Discount Code" id="discount-code" class="discount-container-input discount-container-divs"/>
+                <input type="text" placeholder="Discount Code" id="discount-code"
+                  class="discount-container-input discount-container-divs" />
               </div>
               <div class="discount-container-divs">
                 <button id="apply-discount" class="discount-container-btn">Apply Discount</button>
               </div>
             </div>
-              <div class="discount-container">
-                <div class="discount-container-divs">
-                  <select id="select-voucher" class="">
-                    <option value="0">Select voucher:</option>
-                  </select>
-                </div>
-                <div class="discount-container-divs">
-                  <button id="apply-voucher" class="discount-container-btn">Apply Voucher</button>
-                </div>
+            <div class="discount-container">
+              <div class="discount-container-divs">
+                <select id="select-voucher" class="">
+                  <option value="0">Select voucher:</option>
+                </select>
               </div>
-              <div id="discount-container" class="discount-container hidden">Applied to: </div>
-              
-              <div class="total-amount">
-                <span>Total Amount: </span>
-                <span id="total-value">100$</span>
+              <div class="discount-container-divs">
+                <button id="apply-voucher" class="discount-container-btn">Apply Voucher</button>
               </div>
-              <button id="checkout-cart" class="btn">Checkout</button>
             </div>
+            <div id="discount-container" class="discount-container hidden">Applied to: </div>
+
+            <div class="total-amount">
+              <span>Total Amount: </span>
+              <span id="total-value">100$</span>
+            </div>
+            <button id="checkout-cart" class="btn">Checkout</button>
+            <button id="voucher-btn" class="btn voucher-btn">Add voucher</button>
           </div>
         </div>
       </div>
     </div>
-    <script type="module" src="./scripts/index.js"></script>
-  </body>
+  </div>
+  <script type="module" src="./scripts/index.js"></script>
+</body>
+
 </html>

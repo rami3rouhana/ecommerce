@@ -569,7 +569,7 @@ button{
   width: 90%;
   background-color: white;
   border-radius: 15px;
-  height: 10%;
+  height: 20%;
   margin-bottom: 10px;
 }
 
@@ -740,6 +740,9 @@ button:hover, a:hover {
 }
 .input-div {
   width: 30%;
+}
+.voucher-btn{
+  margin-top: 10px;
 }
 .chat-input {
   width: 27%;

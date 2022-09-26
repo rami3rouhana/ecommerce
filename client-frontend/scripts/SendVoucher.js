@@ -1,4 +1,10 @@
-export const SendVoucher = async () => {
+export const SendVoucher = () => {
+    document.getElementById("voucher-btn").addEventListener("click", ()=>{
+        document.getElementById("voucher-popup").classList.remove("hidden")
+    })
+    document.getElementById("close-btn-voucher").addEventListener("click",()=>{
+        document.getElementById("voucher-popup").classList.add("hidden")
+    })
     if(document.getElementById("voucher-email")){
 
         //Find voucher value
@@ -20,6 +26,7 @@ export const SendVoucher = async () => {
                     console.log(response);
                 }
             }
+                document.getElementById("voucher-popup").classList.add("hidden")
         })
     }
 }
