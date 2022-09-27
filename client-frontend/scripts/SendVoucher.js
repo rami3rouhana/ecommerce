@@ -1,12 +1,13 @@
 export const SendVoucher = () => {
+    if(document.getElementById("voucher-btn"))
     document.getElementById("voucher-btn").addEventListener("click", ()=>{
         document.getElementById("voucher-popup").classList.remove("hidden")
     })
+    if(document.getElementById("close-btn-voucher"))
     document.getElementById("close-btn-voucher").addEventListener("click",()=>{
         document.getElementById("voucher-popup").classList.add("hidden")
     })
     if(document.getElementById("voucher-email")){
-
         //Find voucher value
         document.getElementById('send-voucher').addEventListener("click", async () => {
             let ele = document.getElementsByName('prices');
