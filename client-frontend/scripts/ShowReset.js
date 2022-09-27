@@ -7,7 +7,7 @@ export const ShowReset = () =>{
         document.getElementById('popup-reset-password').classList.remove('hidden');
         ResetPassword();
     });
-
+    if(document.getElementById("close-btn"))
     document.getElementById('close-btn').addEventListener("click", ()=> {
         document.getElementById('popup-reset-password').classList.add('hidden');
     })

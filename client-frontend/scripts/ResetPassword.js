@@ -6,7 +6,8 @@ export const ResetPassword = () => {
         let [email,setEmail] = useState('');
         document.getElementById("reset-btn").addEventListener("click", async () => {
             const url = "http://localhost/ecommerce/ecommerce-server/reset-request.php";
-            setEmail(document.getElementById("email-reset").value);
+            setEmail(document.getElementById("email-reset-").value);
+            debugger
             const data = JSON.stringify({
                 email: email(),
             })

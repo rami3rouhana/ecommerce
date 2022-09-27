@@ -1,7 +1,6 @@
 import {ReceiveMessages} from './ReceiveMessages.js'
 
 export const ReceiveSellers = async () => {
-    if(document.getElementById('seller-users')){
     const url = 'http://localhost/ecommerce/ecommerce-server/receive-sellers.php';
     const response = await axios.get(url, {
         headers: {
@@ -30,6 +29,4 @@ export const ReceiveSellers = async () => {
             ReceiveMessages();
         })
     })
-}
-
 }
