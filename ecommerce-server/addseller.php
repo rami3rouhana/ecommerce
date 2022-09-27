@@ -21,6 +21,7 @@ if ($json['user']['user_type'] == "Admin") {
     if (isset($_POST['email']) && isset($_POST['name']) && isset($_POST['password'])) {
         extract($_POST);
         $query = $mysqli->prepare("INSERT INTO `users` (`email`, `f_name`, `password`, `user_type`) VALUES (?, ?, ?, ?)");
+        $password = hash('sha256', $_POST['password']);
         $usertype = "Seller";
         $query->bind_param("ssss", $email , $name , $password, $usertype);
         $query->execute();
